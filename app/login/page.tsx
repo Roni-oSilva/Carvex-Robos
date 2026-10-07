@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -37,6 +38,7 @@ export default function LoginPage() {
           {isSubmitting ? "Entrando…" : "Entrar"}
         </Button>
       </form>
+      <p className="mt-4 text-sm text-slate-600">Sem conta? <Link href="/signup" className="text-brand-600 underline">Cadastre-se</Link></p>
     </main>
   );
 }

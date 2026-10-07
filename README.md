@@ -20,7 +20,7 @@ Next.js 14 (App Router) + Supabase + Claude (Anthropic) + Tiptap.
 
 ## Rotas do painel
 
-`/dashboard`, `/radar` (oportunidade → e-book), `/ebooks` (+ `/new`, `/[slug]/edit`), `/products/[slug]` (página de vendas), `/paths` (+ `/new`, `/[slug]/edit`), `/library` (capa, versões, export HTML), `/analytics` (custos de IA) e `/settings` (categorias, tags, padrões).
+`/dashboard`, `/radar` (oportunidade → e-book), `/ebooks` (+ `/new`, `/[slug]/edit`), `/products/[slug]` (página de vendas), `/paths` (+ `/new`, `/[slug]/edit`), `/library` (capa, versões, export HTML/EPUB), `/analytics` (custos de IA) e `/settings` (categorias, tags, padrões).
 
 Públicas: `/ebooks/[slug]`, `/ebooks/[slug]/vendas`, `/paths/[slug]`.
 

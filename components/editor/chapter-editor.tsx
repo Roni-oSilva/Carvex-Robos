@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { updateChapter, deleteChapter } from "@/actions/chapter.actions";
 import { generateChapterContent } from "@/actions/ai.actions";
 import { Button } from "@/components/ui/button";
+import { MoveButtons } from "@/components/shared/move-buttons";
 import { RichEditor } from "./rich-editor";
 import type { BookChapter } from "@/types";
 
@@ -42,12 +43,15 @@ export function ChapterEditor({ chapter }: { chapter: BookChapter }) {
 
   return (
     <section className="rounded-lg border bg-white p-4">
-      <input
-        aria-label="Título do capítulo"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        className="mb-3 w-full rounded-md border border-slate-300 px-3 py-2 text-lg font-semibold"
-      />
+      <div className="mb-3 flex items-center gap-2">
+        <MoveButtons kind="chapter" id={chapter.id} />
+        <input
+          aria-label="Título do capítulo"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="w-full rounded-md border border-slate-300 px-3 py-2 text-lg font-semibold"
+        />
+      </div>
       <RichEditor value={content} onChange={setContent} />
       <div className="mt-3 flex items-center gap-2">
         <Button onClick={save} disabled={pending}>Salvar</Button>

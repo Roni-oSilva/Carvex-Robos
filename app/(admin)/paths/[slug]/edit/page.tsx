@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { PathInfoForm } from "@/components/dashboard/path-info-form";
 import { PathBuilder } from "@/components/dashboard/path-builder";
 import { StatusBadge } from "@/components/shared/status-badge";
 import { createClient } from "@/lib/supabase/server";
@@ -32,6 +33,10 @@ export default async function EditPathPage({ params }: { params: { slug: string 
           <Link href={`/paths/${path.slug}`} className="text-sm text-brand-600 underline">Ver página pública</Link>
         )}
       </div>
+      <PathInfoForm
+        id={path.id}
+        initial={{ title: path.title, description: path.description ?? "", target_audience: path.target_audience ?? "" }}
+      />
       <PathBuilder path={{ id: path.id, status: path.status }} modules={modules ?? []} books={books ?? []} />
     </div>
   );

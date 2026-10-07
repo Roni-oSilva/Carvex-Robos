@@ -114,3 +114,21 @@ export async function deleteItem(id: string): Promise<ActionResult> {
   revalidatePath("/paths");
   return { ok: true };
 }
+
+export async function updatePath(id: string, input: PathInput): Promise<ActionResult> {
+  await requireAdmin();
+  const parsed = pathSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: parsed.error.issues[0].message };
+  const { error } = await createClient()
+    .from("learning_paths")
+    .update({
+      title: parsed.data.title,
+      description: nullify(parsed.data.description),
+      target_audience: nullify(parsed.data.target_audience),
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", id);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath("/paths");
+  return { ok: true };
+}

@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { addItem, addModule, deleteItem, deleteModule, deletePath, setPathStatus } from "@/actions/path.actions";
 import { Button } from "@/components/ui/button";
+import { MoveButtons } from "@/components/shared/move-buttons";
 
 interface Item { id: string; title: string; item_type: string; order_index: number }
 interface Module { id: string; title: string; description: string | null; learning_path_items: Item[] }
@@ -93,7 +94,7 @@ function ModuleCard({
   return (
     <section className="rounded-lg border bg-white p-4">
       <div className="flex items-center justify-between">
-        <h2 className="font-semibold">{m.title}</h2>
+        <h2 className="flex items-center gap-2 font-semibold"><MoveButtons kind="module" id={m.id} />{m.title}</h2>
         <Button
           variant="ghost"
           className="px-2 py-1 text-xs"
@@ -106,7 +107,7 @@ function ModuleCard({
       <ul className="mt-2 divide-y text-sm">
         {items.map((i) => (
           <li key={i.id} className="flex items-center justify-between py-2">
-            <span>{i.title} <span className="text-slate-400">({i.item_type})</span></span>
+            <span className="flex items-center gap-2"><MoveButtons kind="item" id={i.id} />{i.title} <span className="text-slate-400">({i.item_type})</span></span>
             <Button variant="ghost" className="px-2 py-1 text-xs" disabled={pending} onClick={() => run(() => deleteItem(i.id))}>Remover</Button>
           </li>
         ))}
