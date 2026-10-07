@@ -48,7 +48,7 @@ export function makeWorld<S>(robot: Robot<S>, opts: { settings?: S; now?: Date; 
   }, now);
 
   let seq = 0;
-  let cursor = 0;
+  const cursors = new Map<string, number>();
   return {
     env, wa, robot, tenant,
     setNow: (d) => { now = d; },
@@ -61,9 +61,11 @@ export function makeWorld<S>(robot: Robot<S>, opts: { settings?: S; now?: Date; 
       return processInbound(env, robot, msg);
     },
     drain(to) {
-      const out = wa.texts(to).slice(cursor);
-      cursor = wa.texts(to).length;
-      return out;
+      // Cada destinatário (e o "todos") tem o seu próprio ponto de leitura.
+      const key = to ?? "*";
+      const from = cursors.get(key) ?? 0;
+      cursors.set(key, wa.sent.length);
+      return FakeWhatsApp.format(wa.sent.slice(from).filter((s) => !to || s.to === to));
     },
     app: () => createApp(env, robot),
   };

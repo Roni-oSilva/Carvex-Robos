@@ -107,8 +107,11 @@ export class FakeWhatsApp implements WhatsAppClient {
 
   /** Textos enviados a um número (útil nas asserções). */
   texts(to?: string): string[] {
-    return this.sent.filter((s) => !to || s.to === to).map((s) => {
-      const m = s.msg;
+    return FakeWhatsApp.format(this.sent.filter((s) => !to || s.to === to));
+  }
+
+  static format(entries: { msg: Outgoing }[]): string[] {
+    return entries.map(({ msg: m }) => {
       if (m.kind === "template") return `[template:${m.name}] ${m.params.join(" | ")}`;
       if (m.kind === "buttons") return `${m.body}\n[${m.buttons.map((b) => b.title).join("] [")}]`;
       if (m.kind === "list") return `${m.body}\n${m.rows.map((r) => `• ${r.title}`).join("\n")}`;

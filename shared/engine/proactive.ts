@@ -1,10 +1,13 @@
 import type { Contact, Tenant } from "../database/repo.ts";
+import type { Outgoing } from "../whatsapp/types.ts";
 import { inServiceWindow } from "../whatsapp/window.ts";
 import type { BotEnv } from "./types.ts";
 
 export interface ProactiveMessage {
   /** Texto livre — só vai se a janela de 24h estiver aberta. */
   text: string;
+  /** Botões de resposta rápida (só dentro da janela de 24h). */
+  buttons?: { id: string; title: string }[];
   /** Template aprovado na Meta — usado quando a janela está fechada. */
   template?: { name: string; language: string; params: string[] };
 }
@@ -25,7 +28,8 @@ export async function sendProactive(env: BotEnv, tenant: Tenant, contact: Contac
     return "skipped_no_template";
   }
   try {
-    const out = open ? { kind: "text" as const, body: msg.text } : { kind: "template" as const, ...msg.template! };
+    const out: Outgoing = !open ? { kind: "template", ...msg.template! }
+      : msg.buttons?.length ? { kind: "buttons", body: msg.text, buttons: msg.buttons } : { kind: "text", body: msg.text };
     const r = await env.wa.send(contact.wa_id, out, { phoneNumberId: tenant.phone_number_id ?? undefined });
     env.repo.logMessage({ tenantId: tenant.id, contactId: contact.id, direction: "out", waMessageId: r.id, type: out.kind, body: msg.text }, now);
     return open ? "sent" : "sent_template";

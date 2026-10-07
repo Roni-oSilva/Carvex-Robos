@@ -1,0 +1,54 @@
+{
+  "empresa": {
+    "nome": "Barbearia do Zé",
+    "endereco": "Rua das Flores, 120 - Centro",
+    "telefone": "(11) 3456-7890",
+    "horario_texto": "Seg a sex 9h às 19h, sáb 9h às 14h",
+    "pagamento": "Pix, dinheiro e cartão de débito/crédito",
+    "horario": {
+      "1": { "abre": "09:00", "fecha": "19:00" },
+      "2": { "abre": "09:00", "fecha": "19:00" },
+      "3": { "abre": "09:00", "fecha": "19:00" },
+      "4": { "abre": "09:00", "fecha": "19:00" },
+      "5": { "abre": "09:00", "fecha": "19:00" },
+      "6": { "abre": "09:00", "fecha": "14:00" }
+    }
+  },
+  "servicos": [
+    { "id": "corte", "nome": "Corte masculino", "duracao_min": 30, "preco": 45 },
+    { "id": "barba", "nome": "Barba", "duracao_min": 30, "preco": 30 },
+    { "id": "corte-barba", "nome": "Corte + barba", "duracao_min": 60, "preco": 70 },
+    { "id": "sobrancelha", "nome": "Sobrancelha", "duracao_min": 30, "preco": 20, "profissionais": ["marcos"] }
+  ],
+  "profissionais": [
+    {
+      "id": "joao", "nome": "João",
+      "horario": {
+        "1": { "abre": "09:00", "fecha": "18:00" }, "2": { "abre": "09:00", "fecha": "18:00" }, "3": { "abre": "09:00", "fecha": "18:00" },
+        "4": { "abre": "09:00", "fecha": "18:00" }, "5": { "abre": "09:00", "fecha": "18:00" }, "6": { "abre": "09:00", "fecha": "14:00" }
+      },
+      "folgas": ["2026-12-25"]
+    },
+    {
+      "id": "marcos", "nome": "Marcos",
+      "horario": {
+        "2": { "abre": "10:00", "fecha": "19:00" }, "3": { "abre": "10:00", "fecha": "19:00" }, "4": { "abre": "10:00", "fecha": "19:00" },
+        "5": { "abre": "10:00", "fecha": "19:00" }, "6": { "abre": "09:00", "fecha": "14:00" }
+      },
+      "folgas": []
+    }
+  ],
+  "agenda": { "intervalo_min": 30, "antecedencia_horas": 2, "dias_max": 14, "cancelar_ate_horas": 2 },
+  "lembretes": { "ativo": true, "horas_antes": [24, 2], "template_nome": "", "template_idioma": "pt_BR" },
+  "lista_espera": { "ativo": true, "avisar_ate": 3 },
+  "faq": [
+    { "pergunta": "Onde fica a barbearia? Qual o endereço?", "resposta": "Ficamos na Rua das Flores, 120 - Centro. Tem estacionamento na rua.", "palavras_chave": ["endereço", "localização", "chegar", "fica"] },
+    { "pergunta": "Qual o horário de funcionamento?", "resposta": "Atendemos de segunda a sexta, das 9h às 19h, e aos sábados das 9h às 14h.", "palavras_chave": ["horário", "abre", "fecha", "funcionamento"] },
+    { "pergunta": "Vocês aceitam cartão e Pix?", "resposta": "Aceitamos Pix, dinheiro e cartão de débito/crédito.", "palavras_chave": ["pagamento", "cartão", "pix", "dinheiro"] },
+    { "pergunta": "Atendem criança?", "resposta": "Sim! O corte infantil (até 10 anos) tem o mesmo valor do corte masculino.", "palavras_chave": ["criança", "infantil", "filho"] }
+  ],
+  "mensagens": {
+    "boas_vindas": "Olá! 💈 Aqui é o assistente da Barbearia do Zé. Posso marcar seu horário, tirar dúvidas ou chamar um atendente.",
+    "politica_cancelamento": "Cancelamentos e remarcações podem ser feitos por aqui até 2h antes do horário."
+  }
+}
