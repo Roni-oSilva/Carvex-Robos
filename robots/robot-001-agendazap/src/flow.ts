@@ -4,7 +4,7 @@ import type { BotEnv, FlowContext } from "../../../shared/engine/types.ts";
 import type { Tenant } from "../../../shared/database/repo.ts";
 import { answerFromKnowledge } from "../../../shared/ai/knowledge.ts";
 import type { InboundMessage, Outgoing } from "../../../shared/whatsapp/types.ts";
-import { formatBRL, normalize, clip } from "../../../shared/utils/text.ts";
+import { formatBRL, isGreeting, normalize, clip } from "../../../shared/utils/text.ts";
 import { addDays, addHours, estaAberto, localDate, localDateTimeLabel, localTime, pad2, zonedToUtc } from "../../../shared/utils/time.ts";
 import { candidateDays, dayLabel, dedupeByStart, freeSlots, professionalsFor } from "./slots.ts";
 import type { AgendaSettings, Servico } from "./settings.ts";
@@ -289,7 +289,7 @@ export async function handleAgenda(ctx: Ctx, msg: InboundMessage): Promise<Outgo
   }
 
   // Atalhos globais
-  if (MENU_WORDS.has(text) || rid === "m_menu") return menu(ctx);
+  if (MENU_WORDS.has(text) || isGreeting(text) || rid === "m_menu") return menu(ctx);
   if (rid === "m_humano") return requestHandoff(ctx, "pedido do cliente", handoffText(ctx));
   if (rid === "m_agendar" || /\b(agendar|marcar|reservar)\b/.test(text) || (ctx.conv.state === "inicio" && /\bhorario\b/.test(text) && !/\b(meu|meus|qual)\b/.test(text))) {
     reset(ctx);

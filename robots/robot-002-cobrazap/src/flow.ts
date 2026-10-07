@@ -3,7 +3,7 @@ import { requestHandoff } from "../../../shared/engine/engine.ts";
 import type { FlowContext } from "../../../shared/engine/types.ts";
 import { buildPixPayload } from "../../../shared/payments/pix.ts";
 import type { InboundMessage, Outgoing } from "../../../shared/whatsapp/types.ts";
-import { clip, formatBRL, normalize } from "../../../shared/utils/text.ts";
+import { clip, formatBRL, isGreeting, normalize } from "../../../shared/utils/text.ts";
 import { localDate } from "../../../shared/utils/time.ts";
 import { diasEntre, fmtData, resumo } from "./mensagens.ts";
 import { knowledge, type CobraSettings } from "./settings.ts";
@@ -195,7 +195,7 @@ export async function handleCobranca(ctx: Ctx, msg: InboundMessage): Promise<Out
 
   const ans = await answerFromKnowledge(knowledge(s), msg.text ?? "", ctx.env.ai);
   if (ans.found) return [{ kind: "text", body: ans.answer }];
-  if (!text || ["oi", "ola", "bom dia", "boa tarde", "boa noite", "menu"].includes(text)) {
+  if (!text || text === "menu" || isGreeting(text)) {
     return [{ kind: "text", body: `Olá${nome ? `, ${nome}` : ""}! Sou o assistente de cobranças da ${s.empresa.nome}.` }, acoes("Posso ajudar com o pagamento:")];
   }
   return requestHandoff(ctx, "pergunta sem resposta na base", ans.answer);

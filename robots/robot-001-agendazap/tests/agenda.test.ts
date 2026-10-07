@@ -369,3 +369,10 @@ test("painel: agenda do dia, marcar comparecimento/falta, agendamento manual e L
     assert.match(await get("/admin"), /comparecimento/);
   } finally { await new Promise<void>((r) => app.server.close(() => r())); }
 });
+
+test("saudação composta ('Oi, boa noite') mostra o menu em vez de chamar atendente", async () => {
+  const w = world();
+  await w.say(ANA, "Oi, boa noite!");
+  assert.match(w.drain().join("\n"), /Agendar horário/);
+  assert.equal(w.env.repo.conversations(w.tenant.id)[0].mode, "bot");
+});

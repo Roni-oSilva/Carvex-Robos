@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { clip, formatBRL, maskPhone, normalize, normalizeBrPhone, parseBRLToCents, render, escapeHtml } from "./text.ts";
+import { isGreeting, clip, formatBRL, maskPhone, normalize, normalizeBrPhone, parseBRLToCents, render, escapeHtml } from "./text.ts";
 import { addDays, estaAberto, localDate, localTime, weekdayOf, zonedToUtc, parseHHMM } from "./time.ts";
 import { redact } from "./logger.ts";
 import { RateLimiter } from "./rate-limit.ts";
@@ -62,4 +62,9 @@ test("RateLimiter bloqueia após o limite e libera depois da janela", () => {
   assert.ok(rl.allow("a", 0)); assert.ok(rl.allow("a", 10)); assert.ok(!rl.allow("a", 20));
   assert.ok(rl.allow("b", 20));
   assert.ok(rl.allow("a", 1500));
+});
+
+test("saudação: reconhece cumprimentos simples e não engole pedidos", () => {
+  for (const ok of ["Oi", "Oi, boa noite!", "Olá, tudo bem?", "bom dia", "Opa, e aí", "Eae pessoal"]) assert.ok(isGreeting(ok), ok);
+  for (const no of ["Oi, quero marcar um horário", "bom dia, vocês entregam?", "quanto custa", "", "pix", "boa noite quero pedir"]) assert.ok(!isGreeting(no), no);
 });

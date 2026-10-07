@@ -68,3 +68,12 @@ export function parseBRLToCents(input: string): number | null {
 export function clip(s: string, max: number): string {
   return s.length <= max ? s : s.slice(0, Math.max(0, max - 1)).trimEnd() + "…";
 }
+
+const SAUDACAO_BASE = new Set(["oi", "oie", "oii", "ola", "opa", "eae", "hey", "hello", "salve", "bom", "boa", "dia", "tarde", "noite", "tudo", "bem", "e", "ai", "td", "blz", "tranquilo", "pessoal", "galera", "gente", "amigo", "amiga", "ola", "tem", "alguem", "ai"]);
+const SAUDACAO_GATILHO = new Set(["oi", "oie", "oii", "ola", "opa", "eae", "hey", "hello", "salve", "bom", "boa"]);
+
+/** "Oi, boa noite!" / "Olá tudo bem?" -> true. "Oi, quero marcar horário" -> false (tem pedido junto). */
+export function isGreeting(text: string): boolean {
+  const t = normalize(text).split(" ").filter(Boolean);
+  return t.length > 0 && t.length <= 6 && t.every((w) => SAUDACAO_BASE.has(w)) && t.some((w) => SAUDACAO_GATILHO.has(w));
+}

@@ -1,0 +1,52 @@
+{
+  "empresa": {
+    "nome": "Pizzaria Bella Massa",
+    "endereco": "Rua das Acácias, 88 - Centro",
+    "telefone": "(11) 4000-2222",
+    "horario_texto": "Terça a domingo, das 18h às 23h30",
+    "pagamento": "Pix, dinheiro e cartão",
+    "horario": {
+      "0": { "abre": "18:00", "fecha": "23:30" }, "2": { "abre": "18:00", "fecha": "23:30" }, "3": { "abre": "18:00", "fecha": "23:30" },
+      "4": { "abre": "18:00", "fecha": "23:30" }, "5": { "abre": "18:00", "fecha": "23:30" }, "6": { "abre": "18:00", "fecha": "23:30" }
+    }
+  },
+  "cardapio": [
+    {
+      "id": "pizzas", "nome": "Pizzas",
+      "itens": [
+        { "id": "calabresa", "nome": "Pizza Calabresa", "descricao": "Calabresa, cebola e azeitona", "variacoes": [{ "id": "media", "nome": "Média (6 fatias)", "preco": 42 }, { "id": "grande", "nome": "Grande (8 fatias)", "preco": 52 }] },
+        { "id": "mussarela", "nome": "Pizza Mussarela", "descricao": "Mussarela e orégano", "variacoes": [{ "id": "media", "nome": "Média (6 fatias)", "preco": 38 }, { "id": "grande", "nome": "Grande (8 fatias)", "preco": 48 }] },
+        { "id": "frango", "nome": "Frango com Catupiry", "descricao": "Frango desfiado e catupiry", "variacoes": [{ "id": "media", "nome": "Média (6 fatias)", "preco": 46 }, { "id": "grande", "nome": "Grande (8 fatias)", "preco": 56 }] }
+      ]
+    },
+    {
+      "id": "bebidas", "nome": "Bebidas",
+      "itens": [
+        { "id": "coca2l", "nome": "Coca-Cola 2L", "descricao": "", "preco": 12 },
+        { "id": "guarana", "nome": "Guaraná lata", "descricao": "350 ml", "preco": 6 }
+      ]
+    },
+    {
+      "id": "sobremesas", "nome": "Sobremesas",
+      "itens": [{ "id": "brownie", "nome": "Brownie com sorvete", "descricao": "Brownie quente com sorvete de creme", "preco": 18 }]
+    }
+  ],
+  "entrega": {
+    "entrega_ativa": true, "retirada_ativa": true, "pedido_minimo": 30, "tempo_retirada_min": 30,
+    "bairros": [
+      { "nome": "Centro", "taxa": 5, "tempo_min": 40 },
+      { "nome": "Jardim América", "taxa": 7, "tempo_min": 50 },
+      { "nome": "Vila Nova", "taxa": 8, "tempo_min": 55 }
+    ]
+  },
+  "pagamento": {
+    "formas": ["pix", "dinheiro", "cartao_entrega"],
+    "pix": { "chave": "11999990000", "beneficiario": "Bella Massa Pizzaria", "cidade": "Sao Paulo" }
+  },
+  "template": { "nome": "", "idioma": "pt_BR" },
+  "faq": [
+    { "pergunta": "Vocês têm opção sem glúten?", "resposta": "Ainda não temos massa sem glúten. Temos opções de pizza com poucos ingredientes — fale com um atendente para ver o que dá para adaptar.", "palavras_chave": ["gluten", "celíaco", "intolerância"] },
+    { "pergunta": "Qual o endereço da pizzaria?", "resposta": "Ficamos na Rua das Acácias, 88 - Centro. Também atendemos retirada no balcão.", "palavras_chave": ["endereço", "onde fica", "localização"] }
+  ],
+  "mensagens": {}
+}

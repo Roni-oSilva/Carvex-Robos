@@ -345,3 +345,12 @@ test("painel: importar, filtrar, dar baixa por referência, XSS e isolamento ent
     assert.ok(w.env.repo.contact(w.tenant.id, beto.id));
   } finally { await new Promise<void>((r) => app.server.close(() => r())); }
 });
+
+test("saudação composta não vira transferência para atendente", async () => {
+  const w = world();
+  const { contact } = cobranca(w, { venc: "2026-10-01" });
+  new CobraStore(w.env.db).confirmIdentity(w.tenant.id, contact.id, w.env.clock());
+  await w.say(MARIA, "Oi, boa tarde");
+  assert.match(w.drain().join("\n"), /assistente de cobranças/);
+  assert.equal(w.env.repo.conversations(w.tenant.id)[0].mode, "bot");
+});
