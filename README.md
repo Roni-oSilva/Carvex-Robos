@@ -23,3 +23,11 @@ Next.js 14 (App Router) + Supabase + Claude (Anthropic) + Tiptap.
 `/dashboard`, `/radar`, `/ebooks`, `/ebooks/new`, `/ebooks/[slug]/edit`; `/products`, `/paths`, `/library`, `/analytics` e `/settings` são placeholders.
 
 `ANTHROPIC_API_KEY` e `SUPABASE_SERVICE_ROLE_KEY` nunca vão ao browser (`server-only`).
+
+## Deploy (Vercel + Supabase)
+
+1. Supabase: crie o projeto, rode `supabase/schema.sql`, crie o usuário e promova-o a ADMIN.
+2. Vercel: importe este repositório (framework Next.js, sem configuração extra).
+3. Em Settings → Environment Variables, defina as 5 variáveis de `.env.example`.
+4. Supabase → Authentication → URL Configuration: coloque a URL da Vercel em *Site URL*.
+5. Deploy. Acesse `/login`.
