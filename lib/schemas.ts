@@ -9,6 +9,7 @@ export const ebookFormSchema = z.object({
   author: z.string().max(120).optional().or(z.literal("")),
   level: z.string().max(60).optional().or(z.literal("")),
   tone: z.string().max(120).optional().or(z.literal("")),
+  category_id: z.string().uuid().optional().or(z.literal("")),
 });
 export type EbookFormInput = z.infer<typeof ebookFormSchema>;
 
@@ -30,3 +31,10 @@ export const opportunitySchema = z.object({
   source_url: z.string().url().optional().nullable(),
 });
 
+
+export const pathSchema = z.object({
+  title: z.string().min(3, "Mínimo de 3 caracteres").max(160),
+  description: z.string().max(1000).optional().or(z.literal("")),
+  target_audience: z.string().max(300).optional().or(z.literal("")),
+});
+export type PathInput = z.infer<typeof pathSchema>;

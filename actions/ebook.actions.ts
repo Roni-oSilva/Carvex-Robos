@@ -63,3 +63,11 @@ export async function deleteEbook(id: string): Promise<ActionResult> {
   revalidatePath("/ebooks");
   return { ok: true };
 }
+
+export async function saveSalesPage(id: string, content: Record<string, unknown>): Promise<ActionResult> {
+  await requireAdmin();
+  const { error } = await createClient().from("books").update({ sales_page_content: content }).eq("id", id);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath("/products");
+  return { ok: true };
+}

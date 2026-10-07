@@ -5,7 +5,7 @@ Next.js 14 (App Router) + Supabase + Claude (Anthropic) + Tiptap.
 ## Começando
 
 1. `cp .env.example .env.local` e preencha as chaves.
-2. Rode `supabase/schema.sql` no SQL Editor do Supabase.
+2. Rode `supabase/schema.sql` e depois `supabase/migrations/002_storage.sql` (buckets de capas e exports) no SQL Editor do Supabase.
 3. Crie um usuário em Authentication → Users e promova-o a admin:
    `update profiles set role = 'ADMIN' where email = 'voce@exemplo.com';`
 4. `npm install && npm run dev` e acesse `/login`.
@@ -20,7 +20,9 @@ Next.js 14 (App Router) + Supabase + Claude (Anthropic) + Tiptap.
 
 ## Rotas do painel
 
-`/dashboard`, `/radar`, `/ebooks`, `/ebooks/new`, `/ebooks/[slug]/edit`; `/products`, `/paths`, `/library`, `/analytics` e `/settings` são placeholders.
+`/dashboard`, `/radar` (oportunidade → e-book), `/ebooks` (+ `/new`, `/[slug]/edit`), `/products/[slug]` (página de vendas), `/paths` (+ `/new`, `/[slug]/edit`), `/library` (capa, versões, export HTML), `/analytics` (custos de IA) e `/settings` (categorias, tags, padrões).
+
+Públicas: `/ebooks/[slug]`, `/ebooks/[slug]/vendas`, `/paths/[slug]`.
 
 `ANTHROPIC_API_KEY` e `SUPABASE_SERVICE_ROLE_KEY` nunca vão ao browser (`server-only`).
 
