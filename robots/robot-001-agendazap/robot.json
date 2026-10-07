@@ -1,0 +1,49 @@
+{
+  "id": "robot-001-agendazap",
+  "nome": "AgendaZap",
+  "versao": "1.0.0",
+  "status": "PRONTO",
+  "slogan": "Seu atendente de agenda no WhatsApp: marca, confirma, remarca e preenche as vagas — 24 horas por dia.",
+  "segmentos": [
+    "Barbearias",
+    "Salões de beleza",
+    "Estúdios",
+    "Clínicas e consultórios",
+    "Pet shops (banho e tosa)",
+    "Autoescolas (aulas)"
+  ],
+  "publico": "Donos e recepcionistas de negócios que vendem **horário marcado** com 1 a 10 profissionais e hoje agendam no WhatsApp “na mão”: barbearias, salões, estúdios, clínicas e consultórios pequenos, pet shops.",
+  "problema": "Agenda feita à mão no WhatsApp gera conflito de horário, mensagens sem resposta fora do expediente e **faltas sem aviso** (horário vazio = dinheiro perdido). Fontes do setor citam taxas de não comparecimento na casa de dois dígitos sem lembretes — números de fornecedores, não verificados de forma independente; **meça a sua taxa antes e depois**.",
+  "oportunidades": [
+    1,
+    2,
+    16,
+    19
+  ],
+  "potencial": "Alto",
+  "funcionalidades": [
+    "Agendamento por conversa",
+    "Agenda sem conflito",
+    "Regras da casa",
+    "Lembretes com confirmação",
+    "Remarcar e cancelar",
+    "Lista de espera",
+    "Dúvidas sem inventar",
+    "Painel da equipe",
+    "Privacidade (LGPD)"
+  ],
+  "precos": {
+    "venda_unica": 1490,
+    "mensalidade": 129,
+    "implantacao": 490,
+    "personalizacao_hora": 150,
+    "racional": []
+  },
+  "pendencias": [
+    "Piloto com número real da WhatsApp Business Platform em pelo menos 1 empresa (hoje as integrações foram verificadas contra o formato documentado da API e por simulação, não em produção).",
+    "Modelo `lembrete_agendamento` aprovado pela Meta e testado de ponta a ponta.",
+    "Medir faltas antes/depois no piloto antes de usar qualquer número em propaganda.",
+    "Revisão/pentest de segurança independente e contrato de suporte/hospedagem definido.",
+    "Cadastro de serviços e profissionais por formulário (hoje é JSON validado) para clientes sem apoio técnico."
+  ]
+}

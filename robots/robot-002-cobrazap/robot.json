@@ -1,0 +1,46 @@
+{
+  "id": "robot-002-cobrazap",
+  "nome": "CobraZap",
+  "versao": "1.0.0",
+  "status": "PRONTO",
+  "slogan": "Cobrança educada, no tempo certo e dentro da lei — direto no WhatsApp.",
+  "segmentos": [
+    "Academias",
+    "Escolas e cursos",
+    "Prestadores de serviço com mensalidade",
+    "Pequenos comércios com crediário",
+    "Condomínios e associações (mensalidades)"
+  ],
+  "publico": "MEIs e pequenas empresas que **cobram mensalidade, parcela ou boleto** de clientes recorrentes e hoje cobram “quando lembram”, por mensagem manual: academias, escolas, estúdios, prestadores com contrato, lojas com carnê.",
+  "problema": "Atraso pequeno vira inadimplência quando ninguém acompanha: o follow-up é esquecido ou constrange quem cobra. Material do setor aponta justamente que **ignorar pequenos atrasos** agrava o problema e que a cobrança por WhatsApp é permitida desde que respeite o CDC e a LGPD (sem constrangimento ou assédio).",
+  "oportunidades": [
+    3,
+    13
+  ],
+  "potencial": "Alto",
+  "funcionalidades": [
+    "Régua configurável",
+    "Confirmação de titularidade",
+    "Travas legais",
+    "Pix copia-e-cola automático",
+    "“Já paguei” + comprovante",
+    "Negociação guiada",
+    "Importação por planilha",
+    "Painel de recebíveis",
+    "Privacidade (LGPD)"
+  ],
+  "precos": {
+    "venda_unica": 1990,
+    "mensalidade": 149,
+    "implantacao": 590,
+    "personalizacao_hora": 150,
+    "racional": []
+  },
+  "pendencias": [
+    "Piloto com número real da WhatsApp Business Platform e o modelo `cobranca_aviso` aprovado (a Meta pode recusar ou cobrar como marketing).",
+    "Revisão dos textos padrão, horários e política por um advogado (CDC art. 42, LGPD) antes de oferecer a clientes.",
+    "Baixa automática de pagamentos (webhook de PSP/Open Finance ou conciliação de extrato) — hoje é manual.",
+    "Juros/multa e emissão de boleto, se o público-alvo exigir.",
+    "Revisão/pentest de segurança independente; contrato de suporte/hospedagem."
+  ]
+}

@@ -4,13 +4,17 @@
   "private": true,
   "description": "Fábrica de robôs de WhatsApp: pesquisa de mercado, camada compartilhada e robôs prontos para vender.",
   "type": "module",
-  "engines": { "node": ">=22.18" },
+  "engines": {
+    "node": ">=22.18"
+  },
   "scripts": {
-    "test": "node --test --test-reporter=spec \"shared/**/*.test.ts\" \"robots/**/tests/*.test.ts\" \"market-research/*.test.ts\"",
+    "test": "node --test --test-reporter=spec \"shared/**/*.test.ts\" \"robots/**/tests/*.test.ts\" \"market-research/*.test.ts\" \"scripts/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "research": "node market-research/gerar.ts",
     "catalog": "node scripts/gerar-catalogo.ts",
-    "package-robot": "node scripts/empacotar-robo.ts"
+    "package-robot": "node scripts/empacotar-robo.ts",
+    "docs": "node scripts/gerar-docs.ts && node scripts/gerar-catalogo.ts && node market-research/gerar.ts",
+    "demo": "node scripts/gerar-demos.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

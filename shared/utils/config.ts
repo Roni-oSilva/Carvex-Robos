@@ -1,8 +1,15 @@
 import { existsSync } from "node:fs";
 
-/** Carrega .env se existir (Node 22+). Nunca versione o .env. */
-export function loadEnvFile(path = ".env"): void {
-  if (existsSync(path) && typeof process.loadEnvFile === "function") process.loadEnvFile(path);
+/** Primeiro arquivo da lista que existir (ou null). */
+export function resolveEnvFile(candidates: string[]): string | null {
+  return candidates.find((c) => existsSync(c)) ?? null;
+}
+
+/** Carrega o .env (Node 22+) procurando nos caminhos dados. Nunca versione o .env. */
+export function loadEnvFile(candidates: string[] = [".env"]): string | null {
+  const found = resolveEnvFile(candidates);
+  if (found && typeof process.loadEnvFile === "function") process.loadEnvFile(found);
+  return found;
 }
 
 export function env(name: string, fallback?: string): string | undefined {

@@ -23,7 +23,7 @@ interface Cand extends Charge { nome: string | null; opt_out: number; wrong: num
  * Roda a régua de cobrança. Garantias:
  *  - só dentro da janela de envio;
  *  - 1 mensagem consolidada por pessoa, respeitando limite semanal e intervalo mínimo;
- *  - nunca para quem fez opt-out ou marcou "número errado";
+ *  - nunca para quem fez opt-out ou marcou "número errado", nem enquanto uma pessoa atende a conversa;
  *  - nunca revela valores antes da confirmação de titularidade (quando exigida);
  *  - passos antigos acumulados (cobrança importada já vencida) viram UMA mensagem do passo mais recente.
  */
@@ -56,6 +56,10 @@ async function rodarTenant(env: BotEnv, tenant: Tenant, s: CobraSettings, now: D
   for (const [contactId, charges] of porContato) {
     const contact = env.repo.contact(tenant.id, contactId);
     if (!contact) continue;
+
+    // Quem está sendo atendido por uma pessoa não recebe aviso automático (até o robô retomar, como no motor de conversa).
+    const conv = env.db.get<{ mode: string; updated_at: string }>("SELECT mode, updated_at FROM conversations WHERE contact_id = ?", contactId);
+    if (conv?.mode === "human" && now.getTime() - new Date(conv.updated_at).getTime() < env.config.handoffResumeHours * 3_600_000) continue;
 
     // Limites de frequência (por pessoa, somando todas as cobranças)
     const semana = store.sendsSince(contactId, new Date(now.getTime() - 7 * 86_400_000).toISOString());

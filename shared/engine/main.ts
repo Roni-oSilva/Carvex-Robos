@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import { randomBytes } from "node:crypto";
 import { AnthropicProvider, type AiProvider } from "../ai/provider.ts";
 import { Db } from "../database/db.ts";
@@ -9,6 +10,7 @@ import type { Outgoing, WhatsAppClient } from "../whatsapp/types.ts";
 import { env as getEnv, envInt, loadEnvFile, requireEnv } from "../utils/config.ts";
 import { createLogger } from "../utils/logger.ts";
 import { RateLimiter } from "../utils/rate-limit.ts";
+import { createTickRunner } from "./scheduler.ts";
 import { createApp } from "./server.ts";
 import type { AppConfig, BotEnv, Robot } from "./types.ts";
 
@@ -82,8 +84,11 @@ export function ensureTenant<S>(env: BotEnv, robot: Robot<S>, opts: StartOptions
 
 
 export async function startRobot<S>(robot: Robot<S>, opts: StartOptions = {}): Promise<void> {
-  loadEnvFile();
+  // O .env pode estar na pasta atual, na pasta do robô ou na raiz do pacote (duas pastas acima do robô).
+  const robotDir = opts.configPath ? dirname(dirname(opts.configPath)) : null;
+  const found = loadEnvFile([".env", ...(robotDir ? [join(robotDir, ".env"), join(robotDir, "..", "..", ".env")] : [])]);
   const env = buildEnv();
+  if (!found) env.log.warn("env_nao_encontrado_usando_variaveis_do_sistema", {});
   env.db.migrate(robot.migrations);
   const tenant = ensureTenant(env, robot, opts);
   const app = createApp(env, robot);
@@ -91,17 +96,8 @@ export async function startRobot<S>(robot: Robot<S>, opts: StartOptions = {}): P
   const port = envInt("PORT", 3000);
   app.server.listen(port, () => env.log.info("robo_iniciado", { robo: robot.id, empresa: tenant.slug, porta: port }));
 
-  const tickMs = envInt("TICK_SECONDS", 60) * 1000;
-  let lastPurge = 0;
-  const timer = setInterval(async () => {
-    const now = env.clock();
-    try { await robot.tick?.(env, now); } catch (e) { env.log.error("tick_falhou", { erro: e instanceof Error ? e.message : String(e) }); }
-    if (now.getTime() - lastPurge > 86_400_000) {
-      lastPurge = now.getTime();
-      const n = env.repo.purgeMessagesOlderThan(env.config.retentionDays, now);
-      if (n > 0) env.log.info("mensagens_antigas_removidas", { total: n });
-    }
-  }, tickMs);
+  const tick = createTickRunner(env, robot);
+  const timer = setInterval(() => void tick(), envInt("TICK_SECONDS", 60) * 1000);
 
   const stop = () => {
     clearInterval(timer);

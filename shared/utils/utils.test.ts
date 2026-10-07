@@ -4,6 +4,10 @@ import { isGreeting, clip, formatBRL, maskPhone, normalize, normalizeBrPhone, pa
 import { addDays, estaAberto, localDate, localTime, weekdayOf, zonedToUtc, parseHHMM } from "./time.ts";
 import { redact } from "./logger.ts";
 import { RateLimiter } from "./rate-limit.ts";
+import { resolveEnvFile } from "./config.ts";
+import { mkdtempSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { h, raw } from "../dashboard/html.ts";
 
 test("normalize remove acentos e pontuação", () => assert.equal(normalize("  Olá, Tudo BEM?! "), "ola tudo bem"));
@@ -67,4 +71,11 @@ test("RateLimiter bloqueia após o limite e libera depois da janela", () => {
 test("saudação: reconhece cumprimentos simples e não engole pedidos", () => {
   for (const ok of ["Oi", "Oi, boa noite!", "Olá, tudo bem?", "bom dia", "Opa, e aí", "Eae pessoal"]) assert.ok(isGreeting(ok), ok);
   for (const no of ["Oi, quero marcar um horário", "bom dia, vocês entregam?", "quanto custa", "", "pix", "boa noite quero pedir"]) assert.ok(!isGreeting(no), no);
+});
+
+test("resolveEnvFile escolhe o primeiro .env que existe", () => {
+  const d = mkdtempSync(join(tmpdir(), "env-"));
+  writeFileSync(join(d, "b.env"), "X=1");
+  assert.equal(resolveEnvFile([join(d, "a.env"), join(d, "b.env")]), join(d, "b.env"));
+  assert.equal(resolveEnvFile([join(d, "nada.env")]), null);
 });

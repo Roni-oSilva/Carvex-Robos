@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: npm
+      - run: npm ci
+      # Tipos (tsc --noEmit)
+      - run: npm run typecheck
+      # Testes de todos os robôs + camada compartilhada + pesquisa + sincronia da documentação
+      # + varredura de segredos + empacotamento/inicialização de cada robô
+      - run: npm test

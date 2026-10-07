@@ -1,0 +1,50 @@
+{
+  "id": "robot-003-pedidozap",
+  "nome": "PedidoZap",
+  "versao": "1.0.0",
+  "status": "PRONTO",
+  "slogan": "Seu cardápio, carrinho e quadro de pedidos dentro do WhatsApp — sem comissão por pedido.",
+  "segmentos": [
+    "Pizzarias",
+    "Lanchonetes e hamburguerias",
+    "Restaurantes e marmitarias",
+    "Açaí e sorveterias",
+    "Padarias com delivery"
+  ],
+  "publico": "Restaurantes, lanchonetes e deliveries com **entrega própria ou retirada** que já recebem pedidos pelo WhatsApp “na mão” (foto do cardápio, anotação em papel) e querem **vender direto**, com menos erro e menos dependência de marketplaces.",
+  "problema": "Pedido por WhatsApp manual é lento (cliente pergunta cardápio, disponibilidade, taxa…), gera erro de anotação e prende um atendente. Ao mesmo tempo, relatos de donos e consumidores em fóruns indicam que as taxas dos marketplaces pesam e que pedir direto costuma sair mais barato — mas “é demorado/ineficiente” quando atendido na mão. (Evidência: relatos de comunidade, não pesquisa formal; valide com seus clientes.)",
+  "oportunidades": [
+    4,
+    17
+  ],
+  "potencial": "Alto",
+  "funcionalidades": [
+    "Cardápio por categorias",
+    "Carrinho com observações",
+    "Entrega ou retirada",
+    "Preço confiável",
+    "Pix copia-e-cola",
+    "Dinheiro com troco / cartão na entrega",
+    "Quadro de pedidos",
+    "Avisos de status",
+    "Meu pedido / cancelar",
+    "Horário de funcionamento",
+    "Resumo do dia",
+    "Dúvidas e atendente"
+  ],
+  "precos": {
+    "venda_unica": 2490,
+    "mensalidade": 179,
+    "implantacao": 790,
+    "personalizacao_hora": 150,
+    "racional": []
+  },
+  "pendencias": [
+    "Piloto com número real da WhatsApp Business Platform em pelo menos 1 restaurante (hoje validado por simulação e pelo formato documentado da API).",
+    "Modelo `pedido_status` aprovado pela Meta e testado.",
+    "Editor de cardápio por formulário e **adicionais** (borda, extras) — o que mais restaurantes pedem.",
+    "Baixa automática de Pix (PSP) e impressão térmica, se o público exigir.",
+    "Validar com 5 restaurantes o ganho real frente ao marketplace que usam (a evidência atual vem de relatos de fórum).",
+    "Revisão/pentest de segurança independente; contrato de suporte/hospedagem."
+  ]
+}

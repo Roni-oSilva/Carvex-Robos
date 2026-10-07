@@ -354,3 +354,15 @@ test("saudação composta não vira transferência para atendente", async () => 
   assert.match(w.drain().join("\n"), /assistente de cobranças/);
   assert.equal(w.env.repo.conversations(w.tenant.id)[0].mode, "bot");
 });
+
+test("enquanto uma pessoa atende a conversa a régua não manda aviso; depois do prazo ela volta", async () => {
+  const w = world();
+  const { contact } = cobranca(w, { venc: "2026-10-01", inbound: true });
+  new CobraStore(w.env.db).confirmIdentity(w.tenant.id, contact.id, w.env.clock());
+  await w.say(MARIA, "quero falar com um atendente");
+  w.drain();
+  assert.equal(await run(w), 0); // em atendimento humano
+  w.setNow(new Date("2026-10-08T15:30:00Z")); // 24h depois e dentro da janela: ainda < 12h? não — 24h > 12h => volta
+  w.env.db.run("UPDATE contacts SET last_inbound_at = ?", "2026-10-08T15:00:00Z"); // mantém a janela de 24h aberta no teste
+  assert.equal(await run(w), 1);
+});
