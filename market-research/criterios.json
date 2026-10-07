@@ -1,0 +1,15 @@
+{
+  "descricao": "Cada critério recebe nota de 0 a 10. Pontuação final = soma(peso * nota) / 10, resultando em 0-100. As notas são julgamento do autor a partir das evidências coletadas e DEVEM ser validadas com clientes reais antes de investir.",
+  "criterios": [
+    { "chave": "tamanho", "nome": "Tamanho do problema", "peso": 12 },
+    { "chave": "frequencia", "nome": "Frequência do problema", "peso": 10 },
+    { "chave": "clientes", "nome": "Quantidade de possíveis clientes", "peso": 10 },
+    { "chave": "facilidade", "nome": "Facilidade de implementação", "peso": 12 },
+    { "chave": "venda", "nome": "Potencial de venda", "peso": 12 },
+    { "chave": "mensalidade", "nome": "Possibilidade de cobrança mensal", "peso": 10 },
+    { "chave": "personalizacao", "nome": "Possibilidade de personalização", "peso": 8 },
+    { "chave": "concorrencia", "nome": "Concorrência (10 = pouca concorrência)", "peso": 10 },
+    { "chave": "custo", "nome": "Custo operacional (10 = baixo custo)", "peso": 8 },
+    { "chave": "escala", "nome": "Potencial de escala", "peso": 8 }
+  ]
+}

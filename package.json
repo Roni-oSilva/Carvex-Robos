@@ -1,0 +1,19 @@
+{
+  "name": "fabrica-de-robos-whatsapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fábrica de robôs de WhatsApp: pesquisa de mercado, camada compartilhada e robôs prontos para vender.",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "test": "node --test --test-reporter=spec \"shared/**/*.test.ts\" \"robots/**/tests/*.test.ts\" \"market-research/*.test.ts\"",
+    "typecheck": "tsc --noEmit",
+    "research": "node market-research/gerar.ts",
+    "catalog": "node scripts/gerar-catalogo.ts",
+    "package-robot": "node scripts/empacotar-robo.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.8.0"
+  }
+}

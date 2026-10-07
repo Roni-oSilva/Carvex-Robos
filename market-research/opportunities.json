@@ -1,0 +1,1014 @@
+[
+  {
+    "id": 1,
+    "nome": "Agenda anti-falta para salões e barbearias",
+    "segmento": "Salões de beleza, barbearias, estúdios",
+    "problema": "Agenda marcada manualmente no WhatsApp gera conflitos de horário, faltas sem aviso e cadeira vazia.",
+    "publico": "Donos de salões/barbearias com 1 a 10 profissionais",
+    "evidencia": [
+      {
+        "fonte": "Aurora Inbox – guia de agendamento para barbearias (2026)",
+        "url": "https://www.aurorainbox.com/pt/2026/05/03/sistema-de-agendamento-via-whatsapp-para-barbearias-e-saloes-de-beleza/",
+        "nota": "Afirma 15–22% de não comparecimento no agendamento manual e 1–2 h/dia de horários vagos por profissional (fonte de fornecedor, não verificada)."
+      },
+      {
+        "fonte": "TCC IFPI 2026",
+        "url": "https://bia.ifpi.edu.br/jspui/bitstream/123456789/5863/1/2026_tcc_rralves.pdf",
+        "nota": "Trabalho acadêmico brasileiro aponta gestão manual de agenda gerando esperas, conflitos, faltas e insatisfação."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Dono responde no WhatsApp pessoal e anota em caderno/agenda; alguns usam apps de agenda.",
+    "porqueRobo": "Cliente já pede horário pelo WhatsApp; o robô agenda 24h, confirma e reaproveita vagas canceladas.",
+    "funcionalidades": [
+      "Agendamento por conversa",
+      "Lembrete 24h e 2h com confirmação",
+      "Cancelar/remarcar",
+      "Lista de espera",
+      "Painel da agenda"
+    ],
+    "complexidade": "Média",
+    "potencialComercial": "Alto: mensalidade recorrente, mercado enorme e pulverizado.",
+    "concorrencia": "SocialHub, Aurora Inbox, Digisac, Wati, apps de agenda (Trinks etc.).",
+    "diferencial": "Instalação própria, preço fixo, sem comissão por agendamento, dados do dono, documentação LGPD.",
+    "notas": {
+      "tamanho": 7,
+      "frequencia": 9,
+      "clientes": 10,
+      "facilidade": 8,
+      "venda": 8,
+      "mensalidade": 9,
+      "personalizacao": 8,
+      "concorrencia": 4,
+      "custo": 8,
+      "escala": 8
+    },
+    "status": "concluída",
+    "robo": "robot-001-agendazap"
+  },
+  {
+    "id": 2,
+    "nome": "Confirmação de consultas para clínicas",
+    "segmento": "Clínicas médicas, odontológicas, psicólogos, fisioterapia",
+    "problema": "Faltas de pacientes (no-show) deixam horários vazios e reduzem a receita da clínica.",
+    "publico": "Clínicas e consultórios pequenos e médios",
+    "evidencia": [
+      {
+        "fonte": "Medicina S/A – clínicas privadas perdem até R$ 144 mil por problemas de agendamento",
+        "url": "https://medicinasa.com.br/agendamento-consultas/",
+        "nota": "Reportagem do setor sobre perdas por falhas de agendamento."
+      },
+      {
+        "fonte": "Digisac – como reduzir faltas de pacientes",
+        "url": "https://digisac.com.br/blog/como-reduzir-faltas-de-pacientes",
+        "nota": "Define no-show e lista estratégias; fonte de fornecedor."
+      },
+      {
+        "fonte": "Zenvia – diminuir faltas em consultas",
+        "url": "https://zenvia.com/blog/o-que-fazer-para-diminuir-a-falta-em-consultas-medicas/",
+        "nota": "Revisões de estudos citam redução de faltas com lembretes, mas efeito do WhatsApp é misto (um estudo brasileiro positivo; México e Índia sem efeito)."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Secretária liga ou manda mensagem manualmente na véspera.",
+    "porqueRobo": "Automatiza a cadência de confirmação e libera a secretária.",
+    "funcionalidades": [
+      "Confirmação ativa",
+      "Reagendamento pelo chat",
+      "Lista de espera",
+      "Relatório de faltas"
+    ],
+    "complexidade": "Média (dados de saúde exigem LGPD reforçada)",
+    "potencialComercial": "Alto, ticket maior que salões.",
+    "concorrencia": "Clint, Digisac, Zenvia, sistemas de prontuário com lembrete.",
+    "diferencial": "Mesmo núcleo do robô 001, com política de minimização de dados (não coleta queixa clínica).",
+    "notas": {
+      "tamanho": 9,
+      "frequencia": 9,
+      "clientes": 8,
+      "facilidade": 7,
+      "venda": 8,
+      "mensalidade": 9,
+      "personalizacao": 7,
+      "concorrencia": 3,
+      "custo": 7,
+      "escala": 8
+    },
+    "status": "concluída",
+    "robo": "robot-001-agendazap",
+    "observacao": "Atendida como variação de segmento do robot-001 (mesmo motor de agenda)."
+  },
+  {
+    "id": 3,
+    "nome": "Régua de cobrança educada para PMEs e MEIs",
+    "segmento": "Prestadores de serviço, escolas, academias, pequenos comércios com mensalidade",
+    "problema": "Atrasos pequenos viram inadimplência porque o follow-up é esquecido ou constrangedor.",
+    "publico": "MEIs e PMEs que cobram mensalidade/boleto/Pix",
+    "evidencia": [
+      {
+        "fonte": "Actana – cobranças eficientes para PMEs e MEIs",
+        "url": "https://actana.com.br/blog/cobrancas-eficientes-pmes-meis-prestadores-servico",
+        "nota": "Recomenda lembrete antes do vencimento, mensagens gentis após atraso e negociação; alerta que ignorar pequenos atrasos agrava a inadimplência (fonte de fornecedor)."
+      },
+      {
+        "fonte": "Zenvia – cobrança pelo WhatsApp",
+        "url": "https://zenvia.com/blog/cobranca-whatsapp/",
+        "nota": "Cobrança por WhatsApp é permitida se respeitar CDC e LGPD; CDC proíbe constrangimento e assédio."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Dono manda mensagem manual quando lembra; planilha de controle.",
+    "porqueRobo": "Cadência automática, tom educado, com Pix copia-e-cola e opção de negociar.",
+    "funcionalidades": [
+      "Régua D-3/D0/D+3/D+7/D+15",
+      "Pix copia-e-cola",
+      "Negociação",
+      "Opt-out",
+      "Painel de recebíveis"
+    ],
+    "complexidade": "Média",
+    "potencialComercial": "Alto: ligado diretamente ao caixa do cliente.",
+    "concorrencia": "Zenvia, Conta Azul/Asaas (cobrança integrada), planilhas.",
+    "diferencial": "Guardrails legais embutidos (horários, limite de contatos, sem terceiros), sem comissão sobre valor recuperado.",
+    "notas": {
+      "tamanho": 8,
+      "frequencia": 8,
+      "clientes": 9,
+      "facilidade": 7,
+      "venda": 8,
+      "mensalidade": 8,
+      "personalizacao": 8,
+      "concorrencia": 4,
+      "custo": 8,
+      "escala": 8
+    },
+    "status": "concluída",
+    "robo": "robot-002-cobrazap"
+  },
+  {
+    "id": 4,
+    "nome": "Pedidos próprios por WhatsApp para restaurantes",
+    "segmento": "Lanchonetes, pizzarias, restaurantes, marmitarias",
+    "problema": "Taxas de marketplaces pressionam a margem; pedido manual por WhatsApp é lento e gera erro.",
+    "publico": "Restaurantes e deliveries com entrega própria",
+    "evidencia": [
+      {
+        "fonte": "Tecnoblog (comunidade) – iFood cobra taxa de serviço em todos os pedidos",
+        "url": "https://tecnoblog.net/comunidade/t/nao-e-impressao-o-ifood-agora-cobra-taxa-de-servico-em-todos-os-pedidos/150882",
+        "nota": "Relatos de usuários (não oficiais) de preços menores pelo WhatsApp e comerciantes voltando a pedidos diretos."
+      },
+      {
+        "fonte": "Tecnoblog (comunidade) – iFood domina o delivery",
+        "url": "https://tecnoblog.net/comunidade/t/ifood-domina-o-delivery-no-brasil-mas-restaurantes-e-rivais-contam-como-vao-reagir/57006",
+        "nota": "Comentários dizem que pedir pelo WhatsApp é demorado/ineficiente — a dor que o robô resolve."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "Atendente anota pedido no WhatsApp; cardápio em foto/PDF.",
+    "porqueRobo": "Cardápio, carrinho, endereço, taxa e pagamento em conversa guiada, com painel de pedidos.",
+    "funcionalidades": [
+      "Cardápio por categorias",
+      "Carrinho",
+      "Taxa por bairro",
+      "Pagamento Pix/cartão/dinheiro",
+      "Quadro de pedidos",
+      "Aviso de status"
+    ],
+    "complexidade": "Média-alta",
+    "potencialComercial": "Alto: frequência diária de uso.",
+    "concorrencia": "Menu Dino, Anota AI, Goomer, Olaclick, iFood.",
+    "diferencial": "Sem comissão por pedido; dados do cliente ficam com o restaurante.",
+    "notas": {
+      "tamanho": 8,
+      "frequencia": 10,
+      "clientes": 8,
+      "facilidade": 6,
+      "venda": 8,
+      "mensalidade": 8,
+      "personalizacao": 7,
+      "concorrencia": 3,
+      "custo": 7,
+      "escala": 8
+    },
+    "status": "concluída",
+    "robo": "robot-003-pedidozap",
+    "observacao": "Evidência baseada em relatos de fóruns; validar com entrevistas a restaurantes."
+  },
+  {
+    "id": 5,
+    "nome": "Qualificação de leads para imobiliárias e corretores",
+    "segmento": "Imobiliárias e corretores autônomos",
+    "problema": "Leads esfriam por demora no primeiro contato; histórico se perde nos números pessoais dos corretores.",
+    "publico": "Imobiliárias pequenas e médias, corretores",
+    "evidencia": [
+      {
+        "fonte": "Wati – plataforma de WhatsApp para qualificar leads imobiliários",
+        "url": "https://www.wati.io/geo-brazil-pt/plataforma-de-whatsapp-para-qualificar-leads-imobiliarios",
+        "nota": "Descreve qualificação por orçamento, localização e prazo; fonte de fornecedor."
+      },
+      {
+        "fonte": "Método Viral – automação de atendimento em imobiliárias",
+        "url": "https://metodoviral.com/blog/mercado-imobiliario-construcao-civil/automacao-de-atendimento-em-imobiliarias-whatsapp/",
+        "nota": "Cita estatísticas divergentes entre si sobre leads sem resposta; o ponto consistente é responder em minutos."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Corretor responde quando pode; planilha ou CRM manual.",
+    "porqueRobo": "Responde na hora, coleta orçamento/bairro/prazo e entrega lead quente ao corretor.",
+    "funcionalidades": [
+      "Perguntas de qualificação",
+      "Classificação quente/morno/frio",
+      "Roteamento ao corretor",
+      "Follow-up"
+    ],
+    "complexidade": "Média",
+    "potencialComercial": "Alto por lead convertido; mercado menor.",
+    "concorrencia": "Wati, Jetimob, Kenlo, CRMs imobiliários.",
+    "diferencial": "Entrega resumo estruturado ao corretor; funciona sem CRM.",
+    "notas": {
+      "tamanho": 7,
+      "frequencia": 8,
+      "clientes": 5,
+      "facilidade": 7,
+      "venda": 8,
+      "mensalidade": 9,
+      "personalizacao": 7,
+      "concorrencia": 4,
+      "custo": 7,
+      "escala": 6
+    },
+    "status": "selecionada",
+    "robo": null,
+    "observacao": "Selecionada como robô #5 (próxima fila de desenvolvimento)."
+  },
+  {
+    "id": 6,
+    "nome": "Status de serviço e aprovação de orçamento para oficinas",
+    "segmento": "Oficinas mecânicas, funilarias, lava-jatos",
+    "problema": "Clientes ligam para perguntar 'quando fica pronto?'; aprovação de orçamento informal por WhatsApp.",
+    "publico": "Oficinas pequenas e médias",
+    "evidencia": [
+      {
+        "fonte": "O Mecânico – WhatsApp serve para aprovar orçamento da oficina?",
+        "url": "https://omecanico.com.br/whatsapp-serve-para-aprovar-orcamento-da-oficina/",
+        "nota": "Advogada ouvida afirma que conversas de WhatsApp são tratadas como indício e não como prova; recomenda formalizar a aprovação (a decisão do STJ citada não foi verificada)."
+      },
+      {
+        "fonte": "SocialHub – mensagens de WhatsApp para oficinas",
+        "url": "https://www.socialhub.pro/blog/mensagens-whatsapp-oficina-mecanica/",
+        "nota": "Modelos de mensagem por etapa da ordem de serviço; fonte de fornecedor."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Mecânico/recepção responde manualmente ou cliente liga.",
+    "porqueRobo": "Notifica cada etapa da OS e registra aprovação do orçamento.",
+    "funcionalidades": [
+      "Status por OS",
+      "Aprovação sim/não registrada",
+      "Aviso de veículo pronto",
+      "Consulta por placa/código"
+    ],
+    "complexidade": "Média (depende de entrada manual de status)",
+    "potencialComercial": "Médio.",
+    "concorrencia": "Una, Oficina Inteligente, sistemas de OS com WhatsApp.",
+    "diferencial": "Registro formal da aprovação com data/hora e texto exato aprovado.",
+    "notas": {
+      "tamanho": 6,
+      "frequencia": 8,
+      "clientes": 6,
+      "facilidade": 6,
+      "venda": 6,
+      "mensalidade": 7,
+      "personalizacao": 7,
+      "concorrencia": 6,
+      "custo": 7,
+      "escala": 6
+    },
+    "status": "analisada",
+    "robo": null
+  },
+  {
+    "id": 7,
+    "nome": "Acompanhamento de conserto para assistências técnicas",
+    "segmento": "Assistência técnica de celulares e eletrônicos",
+    "problema": "Cliente não sabe o andamento do aparelho e pergunta repetidamente.",
+    "publico": "Assistências técnicas pequenas",
+    "evidencia": [
+      {
+        "fonte": "ConsertaSmart – páginas públicas de ordens de serviço",
+        "url": "https://www.consertasmart.com/en/service-order/952",
+        "nota": "Mostra status padronizados e convite para orçamento por WhatsApp; não prova a dor, apenas o padrão de mercado."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "Portal de OS de redes grandes; pequenas lojas respondem manualmente.",
+    "porqueRobo": "Mesmo motor do item 6 aplicado a eletrônicos.",
+    "funcionalidades": [
+      "Status padronizados",
+      "Aprovação por resposta",
+      "Lembrete de retirada"
+    ],
+    "complexidade": "Média",
+    "potencialComercial": "Médio-baixo.",
+    "concorrencia": "Sistemas de OS, redes franqueadas.",
+    "diferencial": "Reuso do robô de status de OS.",
+    "notas": {
+      "tamanho": 5,
+      "frequencia": 8,
+      "clientes": 6,
+      "facilidade": 6,
+      "venda": 6,
+      "mensalidade": 6,
+      "personalizacao": 7,
+      "concorrencia": 6,
+      "custo": 7,
+      "escala": 6
+    },
+    "status": "descoberta",
+    "robo": null,
+    "observacao": "Evidência fraca; fundir com a oportunidade 6 numa futura versão genérica de 'status de OS'."
+  },
+  {
+    "id": 8,
+    "nome": "Matrícula e aula experimental para escolas e cursos livres",
+    "segmento": "Escolas de idiomas, cursos livres, reforço escolar",
+    "problema": "Secretaria repete valores/horários e perde lead fora do expediente.",
+    "publico": "Escolas e cursos pequenos",
+    "evidencia": [
+      {
+        "fonte": "respond.io – WhatsApp para educação",
+        "url": "https://respond.io/pt/blog/whatsapp-for-education",
+        "nota": "Descreve qualificação, resumo e passagem para humano; fonte de fornecedor."
+      },
+      {
+        "fonte": "Baguete – Vitru Educação automatiza atendimento com Blip",
+        "url": "https://www.baguete.com.br/noticias/vitru-educacao-automatiza-atendimento-com-blip",
+        "nota": "Caso de grande instituição; não serve como referência de custo para escola pequena."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Secretária responde quando está presente.",
+    "porqueRobo": "Responde FAQ, agenda aula experimental e entrega lead qualificado.",
+    "funcionalidades": [
+      "FAQ de valores/horários",
+      "Agendar aula experimental",
+      "Captura de lead",
+      "Passagem para humano"
+    ],
+    "complexidade": "Baixa-média",
+    "potencialComercial": "Médio-alto.",
+    "concorrencia": "Blip, SocialHub, respond.io.",
+    "diferencial": "Reutiliza o motor de agenda do robot-001 (aula experimental = agendamento).",
+    "notas": {
+      "tamanho": 7,
+      "frequencia": 7,
+      "clientes": 6,
+      "facilidade": 7,
+      "venda": 7,
+      "mensalidade": 8,
+      "personalizacao": 7,
+      "concorrencia": 4,
+      "custo": 7,
+      "escala": 6
+    },
+    "status": "analisada",
+    "robo": null
+  },
+  {
+    "id": 9,
+    "nome": "Reservas diretas para pousadas",
+    "segmento": "Pousadas e hotéis pequenos",
+    "problema": "Comissões de OTAs (citadas entre 15% e 20% em material de marketing) e perguntas repetidas de disponibilidade.",
+    "publico": "Pousadas independentes",
+    "evidencia": [
+      {
+        "fonte": "Asksuite – guia de WhatsApp para hotelaria",
+        "url": "https://novo.asksuite.com/br/blog/guia-whatsapp-para-negocios-na-hotelaria",
+        "nota": "Afirma que em alguns hotéis o WhatsApp responde por até 50% das interações; fonte de fornecedor."
+      },
+      {
+        "fonte": "PANROTAS – Booking lança opção de reservas diretas livres de comissão (2019)",
+        "url": "https://www.panrotas.com.br/hotelaria/tecnologia/2019/03/booking-lanca-opcao-para-reservas-diretas-livres-de-comissao_163217.html",
+        "nota": "Notícia antiga; condições atuais devem ser verificadas."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Dono responde manualmente; channel manager para OTAs.",
+    "porqueRobo": "Cotação rápida e coleta de dados para reserva direta.",
+    "funcionalidades": [
+      "Consulta de datas",
+      "Cotação por tabela",
+      "Pré-reserva",
+      "Handoff ao dono"
+    ],
+    "complexidade": "Média-alta (disponibilidade precisa de calendário confiável)",
+    "potencialComercial": "Médio; nicho menor.",
+    "concorrencia": "Asksuite, Hits, Omnibees.",
+    "diferencial": "Foco em pousadas muito pequenas sem channel manager.",
+    "notas": {
+      "tamanho": 6,
+      "frequencia": 7,
+      "clientes": 4,
+      "facilidade": 5,
+      "venda": 6,
+      "mensalidade": 7,
+      "personalizacao": 6,
+      "concorrencia": 4,
+      "custo": 6,
+      "escala": 5
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 10,
+    "nome": "'Onde está meu pedido?' para lojas virtuais",
+    "segmento": "E-commerce pequeno (Shopify, Nuvemshop, Tray, WooCommerce)",
+    "problema": "Perguntas de rastreio dominam o suporte (fornecedores estimam 30–50% dos tickets).",
+    "publico": "Lojas virtuais com 50 a 2.000 pedidos/mês",
+    "evidencia": [
+      {
+        "fonte": "Freshworks – o que é WISMO",
+        "url": "https://www.freshworks.com/br/ecommerce/what-is-wismo/",
+        "nota": "Define WISMO e sua participação no suporte; fonte de fornecedor."
+      },
+      {
+        "fonte": "Launchtip – reduzir tickets WISMO no Shopify",
+        "url": "https://www.launchtip.com/pt-BR/blog/como-reduzir-tickets-wismo-no-shopify",
+        "nota": "Estimativa de 40–50% do volume de suporte; fonte de fornecedor."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Equipe copia código de rastreio manualmente.",
+    "porqueRobo": "Envio proativo de status e resposta automática por número do pedido.",
+    "funcionalidades": [
+      "Webhook da loja",
+      "Template de envio",
+      "Consulta por pedido",
+      "Handoff"
+    ],
+    "complexidade": "Média-alta (uma integração por plataforma)",
+    "potencialComercial": "Médio-alto.",
+    "concorrencia": "Gorgias, Wati, Yampi, plataformas de rastreio.",
+    "diferencial": "Preço fixo e instalação própria.",
+    "notas": {
+      "tamanho": 7,
+      "frequencia": 9,
+      "clientes": 7,
+      "facilidade": 5,
+      "venda": 7,
+      "mensalidade": 7,
+      "personalizacao": 6,
+      "concorrencia": 2,
+      "custo": 7,
+      "escala": 8
+    },
+    "status": "analisada",
+    "robo": null
+  },
+  {
+    "id": 11,
+    "nome": "Recuperação de carrinho abandonado por WhatsApp",
+    "segmento": "E-commerce",
+    "problema": "Grande parte dos carrinhos é abandonada; plataformas não enviam WhatsApp sozinhas.",
+    "publico": "Lojas virtuais",
+    "evidencia": [
+      {
+        "fonte": "Wassenger – recuperar carrinhos abandonados no Shopify com WhatsApp",
+        "url": "https://wassenger.com/blog/pt/recuperar-carrinhos-abandonados-shopify-whatsapp",
+        "nota": "Explica que a loja detecta o abandono mas precisa de ferramenta intermediária; fonte de fornecedor."
+      },
+      {
+        "fonte": "Wati – mensagens de carrinho abandonado",
+        "url": "https://www.wati.io/pt-br/blog/mensagens-de-carrinho-abandonado/",
+        "nota": "Modelos de mensagem; taxas de abertura são alegações de fornecedor."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "E-mail automático ou nada.",
+    "porqueRobo": "Mensagem com opt-in em 1–24h após abandono.",
+    "funcionalidades": [
+      "Gatilho por webhook",
+      "Template de marketing",
+      "Cupom"
+    ],
+    "complexidade": "Média-alta; mensagens de marketing são pagas e exigem opt-in explícito.",
+    "potencialComercial": "Médio.",
+    "concorrencia": "Wati, SleekFlow, Wassenger, apps da própria plataforma.",
+    "diferencial": "Poucos — mercado saturado.",
+    "notas": {
+      "tamanho": 6,
+      "frequencia": 8,
+      "clientes": 7,
+      "facilidade": 5,
+      "venda": 7,
+      "mensalidade": 7,
+      "personalizacao": 5,
+      "concorrencia": 2,
+      "custo": 7,
+      "escala": 8
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 12,
+    "nome": "Triagem de clientes para escritórios de advocacia",
+    "segmento": "Advocacia (e contabilidade, a validar)",
+    "problema": "Primeiro atendimento e coleta de documentos tomam tempo; publicidade e captação têm limites éticos da OAB.",
+    "publico": "Escritórios pequenos",
+    "evidencia": [
+      {
+        "fonte": "Projuris – autoatendimento via WhatsApp para escritórios",
+        "url": "https://www.projuris.com.br/blog/autoatendimento-via-whatsapp/",
+        "nota": "Descreve triagem e organização da comunicação; fonte de fornecedor."
+      },
+      {
+        "fonte": "Desmistificando – funil jurídico no WhatsApp e regras da OAB",
+        "url": "https://desmistificando.com.br/funil-vendas-juridico-whatsapp-etica/",
+        "nota": "Cita art. 39 do Código de Ética e Provimento 205/2021: atender quem procurou, sem oferta ativa."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Secretária faz triagem manual.",
+    "porqueRobo": "Triagem + checklist de documentos + agendamento de consulta.",
+    "funcionalidades": [
+      "Triagem por área",
+      "Coleta mínima de dados",
+      "Agenda de consulta",
+      "Resumo ao advogado"
+    ],
+    "complexidade": "Média; exige cuidado ético e de sigilo.",
+    "potencialComercial": "Médio.",
+    "concorrencia": "Projuris, Digisac jurídico.",
+    "diferencial": "Coleta mínima e em fases (documentos só após checagem de conflito).",
+    "notas": {
+      "tamanho": 6,
+      "frequencia": 7,
+      "clientes": 5,
+      "facilidade": 6,
+      "venda": 6,
+      "mensalidade": 7,
+      "personalizacao": 7,
+      "concorrencia": 5,
+      "custo": 6,
+      "escala": 5
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 13,
+    "nome": "Retenção e reativação para academias",
+    "segmento": "Academias e estúdios fitness",
+    "problema": "Churn e alunos inativos; cancelamento precisa de canal formal no contrato.",
+    "publico": "Academias pequenas",
+    "evidencia": [
+      {
+        "fonte": "SocialHub – WhatsApp para academias",
+        "url": "https://www.socialhub.pro/?p=26000",
+        "nota": "Defende WhatsApp para matrícula, retenção e reativação; promocional."
+      },
+      {
+        "fonte": "TJSC – desistência pelo WhatsApp não exonera dívida",
+        "url": "https://www.tjsc.jus.br/web/imprensa/noticias/-/asset_publisher/GP1QtxFaSsX0/content/id/19323648",
+        "nota": "Caso de faculdade: cancelamento fora do canal contratual não valeu. Útil como alerta, não prova a dor das academias."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "Recepção liga para quem sumiu.",
+    "porqueRobo": "Detecta ausência e reaborda; une com cobrança.",
+    "funcionalidades": [
+      "Detectar inativos",
+      "Mensagem de reativação",
+      "Oferta configurável"
+    ],
+    "complexidade": "Média (depende da catraca/ERP)",
+    "potencialComercial": "Médio.",
+    "concorrencia": "Tecnofit, EVO e ERPs de academia.",
+    "diferencial": "Poderia ser módulo do robô de cobrança.",
+    "notas": {
+      "tamanho": 6,
+      "frequencia": 7,
+      "clientes": 6,
+      "facilidade": 7,
+      "venda": 6,
+      "mensalidade": 7,
+      "personalizacao": 6,
+      "concorrencia": 4,
+      "custo": 7,
+      "escala": 6
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 14,
+    "nome": "Pesquisa NPS e pedido de avaliação no Google",
+    "segmento": "Qualquer negócio local",
+    "problema": "Poucas avaliações públicas e nenhum canal para ouvir cliente insatisfeito antes da reclamação pública.",
+    "publico": "Negócios locais com atendimento presencial",
+    "evidencia": [
+      {
+        "fonte": "SocialHub – avaliações 5 estrelas no Google pelo WhatsApp",
+        "url": "https://www.socialhub.pro/blog/avaliacoes-google-whatsapp-modelos-pedir-review/",
+        "nota": "Sugere pedir em 24–48 h; promocional."
+      },
+      {
+        "fonte": "Envox – 7 formas de pedir avaliações no Google",
+        "url": "https://envox.com.br/?p=11600",
+        "nota": "Boas práticas; alerta contra trocar benefício por avaliação (contra as regras do Google)."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "Pedido verbal ou nada.",
+    "porqueRobo": "NPS 0–10; promotores recebem o link, detratores vão para contato privado.",
+    "funcionalidades": [
+      "NPS",
+      "Roteamento por nota",
+      "Painel de NPS"
+    ],
+    "complexidade": "Baixa",
+    "potencialComercial": "Médio-baixo isoladamente; melhor como módulo.",
+    "concorrencia": "Muitas ferramentas de reputação.",
+    "diferencial": "Módulo plugável nos robôs de agenda/pedidos.",
+    "notas": {
+      "tamanho": 5,
+      "frequencia": 8,
+      "clientes": 9,
+      "facilidade": 9,
+      "venda": 6,
+      "mensalidade": 6,
+      "personalizacao": 6,
+      "concorrencia": 4,
+      "custo": 9,
+      "escala": 8
+    },
+    "status": "descoberta",
+    "robo": null,
+    "observacao": "Candidato a módulo plugável (NPS pós-atendimento) dos robôs 001 e 003, em vez de robô isolado."
+  },
+  {
+    "id": 15,
+    "nome": "Atendimento ao morador para condomínios",
+    "segmento": "Condomínios e administradoras",
+    "problema": "Grupos de WhatsApp viram fluxo incontrolável; falta registro formal e há exposição de dados.",
+    "publico": "Síndicos e administradoras",
+    "evidencia": [
+      {
+        "fonte": "GroupSoftware – WhatsApp em condomínios",
+        "url": "https://www.groupsoftware.com.br/blog/whatsapp-em-condominios",
+        "nota": "Aponta riscos: falta de controle, exposição de dados pessoais, ausência de registro formal."
+      },
+      {
+        "fonte": "SíndicoNet – grupo de WhatsApp de condomínio: boas práticas",
+        "url": "https://www.sindiconet.com.br/Informese/22624/Conteudo-para-Administradoras/Grupo-de-Whatsapp-de-condominio-boas-praticas-que-devem-ser-consideradas",
+        "nota": "Recomenda regras claras; as fontes defendem canais formais para atos oficiais."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Grupos de WhatsApp e apps de condomínio.",
+    "porqueRobo": "Roteia demandas (zelador × administradora) e registra ocorrências.",
+    "funcionalidades": [
+      "Roteamento",
+      "Registro de ocorrência",
+      "Reserva de área"
+    ],
+    "complexidade": "Média; as fontes indicam que o mercado prefere apps formais.",
+    "potencialComercial": "Baixo-médio.",
+    "concorrencia": "Apps de condomínio consolidados.",
+    "diferencial": "Fraco.",
+    "notas": {
+      "tamanho": 5,
+      "frequencia": 7,
+      "clientes": 5,
+      "facilidade": 5,
+      "venda": 5,
+      "mensalidade": 6,
+      "personalizacao": 6,
+      "concorrencia": 5,
+      "custo": 6,
+      "escala": 5
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 16,
+    "nome": "Lembretes de vacina/retorno e recompra para pet shops",
+    "segmento": "Pet shops e veterinárias",
+    "problema": "Retornos e vacinas esquecidos; reposição de ração sem lembrete.",
+    "publico": "Pet shops e clínicas veterinárias",
+    "evidencia": [
+      {
+        "fonte": "SocialHub – WhatsApp para veterinária e pet shop",
+        "url": "https://www.socialhub.pro/blog/whatsapp-veterinaria-pet-shop-automacao-fidelizacao-tutores/",
+        "nota": "Descreve lembretes baseados no histórico do pet; números de abertura são alegações de fornecedor."
+      },
+      {
+        "fonte": "GoSmarter – WhatsApp Business para pet shop",
+        "url": "https://gosmarter.com.br/whatsapp-business-para-pet-shop-clinica-veterinaria-guia/",
+        "nota": "Guia de fornecedor."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "Planilha/anotação do sistema da loja.",
+    "porqueRobo": "Lembrete recorrente por pet e agendamento de banho e tosa.",
+    "funcionalidades": [
+      "Lembretes recorrentes",
+      "Agendar banho e tosa",
+      "Recompra"
+    ],
+    "complexidade": "Média",
+    "potencialComercial": "Médio.",
+    "concorrencia": "Sistemas veterinários (Simples Vet etc.).",
+    "diferencial": "Reuso do motor de agenda (robot-001) + lembretes recorrentes.",
+    "notas": {
+      "tamanho": 5,
+      "frequencia": 7,
+      "clientes": 6,
+      "facilidade": 8,
+      "venda": 6,
+      "mensalidade": 7,
+      "personalizacao": 7,
+      "concorrencia": 4,
+      "custo": 8,
+      "escala": 6
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 17,
+    "nome": "Pedido recorrente para revendas de gás e água",
+    "segmento": "Revendas de gás de cozinha e água mineral",
+    "problema": "Pedidos por telefone/WhatsApp sem lembrete de reposição nem roteirização.",
+    "publico": "Revendas locais",
+    "evidencia": [
+      {
+        "fonte": "Baguete – Supergasbras automatiza atendimento com Botmaker",
+        "url": "https://www.baguete.com.br/noticias/supergasbras-automatiza-atendimento-com-botmaker",
+        "nota": "Grande distribuidora já vende botijão por chatbot de WhatsApp (mais de 142 mil usuários em 2021 segundo a reportagem)."
+      },
+      {
+        "fonte": "Workana – MVP de plataforma de automação na venda de gás e água",
+        "url": "https://www.workana.com/job/desenvolvimento-de-mvp-para-plataforma-de-automacao-na-venda-de-gas-e-agua",
+        "nota": "Demanda real de freelance por pedidos, painel e despacho — requisito, não case."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Telefone/WhatsApp; anotação manual.",
+    "porqueRobo": "Pedido rápido recorrente e lembrete de reposição.",
+    "funcionalidades": [
+      "Pedido rápido",
+      "Lembrete de reposição",
+      "Despacho ao entregador"
+    ],
+    "complexidade": "Média; núcleo semelhante ao PedidoZap.",
+    "potencialComercial": "Médio.",
+    "concorrencia": "Botmaker (grande), apps de entrega de gás.",
+    "diferencial": "Variação do robot-003 com recompra.",
+    "notas": {
+      "tamanho": 6,
+      "frequencia": 8,
+      "clientes": 5,
+      "facilidade": 6,
+      "venda": 7,
+      "mensalidade": 7,
+      "personalizacao": 7,
+      "concorrencia": 5,
+      "custo": 7,
+      "escala": 5
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 18,
+    "nome": "Inscrição e confirmação de presença em eventos",
+    "segmento": "Igrejas, eventos pequenos, escolas",
+    "problema": "Inscrição e RSVP feitos em grupos e planilhas.",
+    "publico": "Organizadores de eventos pequenos",
+    "evidencia": [
+      {
+        "fonte": "ABC da Comunicação – iCasei lança confirmação de presença ativa por WhatsApp",
+        "url": "https://www.abcdacomunicacao.com.br/icasei-lanca-a-primeira-confirmacao-de-presenca-ativa-por-whatsapp-do-mercado/",
+        "nota": "Existe produto no mercado para casamentos."
+      },
+      {
+        "fonte": "Tecnoblog – WhatsApp estreia função de eventos em grupos",
+        "url": "https://tecnoblog.net/noticias/whatsapp-estreia-funcao-de-eventos/",
+        "nota": "O próprio WhatsApp oferece eventos em comunidades — concorrência gratuita."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "Grupos, formulários, apps de igreja.",
+    "porqueRobo": "Coleta de RSVP e lista de presença.",
+    "funcionalidades": [
+      "RSVP",
+      "Lista",
+      "Lembrete"
+    ],
+    "complexidade": "Baixa",
+    "potencialComercial": "Baixo (pouca disposição a pagar mensalidade).",
+    "concorrencia": "Eventos do WhatsApp, apps de igreja, iCasei.",
+    "diferencial": "Fraco.",
+    "notas": {
+      "tamanho": 4,
+      "frequencia": 5,
+      "clientes": 6,
+      "facilidade": 8,
+      "venda": 4,
+      "mensalidade": 4,
+      "personalizacao": 6,
+      "concorrencia": 6,
+      "custo": 9,
+      "escala": 5
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 19,
+    "nome": "Agenda de aulas e documentos para autoescolas",
+    "segmento": "Autoescolas / CFCs",
+    "problema": "Aulas práticas não avisadas e processo de matrícula com muitas etapas.",
+    "publico": "Autoescolas",
+    "evidencia": [
+      {
+        "fonte": "Hora de Codar – automações n8n para autoescolas",
+        "url": "https://horadecodar.com.br/exemplos-automacoes-n8n-autoescolas/",
+        "nota": "Exemplos de automação de agenda e lembretes."
+      },
+      {
+        "fonte": "Reclame Aqui – aulas não avisadas e cobradas",
+        "url": "https://www.reclameaqui.com.br/auto-e-moto-escola-sao-bernardo/aulas-nao-avisadas-e-cobradas_G4g9zen6bajwGulm/",
+        "nota": "Reclamação individual sobre aulas não avisadas; indício, não estatística."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "Instrutor combina por WhatsApp.",
+    "porqueRobo": "Agenda e lembretes (variação do robot-001).",
+    "funcionalidades": [
+      "Agenda de aulas",
+      "Lembretes",
+      "Checklist de documentos (exige consulta ao Detran local)"
+    ],
+    "complexidade": "Média",
+    "potencialComercial": "Baixo-médio.",
+    "concorrencia": "Sistemas de CFC.",
+    "diferencial": "Reuso do motor de agenda.",
+    "notas": {
+      "tamanho": 5,
+      "frequencia": 7,
+      "clientes": 4,
+      "facilidade": 7,
+      "venda": 5,
+      "mensalidade": 6,
+      "personalizacao": 7,
+      "concorrencia": 5,
+      "custo": 8,
+      "escala": 4
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 20,
+    "nome": "Catálogo, reserva de peças e atendimento para boutiques",
+    "segmento": "Lojas de roupas e acessórios",
+    "problema": "Perguntas de preço/tamanho/estoque e reserva de peça no WhatsApp.",
+    "publico": "Boutiques e lojas pequenas",
+    "evidencia": [
+      {
+        "fonte": "Cielo – como vender roupas pelo WhatsApp",
+        "url": "https://blog.cielo.com.br/produtos-e-servicos/venda-roupas-pelo-whatsapp/",
+        "nota": "Recomenda catálogo, etiquetas e scripts; o WhatsApp Business já oferece catálogo gratuito."
+      },
+      {
+        "fonte": "Yampi – catálogo no WhatsApp",
+        "url": "https://www.yampi.com.br/blog/catalogo-whatsapp",
+        "nota": "Mostra solução existente."
+      }
+    ],
+    "forcaEvidencia": "fraca",
+    "comoResolvemHoje": "WhatsApp Business com catálogo e respostas rápidas (gratuito).",
+    "porqueRobo": "Controle de estoque e reserva — mas depende de dados de estoque que a loja raramente mantém atualizados.",
+    "funcionalidades": [
+      "Catálogo",
+      "Reserva",
+      "Pagamento por link"
+    ],
+    "complexidade": "Média-alta",
+    "potencialComercial": "Baixo-médio.",
+    "concorrencia": "WhatsApp Business (grátis), Yampi, Nuvemshop.",
+    "diferencial": "Fraco frente à ferramenta gratuita nativa.",
+    "notas": {
+      "tamanho": 5,
+      "frequencia": 8,
+      "clientes": 7,
+      "facilidade": 6,
+      "venda": 5,
+      "mensalidade": 5,
+      "personalizacao": 6,
+      "concorrencia": 4,
+      "custo": 7,
+      "escala": 6
+    },
+    "status": "descoberta",
+    "robo": null
+  },
+  {
+    "id": 21,
+    "nome": "Pré-orçamento para prestadores de serviço",
+    "segmento": "Eletricistas, pedreiros, dedetizadoras, serviços residenciais",
+    "problema": "Orçamentos atrasados e follow-ups esquecidos; muita conversa para coletar informações básicas.",
+    "publico": "Prestadores autônomos e microempresas",
+    "evidencia": [
+      {
+        "fonte": "SocialHub – WhatsApp para prestador de serviço com 2 funcionários",
+        "url": "https://www.socialhub.pro/blog/whatsapp-prestador-servico-qualificar-orcar-fechar/",
+        "nota": "Aponta orçamento atrasado e follow-up esquecido como gargalos; fonte de fornecedor."
+      },
+      {
+        "fonte": "WhatsApp Business – história da construtora Engelife",
+        "url": "https://whatsappbusiness.com/resources/success-stories/engelife-construtora-e-incorporadora/",
+        "nota": "Caso oficial de qualificação por formulário antes do atendimento humano (empresa de médio porte)."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Vai trocando mensagens até entender o serviço.",
+    "porqueRobo": "Coleta serviço, bairro, urgência e fotos e entrega pronto para orçar.",
+    "funcionalidades": [
+      "Perguntas por tipo de serviço",
+      "Recebimento de fotos",
+      "Follow-up 24–48 h",
+      "Classificação quente/frio"
+    ],
+    "complexidade": "Média",
+    "potencialComercial": "Médio.",
+    "concorrencia": "Apps de serviços (GetNinjas), CRMs genéricos.",
+    "diferencial": "Perguntas específicas por tipo de serviço; resumo estruturado.",
+    "notas": {
+      "tamanho": 6,
+      "frequencia": 8,
+      "clientes": 9,
+      "facilidade": 7,
+      "venda": 6,
+      "mensalidade": 6,
+      "personalizacao": 8,
+      "concorrencia": 5,
+      "custo": 8,
+      "escala": 7
+    },
+    "status": "selecionada",
+    "robo": null,
+    "observacao": "Selecionada como robô #4 (próxima fila de desenvolvimento)."
+  },
+  {
+    "id": 22,
+    "nome": "Recepcionista virtual de FAQ 24h para negócios locais",
+    "segmento": "Qualquer negócio local",
+    "problema": "Perguntas repetidas (horário, endereço, preço) e demora na resposta fazem perder clientes.",
+    "publico": "Pequenos negócios em geral",
+    "evidencia": [
+      {
+        "fonte": "ABC da Comunicação – 62% dos consumidores já desistiram de comprar no WhatsApp",
+        "url": "https://www.abcdacomunicacao.com.br/62-dos-consumidores-ja-desistiram-de-comprar-no-whatsapp-e-empresas-nem-sabem-quanto-dinheiro-estao-perdendo/",
+        "nota": "Pesquisa citada em veículo de comunicação; metodologia não verificada."
+      },
+      {
+        "fonte": "Bem Paraná – chatbot para pequenas empresas sem perder o atendimento humano",
+        "url": "https://www.bemparana.com.br/noticias/geral/como-usar-chatbot-para-whatsapp-em-pequenas-empresas-sem-perder-o-atendimento-humano/",
+        "nota": "Descreve perda silenciosa de oportunidades por demora."
+      }
+    ],
+    "forcaEvidencia": "média",
+    "comoResolvemHoje": "Respostas rápidas do WhatsApp Business (gratuito).",
+    "porqueRobo": "FAQ com IA restrita à base de conhecimento e handoff — vira componente de todos os robôs.",
+    "funcionalidades": [
+      "Base de conhecimento",
+      "Fora do horário",
+      "Handoff"
+    ],
+    "complexidade": "Baixa",
+    "potencialComercial": "Médio, mas é a oferta mais commoditizada.",
+    "concorrencia": "Praticamente todos os provedores; WhatsApp Business gratuito.",
+    "diferencial": "Já embutido em todos os robôs da fábrica (shared/ai).",
+    "notas": {
+      "tamanho": 7,
+      "frequencia": 10,
+      "clientes": 10,
+      "facilidade": 8,
+      "venda": 6,
+      "mensalidade": 7,
+      "personalizacao": 9,
+      "concorrencia": 1,
+      "custo": 7,
+      "escala": 9
+    },
+    "status": "concluída",
+    "robo": null,
+    "observacao": "Implementado como camada compartilhada (shared/ai: FAQ restrita à base de conhecimento + handoff), presente em todos os robôs; não vendido como produto isolado por ser a oferta mais comoditizada (o WhatsApp Business gratuito já tem respostas rápidas)."
+  }
+]
