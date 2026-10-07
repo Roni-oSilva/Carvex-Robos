@@ -12,6 +12,11 @@ export interface CloudApiOptions {
   maxRetries?: number;
 }
 
+/** A Meta rejeita quebras de linha, tabs e 4+ espaços seguidos em parâmetros de template. */
+export function templateParam(t: string): string {
+  return t.replace(/[\r\n\t]+/g, " | ").replace(/ {4,}/g, "   ").trim() || "-";
+}
+
 /** Monta o corpo JSON da Cloud API respeitando os limites do WhatsApp (botões, listas, textos). */
 export function buildPayload(to: string, msg: Outgoing): Record<string, unknown> {
   const base = { messaging_product: "whatsapp", recipient_type: "individual", to };
@@ -45,7 +50,7 @@ export function buildPayload(to: string, msg: Outgoing): Record<string, unknown>
         ...base, type: "template",
         template: {
           name: msg.name, language: { code: msg.language },
-          ...(msg.params.length ? { components: [{ type: "body", parameters: msg.params.map((t) => ({ type: "text", text: clip(t, 1000) })) }] } : {}),
+          ...(msg.params.length ? { components: [{ type: "body", parameters: msg.params.map((t) => ({ type: "text", text: clip(templateParam(t), 1000) })) }] } : {}),
         },
       };
   }

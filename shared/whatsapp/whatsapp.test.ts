@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { parseWebhook, signBody, verifyChallenge, verifySignature } from "./webhook.ts";
-import { buildPayload, CloudApiClient } from "./cloud-api.ts";
+import { buildPayload, CloudApiClient, templateParam } from "./cloud-api.ts";
 import { inServiceWindow } from "./window.ts";
 import { webhookPayload } from "../testing/helpers.ts";
 
@@ -108,4 +108,9 @@ test("janela de 24h", () => {
   assert.ok(!inServiceWindow("2026-10-06T11:59:00Z", now));
   assert.ok(!inServiceWindow(null, now));
   assert.ok(!inServiceWindow("lixo", now));
+});
+
+test("parâmetros de template não carregam quebra de linha (a Meta rejeita)", () => {
+  assert.equal(templateParam("linha 1\nlinha 2\t\ttab      fim"), "linha 1 | linha 2 | tab   fim");
+  assert.equal(templateParam("   "), "-");
 });

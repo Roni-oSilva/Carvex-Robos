@@ -1,0 +1,30 @@
+{
+  "empresa": {
+    "nome": "Academia Corpo em Movimento",
+    "endereco": "Av. Brasil, 500 - Centro",
+    "telefone": "(11) 3000-1234",
+    "horario_texto": "Seg a sex 6h às 22h, sáb 8h às 14h",
+    "pagamento": "Pix, cartão e dinheiro na recepção",
+    "horario": {
+      "1": { "abre": "06:00", "fecha": "22:00" }, "2": { "abre": "06:00", "fecha": "22:00" }, "3": { "abre": "06:00", "fecha": "22:00" },
+      "4": { "abre": "06:00", "fecha": "22:00" }, "5": { "abre": "06:00", "fecha": "22:00" }, "6": { "abre": "08:00", "fecha": "14:00" }
+    }
+  },
+  "pix": { "chave": "financeiro@corpoemmovimento.com.br", "beneficiario": "Corpo em Movimento", "cidade": "Sao Paulo" },
+  "regua": [
+    { "id": "antes-3", "dias": -3 },
+    { "id": "vence-hoje", "dias": 0 },
+    { "id": "atraso-3", "dias": 3 },
+    { "id": "atraso-7", "dias": 7 },
+    { "id": "atraso-15", "dias": 15, "mensagem": "{{descricao}} ({{valor}}) está em aberto há {{dias_atraso}} dias. Queremos te ajudar a manter o plano em dia: responda NEGOCIAR para ver opções de parcelamento." }
+  ],
+  "envio": { "inicio": "08:00", "fim": "20:00", "dias_semana": [1, 2, 3, 4, 5, 6], "max_por_semana": 3, "intervalo_horas": 48 },
+  "exigir_confirmacao_titular": true,
+  "negociacao": { "ativo": true, "max_parcelas": 3, "parcela_minima": 50, "desconto_a_vista_percentual": 5, "validade_dias": 7 },
+  "template": { "nome": "", "idioma": "pt_BR" },
+  "faq": [
+    { "pergunta": "Posso trancar meu plano?", "resposta": "Sim. O trancamento é feito na recepção, com até 60 dias por ano. Fale com um atendente para solicitar.", "palavras_chave": ["trancar", "trancamento", "pausar"] },
+    { "pergunta": "Qual o horário de funcionamento?", "resposta": "Funcionamos de segunda a sexta das 6h às 22h e aos sábados das 8h às 14h.", "palavras_chave": ["horário", "funcionamento", "abre"] }
+  ],
+  "mensagens": {}
+}
