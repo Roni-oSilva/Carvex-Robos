@@ -14,7 +14,8 @@
     "catalog": "node scripts/gerar-catalogo.ts",
     "package-robot": "node scripts/empacotar-robo.ts",
     "docs": "node scripts/gerar-docs.ts && node scripts/gerar-catalogo.ts && node market-research/gerar.ts",
-    "demo": "node scripts/gerar-demos.ts"
+    "demo": "node scripts/gerar-demos.ts",
+    "site": "node scripts/servir-site.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

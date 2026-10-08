@@ -14,6 +14,10 @@ Uma **fábrica de produtos de automação**: pesquisa problemas reais de pequeno
 
 Painel interno: [ROBOTS.md](ROBOTS.md) · Catálogo comercial: [CATALOG.md](CATALOG.md) · Como foram escolhidos: [market-research/opportunities.md](market-research/opportunities.md) (22 oportunidades, com fontes, notas e ranking).
 
+## Página de vendas
+`site/index.html` — página única da **Carvex Tecnologia** (autocontida, sem dependências): demonstrações de conversa interativas, preços, FAQ e botão **Comprar um robô** que abre o WhatsApp com a mensagem pronta.
+`npm run site` abre em http://localhost:4000. Antes de publicar, edite `CONFIG.whatsapp` (número que recebe os pedidos) e troque `site/assets/logo-carvex.svg` pela logo oficial.
+
 ## Como funciona (a fábrica)
 
 ```

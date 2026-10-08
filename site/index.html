@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carvex Tecnologia — Robôs de WhatsApp que vendem, agendam e cobram por você</title>
+<meta name="description" content="Robôs de WhatsApp prontos para barbearias, clínicas, academias e deliveries: agenda 24h, cobrança educada e pedidos sem comissão. API oficial, LGPD e painel simples.">
+<meta name="theme-color" content="#1456f0">
+<link rel="icon" href="assets/logo-carvex.svg" type="image/svg+xml">
+<style>
+:root{
+  --az-950:#050f45; --az-900:#071a6b; --az-800:#0a2a9c; --az-700:#0b3fd1; --az-600:#1456f0; --az-500:#1a6bff; --az-400:#2f8bff; --ciano:#22d3ee;
+  --bg:#eaf2ff; --card:#ffffff; --ink:#0a1633; --mut:#4a5a85; --linha:#d3e0ff;
+  --grad:linear-gradient(135deg,#071a6b 0%,#0b3fd1 38%,#1a6bff 72%,#22b8ff 100%);
+  --grad-2:linear-gradient(120deg,#0a2a9c,#1a6bff 60%,#22d3ee);
+  --raio:28px; --sombra:0 18px 50px -18px rgba(11,63,209,.45);
+  --fonte:"Inter","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fonte);background:var(--bg);color:var(--ink);line-height:1.55;font-size:17px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:0;color:inherit}
+:focus-visible{outline:3px solid var(--ciano);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- cabeçalho ---------- */
+.topo{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(234,242,255,.82);border-bottom:1px solid rgba(26,107,255,.15)}
+.topo .wrap{display:flex;align-items:center;gap:18px;height:68px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:20px}
+.marca img{width:38px;height:38px;filter:drop-shadow(0 6px 10px rgba(26,107,255,.35))}
+.marca small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--az-600);margin-top:-3px}
+.nav{margin-left:auto;display:flex;gap:6px;align-items:center}
+.nav a.l{padding:8px 12px;border-radius:99px;text-decoration:none;font-weight:600;color:var(--mut)}
+.nav a.l:hover{background:#fff;color:var(--az-700)}
+@media(max-width:820px){.nav a.l{display:none}}
+
+/* ---------- botões ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;padding:14px 26px;border-radius:99px;font-weight:800;font-size:17px;text-decoration:none;color:#fff;background:var(--grad-2);background-size:200% 200%;box-shadow:0 14px 30px -10px rgba(26,107,255,.7),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .18s ease,box-shadow .18s ease;animation:brilho 5s ease-in-out infinite;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 20px 38px -12px rgba(26,107,255,.8)}
+.btn:active{transform:scale(.97)}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);animation:varre 3.6s ease-in-out infinite}
+.btn.claro{background:#fff;color:var(--az-800);box-shadow:0 14px 30px -12px rgba(5,15,69,.55);animation:none}
+.btn.claro::after{display:none}
+.btn.fantasma{background:rgba(255,255,255,.16);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55);animation:none}
+.btn.fantasma::after{display:none}
+.btn.pequeno{padding:10px 20px;font-size:15px}
+@keyframes brilho{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes varre{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+
+/* ---------- herói ---------- */
+.heroi{padding:28px 0 12px}
+.cartao-heroi{position:relative;background:var(--grad);background-size:160% 160%;animation:fluxo 14s ease-in-out infinite;border-radius:44px;padding:clamp(28px,5vw,64px);color:#fff;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;overflow:hidden;box-shadow:var(--sombra)}
+@keyframes fluxo{0%,100%{background-position:0% 0%}50%{background-position:100% 100%}}
+.cartao-heroi::before,.cartao-heroi::after{content:"";position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
+.cartao-heroi::before{width:420px;height:420px;right:-120px;top:-160px;background:radial-gradient(circle,rgba(34,211,238,.55),transparent 65%);animation:flutua 9s ease-in-out infinite}
+.cartao-heroi::after{width:360px;height:360px;left:-140px;bottom:-190px;background:radial-gradient(circle,rgba(255,255,255,.22),transparent 65%);animation:flutua 11s ease-in-out infinite reverse}
+@keyframes flutua{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,22px)}}
+.selo{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.16);padding:8px 16px;border-radius:99px;font-weight:700;font-size:15px;backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+h1{font-size:clamp(40px,6.4vw,84px);line-height:.98;letter-spacing:-.045em;font-weight:900;margin:18px 0 18px;text-wrap:balance}
+h1 .dest{display:inline-block;background:linear-gradient(90deg,#fff,#a8e8ff,#fff);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:texto 5s linear infinite}
+@keyframes texto{to{background-position:200% 0}}
+.sub{font-size:clamp(18px,2vw,22px);max-width:34ch;opacity:.95}
+.acoes{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.bolha-logo{width:92px;height:92px;margin-top:30px;animation:pulo 3.4s ease-in-out infinite;filter:drop-shadow(0 18px 24px rgba(5,15,69,.5))}
+@keyframes pulo{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+.palco{position:relative;display:grid;place-items:center;min-height:540px;padding:0 24px}
+.chip{position:absolute;z-index:3;background:#fff;color:var(--az-800);font-weight:800;font-size:15px;padding:9px 16px;border-radius:99px;box-shadow:0 12px 26px -10px rgba(5,15,69,.6);white-space:nowrap;animation:boia 5s ease-in-out infinite}
+.chip:nth-of-type(2){animation-delay:-1.2s}.chip:nth-of-type(3){animation-delay:-2.4s}.chip:nth-of-type(4){animation-delay:-3.6s}
+@keyframes boia{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
+@media(max-width:900px){.cartao-heroi{grid-template-columns:1fr;border-radius:32px}.palco{min-height:500px}.bolha-logo{display:none}.chip{font-size:13px;padding:7px 12px}.chip:nth-of-type(1){left:-6px!important;top:-6px!important}.chip:nth-of-type(2){right:-6px!important;top:4px!important}.chip:nth-of-type(3),.chip:nth-of-type(4){display:none}}
+
+/* ---------- telefone ---------- */
+.fone{position:relative;width:min(310px,100%);background:#060d24;border-radius:42px;padding:11px;box-shadow:0 40px 70px -24px rgba(2,8,40,.8),0 0 0 2px rgba(255,255,255,.12) inset;z-index:2}
+.fone .tela{background:linear-gradient(180deg,#0b1533,#0a1230);border-radius:32px;overflow:hidden;display:flex;flex-direction:column;height:480px;position:relative}
+.fone .tela::before{content:"";position:absolute;top:8px;left:50%;translate:-50% 0;width:88px;height:22px;background:#060d24;border-radius:99px;z-index:5}
+.fone header{padding:40px 14px 10px;display:flex;align-items:center;gap:10px;background:rgba(26,107,255,.12);border-bottom:1px solid rgba(255,255,255,.07);color:#fff}
+.fone header img{width:30px;height:30px}
+.fone header b{font-size:15px;display:block;line-height:1.1}
+.fone header span{font-size:12px;color:#8fe6ff;display:flex;align-items:center;gap:5px}
+.fone header span::before{content:"";width:7px;height:7px;border-radius:50%;background:#35f0a0;box-shadow:0 0 0 0 rgba(53,240,160,.7);animation:ping 1.8s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(53,240,160,0)}100%{box-shadow:0 0 0 0 rgba(53,240,160,0)}}
+.chat{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:9px;scroll-behavior:smooth;scrollbar-width:none}
+.chat::-webkit-scrollbar{display:none}
+.msg{max-width:86%;padding:9px 13px;border-radius:18px;font-size:14.5px;line-height:1.4;color:#eaf1ff;animation:entra .35s cubic-bezier(.2,1.4,.4,1) both;white-space:pre-line;word-break:break-word}
+.msg.bot{background:#16224a;border-bottom-left-radius:5px;align-self:flex-start}
+.msg.eu{background:linear-gradient(135deg,#1a6bff,#22b8ff);color:#fff;border-bottom-right-radius:5px;align-self:flex-end;font-weight:600}
+.msg.nota{align-self:center;background:rgba(34,211,238,.14);color:#8fe6ff;font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:99px}
+.msg code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:rgba(255,255,255,.08);padding:2px 5px;border-radius:6px;word-break:break-all}
+@keyframes entra{from{opacity:0;transform:translateY(12px) scale(.94)}}
+.digitando{align-self:flex-start;background:#16224a;padding:12px 14px;border-radius:18px;border-bottom-left-radius:5px;display:flex;gap:5px}
+.digitando i{width:7px;height:7px;border-radius:50%;background:#7fb0ff;animation:pontos 1s infinite}
+.digitando i:nth-child(2){animation-delay:.15s}.digitando i:nth-child(3){animation-delay:.3s}
+@keyframes pontos{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+.ops{display:flex;flex-direction:column;gap:7px;align-self:stretch;animation:entra .35s both}
+.ops button{background:transparent;color:#bfe6ff;border:1.5px solid rgba(143,230,255,.55);padding:9px 12px;border-radius:14px;font-weight:700;font-size:14px;transition:.15s;text-align:center}
+.ops button:hover,.ops button:focus-visible{background:#22d3ee;color:#04123f;border-color:#22d3ee;transform:scale(1.02)}
+.ops button.dica{animation:dica 1.6s ease-in-out infinite}
+@keyframes dica{50%{box-shadow:0 0 0 5px rgba(34,211,238,.25)}}
+.fone footer{padding:10px 12px 14px;display:flex;gap:8px;align-items:center;color:#7d93c9;font-size:13px}
+.fone footer div{flex:1;background:#101b3f;border-radius:99px;padding:9px 14px}
+.fone footer button{background:var(--az-500);width:34px;height:34px;border-radius:50%;color:#fff;font-size:15px}
+.fone footer button:hover{background:var(--ciano);color:#04123f}
+
+/* ---------- faixa rolante ---------- */
+.faixa{margin:26px 0;overflow:hidden;mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.faixa div{display:flex;gap:14px;width:max-content;animation:rola 32s linear infinite}
+.faixa:hover div{animation-play-state:paused}
+.faixa span{background:#fff;padding:10px 20px;border-radius:99px;font-weight:700;box-shadow:0 8px 20px -14px rgba(11,63,209,.6);color:var(--az-800)}
+@keyframes rola{to{transform:translateX(-50%)}}
+
+/* ---------- seções ---------- */
+section{padding:56px 0;scroll-margin-top:76px}
+.cab{text-align:center;max-width:760px;margin:0 auto 34px}
+.cab h2{font-size:clamp(30px,4.4vw,54px);letter-spacing:-.035em;line-height:1.04;font-weight:900;margin-bottom:12px;text-wrap:balance}
+.cab p{color:var(--mut);font-size:19px}
+.grad{background:var(--grad-2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rev{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.rev.vis{opacity:1;transform:none}
+
+/* carrossel de robôs (como os slides do layout de referência) */
+.trilho{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:1000px){.trilho{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin-inline:-16px;gap:16px;scrollbar-width:none}.trilho::-webkit-scrollbar{display:none}.slide{min-width:min(86vw,360px);scroll-snap-align:center}}
+.slide{background:var(--grad);border-radius:36px;padding:26px 22px 24px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:12px;transition:transform .3s ease}
+.slide:hover{transform:translateY(-8px) rotate(-.4deg)}
+.slide::before{content:"";position:absolute;width:260px;height:260px;right:-90px;top:-90px;background:radial-gradient(circle,rgba(34,211,238,.5),transparent 65%)}
+.slide h3{font-size:clamp(30px,3.2vw,40px);line-height:1;letter-spacing:-.035em;font-weight:900;position:relative}
+.slide>p{opacity:.95;position:relative}
+.slide>.btn{margin-top:auto}
+.tags{display:flex;flex-wrap:wrap;gap:7px;position:relative}
+.tags span{background:rgba(255,255,255,.18);padding:5px 12px;border-radius:99px;font-size:13.5px;font-weight:700;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.slide .fone{margin:8px auto 10px;width:min(290px,100%)}
+.slide .fone .tela{height:430px}
+.preco{position:relative;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.preco b{font-size:34px;letter-spacing:-.03em}
+.preco small{opacity:.9;font-size:14px}
+.sug{font-size:12.5px;opacity:.85;position:relative}
+
+/* como funciona */
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:p}
+@media(max-width:900px){.passos{grid-template-columns:1fr 1fr}}@media(max-width:540px){.passos{grid-template-columns:1fr}}
+.passo{background:#fff;border-radius:var(--raio);padding:26px 22px;box-shadow:0 14px 36px -24px rgba(11,63,209,.55);position:relative;transition:.25s;border:2px solid transparent}
+.passo:hover{transform:translateY(-6px);border-color:var(--az-400)}
+.passo .em{font-size:44px;display:inline-block;animation:balanca 3.5s ease-in-out infinite}
+.passo:nth-child(2) .em{animation-delay:-.8s}.passo:nth-child(3) .em{animation-delay:-1.6s}.passo:nth-child(4) .em{animation-delay:-2.4s}
+@keyframes balanca{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(8deg) scale(1.12)}}
+.passo h3{font-size:21px;margin:10px 0 6px;letter-spacing:-.02em}
+.passo p{color:var(--mut);font-size:16px}
+.passo::after{counter-increment:p;content:counter(p);position:absolute;right:18px;top:12px;font-size:52px;font-weight:900;color:#e0ebff}
+
+/* benefícios */
+.bens{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.ben{background:#fff;border-radius:24px;padding:22px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 10px 30px -22px rgba(11,63,209,.6);transition:.25s}
+.ben:hover{background:var(--grad);color:#fff;transform:translateY(-4px)}
+.ben:hover p{color:#e4f0ff}
+.ben .e{font-size:30px;flex:none}
+.ben b{display:block;font-size:18px;margin-bottom:3px}
+.ben p{color:var(--mut);font-size:15.5px}
+
+/* honestidade */
+.honesto{background:var(--az-950);color:#fff;border-radius:40px;padding:clamp(26px,4vw,52px);display:grid;grid-template-columns:1fr 1fr;gap:28px;position:relative;overflow:hidden}
+.honesto::before{content:"";position:absolute;width:400px;height:400px;left:-120px;top:-180px;background:radial-gradient(circle,rgba(26,107,255,.55),transparent 65%)}
+@media(max-width:820px){.honesto{grid-template-columns:1fr}}
+.honesto h2{font-size:clamp(28px,3.6vw,44px);letter-spacing:-.035em;line-height:1.05;position:relative}
+.honesto ul{list-style:none;padding:0;display:grid;gap:10px;position:relative}
+.honesto li{background:rgba(255,255,255,.07);padding:12px 16px;border-radius:16px;font-size:16px}
+
+/* faq */
+.faq{max-width:820px;margin:auto;display:grid;gap:12px}
+details{background:#fff;border-radius:20px;padding:4px 20px;box-shadow:0 8px 24px -20px rgba(11,63,209,.6);transition:.2s}
+details[open]{box-shadow:0 14px 34px -18px rgba(11,63,209,.55)}
+summary{cursor:pointer;font-weight:800;padding:16px 0;list-style:none;display:flex;gap:12px;align-items:center;font-size:18px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";margin-left:auto;color:var(--az-500);font-size:22px;transition:transform .25s}
+details[open] summary::after{transform:rotate(135deg)}
+details p{padding:0 0 18px;color:var(--mut)}
+
+/* cta final */
+.final{background:var(--grad);background-size:160% 160%;animation:fluxo 14s ease-in-out infinite;border-radius:44px;padding:clamp(34px,6vw,76px);text-align:center;color:#fff;position:relative;overflow:hidden;box-shadow:var(--sombra)}
+.final h2{font-size:clamp(34px,5.4vw,68px);letter-spacing:-.04em;line-height:1;font-weight:900;margin-bottom:14px;text-wrap:balance}
+.final p{font-size:20px;opacity:.95;margin-bottom:26px}
+.rodape{padding:34px 0 120px;color:var(--mut);font-size:14.5px;text-align:center}
+.rodape .marca{justify-content:center;margin-bottom:10px;color:var(--ink)}
+
+/* barra fixa mobile */
+.fixa{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none}
+.fixa .btn{width:100%}
+@media(max-width:820px){.fixa{display:block}}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(5,15,69,.7);backdrop-filter:blur(8px)}
+.modal.aberto{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.caixa{background:#fff;border-radius:32px;width:min(560px,100%);max-height:94vh;overflow:auto;padding:26px;position:relative;animation:sobe .4s cubic-bezier(.2,1.2,.4,1)}
+@keyframes sobe{from{opacity:0;transform:translateY(40px) scale(.95)}}
+.caixa h2{font-size:28px;letter-spacing:-.03em;margin-bottom:4px}
+.fechar{position:absolute;right:16px;top:14px;width:40px;height:40px;border-radius:50%;background:#eef4ff;font-size:18px}
+.fechar:hover{background:var(--az-500);color:#fff}
+.opcoes{display:grid;gap:10px;margin:16px 0}
+.opcao{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:20px;border:2px solid var(--linha);background:#fff;text-align:left;width:100%;transition:.18s}
+.opcao:hover{border-color:var(--az-400);transform:translateX(4px)}
+.opcao[aria-pressed=true]{border-color:var(--az-500);background:linear-gradient(135deg,#eaf2ff,#dff6ff);box-shadow:0 10px 24px -14px var(--az-500)}
+.opcao .e{font-size:30px}
+.opcao b{display:block}.opcao small{color:var(--mut)}
+.opcao .v{margin-left:auto;font-weight:900;color:var(--az-700);text-align:right;font-size:15px}
+.campo{display:grid;gap:6px;margin-bottom:12px}
+.campo label{font-weight:700;font-size:15px}
+.campo input{font:inherit;padding:13px 16px;border-radius:16px;border:2px solid var(--linha);background:#f7faff}
+.campo input:focus{border-color:var(--az-500);outline:0;background:#fff}
+.aviso{background:#fff7e0;border-radius:16px;padding:12px 14px;font-size:14.5px;color:#6b4a00;margin-bottom:12px}
+.resumo{background:#f1f6ff;border-radius:18px;padding:14px 16px;margin:6px 0 14px;font-size:15.5px}
+.caixa .btn[disabled]{filter:grayscale(.7);opacity:.6;pointer-events:none}
+
+/* confete de emojis */
+.confete{position:fixed;pointer-events:none;z-index:200;font-size:26px;animation:cai 1.6s ease-out forwards}
+@keyframes cai{0%{transform:translate(0,0) scale(.4);opacity:1}100%{transform:translate(var(--x),var(--y)) rotate(var(--g)) scale(1.2);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#topo" aria-label="Carvex Tecnologia — início">
+      <img src="assets/logo-carvex.svg" alt="" width="38" height="38">
+      <span>Carvex<small>Tecnologia</small></span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a class="l" href="#robos">Robôs</a>
+      <a class="l" href="#como">Como funciona</a>
+      <a class="l" href="#precos">Preços</a>
+      <a class="l" href="#faq">Dúvidas</a>
+      <button class="btn pequeno" data-comprar>🤖 Comprar um robô</button>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+<!-- ===================== HERÓI ===================== -->
+<div class="wrap heroi">
+  <div class="cartao-heroi">
+    <div>
+      <span class="selo">⚡ Robôs de WhatsApp prontos para vender</span>
+      <h1>Seu robô de WhatsApp <span class="dest">trabalhando por você</span> 24h</h1>
+      <p class="sub">Marca horário, cobra com educação e fecha pedidos — enquanto você cuida do seu negócio. 💙</p>
+      <div class="acoes">
+        <button class="btn claro" data-comprar>🤖 Comprar um robô</button>
+        <a class="btn fantasma" href="#robos">▶ Ver ao vivo</a>
+      </div>
+      <svg class="bolha-logo" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#cfe6ff"/></linearGradient></defs>
+        <path d="M50 8C27 8 9 24 9 44c0 11 5 20 14 27l-4 21 21-10c3 1 7 1 10 1 23 0 41-16 41-36S73 8 50 8z" fill="url(#bg1)"/>
+        <text x="50" y="62" text-anchor="middle" font-size="58" font-weight="900" fill="#1a6bff" font-family="Georgia,serif">”</text>
+      </svg>
+    </div>
+    <div class="palco">
+      <span class="chip" style="left:-34px;top:6%;--r:-6deg">📅 Agenda 24h</span>
+      <span class="chip" style="right:-34px;top:20%;--r:5deg">💸 Cobrança educada</span>
+      <span class="chip" style="left:-46px;bottom:20%;--r:4deg">🍕 Pedidos sem comissão</span>
+      <span class="chip" style="right:-30px;bottom:7%;--r:-5deg">🔔 Lembretes</span>
+      <div class="fone" aria-label="Demonstração de conversa no WhatsApp">
+        <div class="tela">
+          <header><img src="assets/logo-carvex.svg" alt=""><div><b>Carvex Bot</b><span>online agora</span></div></header>
+          <div class="chat" id="chat-heroi" aria-live="polite"></div>
+          <footer><div>Digite uma mensagem…</div><button type="button" aria-label="Reiniciar conversa" id="reiniciar-heroi">↻</button></footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="faixa" aria-hidden="true"><div>
+  <span>💈 Barbearias</span><span>💅 Salões</span><span>🏥 Clínicas</span><span>🐶 Pet shops</span><span>🏋️ Academias</span><span>🍕 Pizzarias</span><span>🍔 Lanchonetes</span><span>📚 Escolas</span>
+  <span>💈 Barbearias</span><span>💅 Salões</span><span>🏥 Clínicas</span><span>🐶 Pet shops</span><span>🏋️ Academias</span><span>🍕 Pizzarias</span><span>🍔 Lanchonetes</span><span>📚 Escolas</span>
+</div></div>
+
+<!-- ===================== ROBÔS ===================== -->
+<section id="robos">
+  <div class="wrap">
+    <div class="cab rev">
+      <h2>Escolha seu <span class="grad">robô</span> 🤖</h2>
+      <p>Toque nos botões dentro do celular e converse com cada um. É uma simulação com dados fictícios — igual ao que o seu cliente vai ver.</p>
+    </div>
+    <div class="trilho" id="trilho"></div>
+  </div>
+</section>
+
+<!-- ===================== COMO FUNCIONA ===================== -->
+<section id="como">
+  <div class="wrap">
+    <div class="cab rev">
+      <h2>Do pedido ao robô <span class="grad">no ar</span> 🚀</h2>
+      <p>A gente cuida da parte técnica. Você só conta como o seu negócio funciona.</p>
+    </div>
+    <div class="passos">
+      <div class="passo rev"><span class="em">🛒</span><h3>Você escolhe</h3><p>Seleciona o robô e manda um oi pelo WhatsApp. Sem burocracia.</p></div>
+      <div class="passo rev"><span class="em">⚙️</span><h3>Nós configuramos</h3><p>Conectamos ao número oficial, cadastramos serviços, preços, horários e mensagens.</p></div>
+      <div class="passo rev"><span class="em">💬</span><h3>Seus clientes conversam</h3><p>O robô atende 24h. Se não souber, <b>não inventa</b>: chama você.</p></div>
+      <div class="passo rev"><span class="em">📊</span><h3>Você acompanha</h3><p>Painel simples com agenda, cobranças ou pedidos — e assume a conversa quando quiser.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BENEFÍCIOS ===================== -->
+<section>
+  <div class="wrap">
+    <div class="cab rev"><h2>Feito do <span class="grad">jeito certo</span> ✅</h2><p>Tecnologia séria para negócio pequeno.</p></div>
+    <div class="bens">
+      <div class="ben rev"><span class="e">🛡️</span><div><b>API oficial do WhatsApp</b><p>Nada de robô "pirata" que bloqueia seu número.</p></div></div>
+      <div class="ben rev"><span class="e">🔒</span><div><b>LGPD no pacote</b><p>Cliente pode parar (PARAR), excluir dados e o histórico se apaga sozinho.</p></div></div>
+      <div class="ben rev"><span class="e">🙋</span><div><b>Humano a um toque</b><p>O cliente escreve "atendente" e uma pessoa assume.</p></div></div>
+      <div class="ben rev"><span class="e">🧠</span><div><b>IA que não inventa</b><p>Só responde com o que a sua empresa cadastrou.</p></div></div>
+      <div class="ben rev"><span class="e">💰</span><div><b>Sem comissão por venda</b><p>Preço fixo. Os clientes e os dados são seus.</p></div></div>
+      <div class="ben rev"><span class="e">🧪</span><div><b>Testado de ponta a ponta</b><p>Mais de 140 testes automáticos nos fluxos dos robôs.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PREÇOS ===================== -->
+<section id="precos">
+  <div class="wrap">
+    <div class="cab rev">
+      <h2>Quanto <span class="grad">custa</span>? 💙</h2>
+      <p>Valores de lançamento. Implantação (uma vez) + mensalidade com hospedagem e suporte — ou compra única, se você prefere hospedar.</p>
+    </div>
+    <div class="trilho" id="trilho-precos"></div>
+    <p class="cab rev" style="margin-top:20px"><small style="color:var(--mut)">Custos da Meta (mensagens de modelo fora da janela de 24h) e da IA opcional não estão inclusos. Resultados dependem do seu negócio — não prometemos percentuais.</small></p>
+  </div>
+</section>
+
+<!-- ===================== HONESTIDADE ===================== -->
+<section>
+  <div class="wrap">
+    <div class="honesto rev">
+      <div style="position:relative">
+        <h2>Sem enrolação. 🤝<br>A gente diz o que <span class="grad" style="background:linear-gradient(90deg,#8fe6ff,#fff);-webkit-background-clip:text;background-clip:text">não faz</span>.</h2>
+        <p style="margin-top:14px;opacity:.9">Preferimos você decidindo com clareza a se frustrando depois.</p>
+      </div>
+      <ul>
+        <li>💸 Não recebe pagamento sozinho: o Pix cai direto na sua conta e você dá baixa no painel.</li>
+        <li>📅 Não sincroniza com Google Agenda nesta versão.</li>
+        <li>🍕 Sem adicionais com múltipla escolha nos pedidos (ainda).</li>
+        <li>🚫 Nunca ameaça, expõe ou cobra fora do horário.</li>
+        <li>🎬 As demonstrações desta página são simulações com dados fictícios.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq">
+  <div class="wrap">
+    <div class="cab rev"><h2>Dúvidas <span class="grad">frequentes</span> 🤔</h2></div>
+    <div class="faq">
+      <details class="rev"><summary>📱 Preciso trocar meu número?</summary><p>Você precisa de um número registrado na WhatsApp Business Platform (API oficial). Na implantação mostramos o melhor caminho para o seu caso, inclusive para quem já usa o aplicativo.</p></details>
+      <details class="rev"><summary>⏱️ Em quanto tempo fica pronto?</summary><p>A configuração é rápida; o que pode levar dias é a aprovação da Meta (verificação da empresa e modelos de mensagem). Combinamos o prazo na proposta.</p></details>
+      <details class="rev"><summary>🤖 O cliente percebe que é robô?</summary><p>O robô se apresenta como assistente virtual e sempre oferece falar com uma pessoa. A maioria prefere resposta na hora a esperar.</p></details>
+      <details class="rev"><summary>🧾 E a LGPD?</summary><p>Coletamos o mínimo, os dados ficam no seu servidor, o cliente pode pedir para parar e para excluir. Entregamos a documentação técnica; para validar a base legal, consulte seu advogado.</p></details>
+      <details class="rev"><summary>💬 Quanto a Meta cobra?</summary><p>Respostas dentro de 24h após a mensagem do cliente costumam ser gratuitas. Mensagens de modelo enviadas por iniciativa da empresa são cobradas por mensagem — confira a tabela atual da Meta.</p></details>
+      <details class="rev"><summary>🧩 Dá para personalizar?</summary><p>Sim! Textos, horários, preços, regras e fluxos. Mudanças maiores podem ser contratadas por hora.</p></details>
+      <details class="rev"><summary>🏢 Atendo várias lojas?</summary><p>Sim. O sistema é multiempresa: cada loja com número, dados e painel separados.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section>
+  <div class="wrap">
+    <div class="final rev">
+      <h2>Bora colocar um robô para trabalhar? 🚀</h2>
+      <p>Escolha o seu e fale com a gente em um toque.</p>
+      <button class="btn claro" data-comprar>🤖 Comprar um robô</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="marca"><img src="assets/logo-carvex.svg" alt="" width="38" height="38"><span>Carvex<small>Tecnologia</small></span></div>
+    <p>© <span id="ano">2026</span> Carvex Tecnologia · Robôs de WhatsApp</p>
+    <p style="margin-top:6px">Os robôs usam a API oficial do WhatsApp Business Platform. WhatsApp é marca da Meta Platforms, Inc.; a Carvex Tecnologia não é afiliada à Meta.</p>
+  </div>
+</footer>
+
+<div class="fixa"><button class="btn" data-comprar>🤖 Comprar um robô</button></div>
+
+<!-- ===================== MODAL DE COMPRA ===================== -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" hidden>
+  <div class="caixa">
+    <button class="fechar" id="fechar" aria-label="Fechar">✕</button>
+    <h2 id="modal-titulo">Qual robô você quer? 🤖</h2>
+    <p style="color:var(--mut)">Escolha e envie o pedido pelo WhatsApp. Sem compromisso até a proposta.</p>
+    <div class="opcoes" id="opcoes" role="group" aria-label="Robôs disponíveis"></div>
+    <div class="campo"><label for="nome">Seu nome</label><input id="nome" autocomplete="name" placeholder="Ex.: Maria"></div>
+    <div class="campo"><label for="negocio">Nome do seu negócio</label><input id="negocio" autocomplete="organization" placeholder="Ex.: Barbearia do Zé"></div>
+    <div class="resumo" id="resumo"></div>
+    <div class="aviso" id="aviso" hidden>⚠️ O número de WhatsApp de vendas ainda não foi configurado nesta página (veja <code>CONFIG.whatsapp</code> no <code>index.html</code>). Por enquanto você pode copiar a mensagem abaixo.</div>
+    <a class="btn" id="enviar" href="#" target="_blank" rel="noopener" style="width:100%">💬 Enviar pedido pelo WhatsApp</a>
+    <button class="btn claro" id="copiar" style="width:100%;margin-top:10px;box-shadow:inset 0 0 0 2px var(--linha)" hidden>📋 Copiar mensagem</button>
+  </div>
+</div>
+
+<script>
+/* ==========================================================================
+   CONFIGURAÇÃO — edite aqui
+   ========================================================================== */
+const CONFIG = {
+  marca: "Carvex Tecnologia",
+  // Número que recebe os pedidos, só dígitos com DDI+DDD. Ex.: "5511987654321". Vazio = botão mostra aviso.
+  whatsapp: "",
+  robos: [
+    { id: "agenda", emoji: "💈", nome: "AgendaZap", titulo: "Marca horário sozinho", resumo: "Agenda 24h, lembretes com confirmação e lista de espera.",
+      tags: ["📅 Agenda", "🔔 Lembretes", "⏳ Lista de espera"], implantacao: 490, mensalidade: 129, unica: 1490, para: "Barbearias, salões, clínicas, pet shops" },
+    { id: "cobra", emoji: "💸", nome: "CobraZap", titulo: "Cobra com educação", resumo: "Régua de cobrança, Pix copia-e-cola e negociação — dentro da lei.",
+      tags: ["💸 Pix", "🤝 Negociação", "🛡️ Travas legais"], implantacao: 590, mensalidade: 149, unica: 1990, para: "Academias, escolas, prestadores com mensalidade" },
+    { id: "pedido", emoji: "🍕", nome: "PedidoZap", titulo: "Fecha pedido no zap", resumo: "Cardápio, carrinho, taxa por bairro, Pix e quadro de pedidos.",
+      tags: ["🍕 Cardápio", "🛵 Entrega", "📋 Quadro de pedidos"], implantacao: 790, mensalidade: 179, unica: 2490, para: "Pizzarias, lanchonetes, deliveries" },
+  ],
+};
+
+/* Conversas de demonstração (simulação com dados fictícios). {x} = variável escolhida pelo visitante. */
+const ROTEIROS = {
+  heroi: [
+    { bot: "Oi! 👋 Eu sou o robô da Carvex. Posso te mostrar o que faço?", ops: [{ t: "Mostra aí! ✨" }] },
+    { bot: "Eu agendo horários 📅, cobro com educação 💸 e fecho pedidos 🍕 — tudo no WhatsApp, 24h por dia.", ops: [{ t: "E se você não souber algo?" }] },
+    { bot: "Aí eu não invento nada! 🙅 Eu aviso e chamo uma pessoa da sua equipe.\n\n“Não tenho essa informação no momento. Vou encaminhar você para um atendente.”", ops: [{ t: "Quero um robô desses! 🤩" }] },
+    { bot: "Bora! 🚀 Toque em “Comprar um robô” e fale com a gente.", fim: true },
+  ],
+  agenda: [
+    { bot: "Olá! 💈 Aqui é o assistente da Barbearia do Zé. Posso marcar seu horário?", ops: [{ t: "Agendar horário" }] },
+    { bot: "Qual serviço?", ops: [{ t: "Corte masculino", set: { s: "Corte masculino", p: "R$ 45,00" } }, { t: "Barba", set: { s: "Barba", p: "R$ 30,00" } }] },
+    { bot: "Qual dia?", ops: [{ t: "Amanhã (qui 08/10)" }, { t: "Sex 09/10" }] },
+    { bot: "Horários livres ⏰", ops: [{ t: "10:00" }, { t: "10:30" }, { t: "11:00" }] },
+    { bot: "Posso confirmar?\n\n✂️ {s} com João\n📅 {d} às {h}\n💰 {p}", ops: [{ t: "Confirmar ✅" }] },
+    { bot: "Agendado! ✅ Te mando um lembrete antes. 🔔" },
+    { nota: "⏰ no dia anterior…" },
+    { bot: "Lembrete: {s} amanhã às {h}. Você confirma?", ops: [{ t: "Confirmo ✅" }, { t: "Remarcar" }] },
+    { bot: "Presença confirmada! Te esperamos 💈", fim: true },
+  ],
+  cobra: [
+    { nota: "🏋️ Academia Corpo em Movimento" },
+    { bot: "Olá, Maria! 👋 Antes de continuar: você é a Maria?\n🔒 Só falo de pagamento depois de confirmar.", ops: [{ t: "Sim, sou eu" }, { t: "Número errado" }] },
+    { bot: "Obrigado! 😊 Sua mensalidade de R$ 150,00 vence em 3 dias.", ops: [{ t: "Pagar com Pix" }, { t: "Negociar" }] },
+    { bot: "Aqui está o Pix copia e cola 👇\n<code>00020126…5406150.00…6304</code>\nÉ só colar no app do banco.", ops: [{ t: "Já paguei" }] },
+    { bot: "Obrigado por avisar! 🙏 Vamos conferir (até 1 dia útil). Pode mandar o comprovante aqui.", ops: [{ t: "📎 Enviar comprovante" }] },
+    { bot: "Comprovante recebido! ✅ A equipe confere e avisa por aqui.", fim: true },
+  ],
+  pedido: [
+    { bot: "Bem-vindo à Pizzaria Bella Massa! 🍕", ops: [{ t: "Fazer pedido" }] },
+    { bot: "O que você quer pedir?", ops: [{ t: "🍕 Pizzas" }, { t: "🥤 Bebidas" }] },
+    { bot: "Pizza Calabresa — qual tamanho?", ops: [{ t: "Grande · R$ 52" }, { t: "Média · R$ 42" }] },
+    { bot: "Quantas?", ops: [{ t: "1" }, { t: "2" }] },
+    { bot: "🧺 Seu pedido\n2x Pizza Calabresa ... R$ 104,00\n🛵 Entrega (Centro) ... R$ 5,00\n\n<b>Total: R$ 109,00</b>\nComo prefere pagar?", ops: [{ t: "Pix" }, { t: "Dinheiro" }] },
+    { bot: "Pedido #1 recebido! 🎉 Aqui o Pix copia e cola 👇", },
+    { nota: "👩‍🍳 a cozinha aceita o pedido…" },
+    { bot: "Seu pedido #1 está sendo preparado 👨‍🍳", },
+    { bot: "Seu pedido #1 saiu para entrega 🛵 Bom apetite! 😋", fim: true },
+  ],
+};
+
+/* ==========================================================================
+   Utilidades
+   ========================================================================== */
+const $ = (s, r = document) => r.querySelector(s);
+const brl = (n) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 0 });
+const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+$("#ano").textContent = new Date().getFullYear();
+
+/* ==========================================================================
+   Motor de chat (demonstração interativa)
+   ========================================================================== */
+function criarChat(chatEl, roteiro, { autoplay = true, aoFim } = {}) {
+  let i = 0, vars = { d: "qui 08/10", h: "10:00" }, tocou = false, timers = [], rodada = 0;
+  const limpar = () => { timers.forEach(clearTimeout); timers = []; };
+  const esperar = (fn, ms) => timers.push(setTimeout(fn, ms));
+  const rola = () => { chatEl.scrollTop = chatEl.scrollHeight; };
+  const interp = (t) => t.replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? "");
+
+  function bolha(cls, html) { const d = document.createElement("div"); d.className = "msg " + cls; d.innerHTML = html; chatEl.append(d); rola(); return d; }
+
+  function proximo() {
+    const meu = rodada;
+    const no = roteiro[i];
+    if (!no) return;
+    if (no.nota) { bolha("nota", esc(no.nota)); i++; return esperar(proximo, reduz ? 0 : 900); }
+    const dig = document.createElement("div"); dig.className = "digitando"; dig.innerHTML = "<i></i><i></i><i></i>"; chatEl.append(dig); rola();
+    esperar(() => {
+      if (meu !== rodada) return;
+      dig.remove();
+      const html = no.bot.includes("<code>") || no.bot.includes("<b>") ? interp(no.bot).replace(/\n/g, "<br>") : esc(interp(no.bot));
+      bolha("bot", html);
+      i++;
+      if (no.ops) mostrarOpcoes(no.ops);
+      else if (no.fim) terminar();
+      else esperar(proximo, reduz ? 0 : 800);
+    }, reduz ? 0 : 750);
+  }
+
+  function mostrarOpcoes(ops) {
+    const meu = rodada;
+    const caixa = document.createElement("div"); caixa.className = "ops";
+    ops.forEach((o, k) => {
+      const b = document.createElement("button"); b.type = "button"; b.textContent = o.t; if (k === 0) b.className = "dica";
+      b.addEventListener("click", () => { tocou = true; escolher(o, caixa); });
+      caixa.append(b);
+    });
+    chatEl.append(caixa); rola();
+    if (autoplay && !reduz) esperar(() => { if (!tocou && meu === rodada) escolher(ops[0], caixa); }, 2200);
+  }
+
+  function escolher(o, caixa) {
+    if (o.set) Object.assign(vars, o.set);
+    if (/^\d{2}:\d{2}$/.test(o.t)) vars.h = o.t;
+    if (/\(?\w{3} \d{2}\/\d{2}/.test(o.t)) vars.d = o.t.replace(/^Amanhã \(|\)$/g, "").toLowerCase();
+    caixa.remove(); bolha("eu", esc(o.t));
+    esperar(proximo, reduz ? 0 : 450);
+  }
+
+  function terminar() {
+    const meu = rodada;
+    const caixa = document.createElement("div"); caixa.className = "ops";
+    const b = document.createElement("button"); b.type = "button"; b.textContent = "🔁 Ver de novo"; b.addEventListener("click", () => { tocou = true; reiniciar(); });
+    caixa.append(b); chatEl.append(caixa); rola();
+    aoFim && aoFim();
+    if (autoplay && !reduz) esperar(() => { if (!tocou && meu === rodada) reiniciar(); }, 5200);
+  }
+
+  function reiniciar() { limpar(); rodada++; i = 0; vars = { d: "qui 08/10", h: "10:00" }; chatEl.innerHTML = ""; esperar(proximo, 300); }
+
+  return { iniciar: reiniciar, parar() { limpar(); rodada++; } };
+}
+
+/* ==========================================================================
+   Herói
+   ========================================================================== */
+const chatHeroi = criarChat($("#chat-heroi"), ROTEIROS.heroi);
+$("#reiniciar-heroi").addEventListener("click", () => chatHeroi.iniciar());
+
+/* ==========================================================================
+   Cartões dos robôs (um telefone por robô) + preços
+   ========================================================================== */
+const trilho = $("#trilho"), trilhoPrecos = $("#trilho-precos");
+const chats = [];
+CONFIG.robos.forEach((r) => {
+  const s = document.createElement("article"); s.className = "slide rev";
+  s.innerHTML = `
+    <div class="tags"><span>${r.emoji} ${r.nome}</span></div>
+    <h3>${r.titulo}</h3>
+    <p>${r.resumo}</p>
+    <div class="tags">${r.tags.map((t) => `<span>${t}</span>`).join("")}</div>
+    <div class="fone"><div class="tela">
+      <header><img src="assets/logo-carvex.svg" alt=""><div><b>${r.nome}</b><span>online agora</span></div></header>
+      <div class="chat" id="chat-${r.id}" aria-live="polite"></div>
+      <footer><div>Toque nos botões…</div><button type="button" aria-label="Reiniciar ${r.nome}" data-rein="${r.id}">↻</button></footer>
+    </div></div>
+    <button class="btn claro" data-comprar="${r.id}">${r.emoji} Quero o ${r.nome}</button>`;
+  trilho.append(s);
+
+  const p = document.createElement("article"); p.className = "slide rev";
+  p.innerHTML = `
+    <div class="tags"><span>${r.emoji} Para quem?</span></div>
+    <h3>${r.emoji} ${r.nome}</h3>
+    <p>${r.para}</p>
+    <div class="preco"><b>${brl(r.mensalidade)}</b><small>/mês · hospedagem + suporte</small></div>
+    <div class="preco"><b style="font-size:24px">${brl(r.implantacao)}</b><small>implantação (única)</small></div>
+    <div class="preco"><b style="font-size:24px">${brl(r.unica)}</b><small>ou compra única (você hospeda)</small></div>
+    <p class="sug">Valores sugeridos de lançamento. Personalizações: ${brl(150)}/hora.</p>
+    <button class="btn claro" data-comprar="${r.id}">${r.emoji} Comprar o ${r.nome}</button>`;
+  trilhoPrecos.append(p);
+});
+
+// Só liga cada demo quando ela aparece na tela (economiza bateria e evita todas rodando juntas)
+const io = new IntersectionObserver((es) => es.forEach((e) => {
+  const el = e.target;
+  if (el.classList.contains("rev") && e.isIntersecting) el.classList.add("vis");
+  if (el.dataset.demo) {
+    const c = chats.find((x) => x.id === el.dataset.demo);
+    if (c) e.isIntersecting ? (!c.ligado && (c.ligado = true, c.chat.iniciar())) : (c.ligado && (c.ligado = false, c.chat.parar()));
+  }
+}), { threshold: 0.25 });
+
+CONFIG.robos.forEach((r) => {
+  const el = $(`#chat-${r.id}`);
+  el.dataset.demo = r.id;
+  chats.push({ id: r.id, chat: criarChat(el, ROTEIROS[r.id]), ligado: false });
+  io.observe(el);
+});
+document.querySelectorAll("[data-rein]").forEach((b) => b.addEventListener("click", () => chats.find((c) => c.id === b.dataset.rein).chat.iniciar()));
+document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+chatHeroi.iniciar();
+
+/* ==========================================================================
+   Compra
+   ========================================================================== */
+const modal = $("#modal"), opcoes = $("#opcoes");
+let escolhido = CONFIG.robos[0].id, abriuDe = null;
+
+function renderOpcoes() {
+  opcoes.innerHTML = "";
+  CONFIG.robos.forEach((r) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "opcao"; b.setAttribute("aria-pressed", String(r.id === escolhido));
+    b.innerHTML = `<span class="e">${r.emoji}</span><span><b>${r.nome}</b><small>${r.para}</small></span><span class="v">${brl(r.mensalidade)}/mês</span>`;
+    b.addEventListener("click", () => { escolhido = r.id; renderOpcoes(); atualizar(); explodir(b, r.emoji); });
+    opcoes.append(b);
+  });
+}
+
+function mensagem() {
+  const r = CONFIG.robos.find((x) => x.id === escolhido);
+  const nome = $("#nome").value.trim(), neg = $("#negocio").value.trim();
+  return `Olá, ${CONFIG.marca}! 👋 Quero comprar o robô ${r.nome} ${r.emoji}.` +
+    (neg ? `\nNegócio: ${neg}` : "") + (nome ? `\nMeu nome: ${nome}` : "") +
+    `\nVi na página: implantação ${brl(r.implantacao)} + ${brl(r.mensalidade)}/mês (ou compra única ${brl(r.unica)}). Podemos conversar?`;
+}
+
+function atualizar() {
+  const r = CONFIG.robos.find((x) => x.id === escolhido);
+  $("#resumo").innerHTML = `<b>${r.emoji} ${r.nome}</b> — implantação <b>${brl(r.implantacao)}</b> + <b>${brl(r.mensalidade)}/mês</b><br><small>ou compra única de ${brl(r.unica)} (você hospeda)</small>`;
+  const tem = /^\d{10,15}$/.test(CONFIG.whatsapp);
+  $("#aviso").hidden = tem; $("#copiar").hidden = tem;
+  const a = $("#enviar");
+  if (tem) { a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(mensagem())}`; a.removeAttribute("aria-disabled"); a.style.pointerEvents = ""; a.style.opacity = ""; }
+  else { a.href = "#"; a.setAttribute("aria-disabled", "true"); a.style.pointerEvents = "none"; a.style.opacity = ".5"; }
+}
+
+function abrir(id, origem) {
+  if (id) escolhido = id;
+  abriuDe = origem || document.activeElement;
+  renderOpcoes(); atualizar();
+  modal.hidden = false; modal.classList.add("aberto"); document.body.style.overflow = "hidden";
+  $("#nome").focus();
+  if (origem) explodir(origem, "🎉");
+}
+function fechar() { modal.classList.remove("aberto"); modal.hidden = true; document.body.style.overflow = ""; abriuDe && abriuDe.focus && abriuDe.focus(); }
+
+document.addEventListener("click", (e) => { const b = e.target.closest("[data-comprar]"); if (b) abrir(b.dataset.comprar || null, b); });
+$("#fechar").addEventListener("click", fechar);
+modal.addEventListener("click", (e) => { if (e.target === modal) fechar(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) fechar(); });
+["#nome", "#negocio"].forEach((s) => $(s).addEventListener("input", atualizar));
+$("#copiar").addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText(mensagem()); $("#copiar").textContent = "✅ Mensagem copiada!"; } catch { $("#copiar").textContent = "Selecione e copie manualmente"; }
+});
+$("#enviar").addEventListener("click", (e) => { if ($("#enviar").getAttribute("aria-disabled")) e.preventDefault(); else explodir($("#enviar"), "💙"); });
+
+// confete de emojis
+function explodir(origem, emoji) {
+  if (reduz) return;
+  const r = origem.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const lista = [emoji, "✨", "💙", "🚀", "🤖"];
+  for (let k = 0; k < 12; k++) {
+    const s = document.createElement("span"); s.className = "confete"; s.textContent = lista[k % lista.length];
+    s.style.left = cx + "px"; s.style.top = cy + "px";
+    s.style.setProperty("--x", (Math.random() * 260 - 130) + "px"); s.style.setProperty("--y", (Math.random() * -220 - 30) + "px"); s.style.setProperty("--g", (Math.random() * 360 - 180) + "deg");
+    document.body.append(s); setTimeout(() => s.remove(), 1700);
+  }
+}
+</script>
+</body>
+</html>
