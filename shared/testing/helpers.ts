@@ -28,7 +28,7 @@ export interface TestWorld<S> {
   setNow(d: Date): void;
   advance(ms: number): void;
   /** Simula o cliente escrevendo (texto) ou clicando (replyId). */
-  say(from: string, text: string, opts?: { replyId?: string; name?: string; type?: InboundMessage["type"] }): Promise<InboundOutcome>;
+  say(from: string, text: string, opts?: { replyId?: string; name?: string; type?: InboundMessage["type"]; mediaId?: string }): Promise<InboundOutcome>;
   /** Textos enviados desde a última chamada, e zera o buffer. */
   drain(to?: string): string[];
   app(): App;
@@ -59,7 +59,7 @@ export function makeWorld<S>(robot: Robot<S>, opts: { settings?: S; now?: Date; 
     async say(from, text, o = {}) {
       const msg: InboundMessage = {
         id: `wamid.IN${++seq}`, from, name: o.name, timestamp: Math.floor(now.getTime() / 1000),
-        type: o.type ?? (o.replyId ? "button" : "text"), text, replyId: o.replyId, phoneNumberId: PHONE_NUMBER_ID,
+        type: o.type ?? (o.replyId ? "button" : "text"), text, replyId: o.replyId, mediaId: o.mediaId, phoneNumberId: PHONE_NUMBER_ID,
       };
       return processInbound(env, robot, msg);
     },

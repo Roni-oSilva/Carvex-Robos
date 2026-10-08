@@ -1,7 +1,7 @@
 import type { Outgoing } from "../whatsapp/types.ts";
 import type { TestWorld } from "./helpers.ts";
 
-export type Step = string | { say: string; tap?: string; label?: string; type?: "text" | "audio" | "image" };
+export type Step = string | { say: string; tap?: string; label?: string; type?: "text" | "audio" | "image"; media?: string };
 
 export function fmtOutgoing(m: Outgoing): string {
   switch (m.kind) {
@@ -21,7 +21,7 @@ export async function runScenario<S>(w: TestWorld<S>, who: string, title: string
   for (const st of steps) {
     const s = typeof st === "string" ? { say: st } : st;
     const before = w.wa.sent.length;
-    await w.say(who, s.say, { replyId: s.tap, name: opts.name, type: s.type });
+    await w.say(who, s.say, { replyId: s.tap, name: opts.name, type: s.type, mediaId: s.media });
     const shown = s.type && s.type !== "text" ? `📎 (${s.type === "audio" ? "áudio" : "foto"} enviado)` : s.tap ? `*toca em* “${s.say}”` : `“${s.say}”`;
     lines.push(`**CLIENTE:** ${shown}`, "");
     for (const o of w.wa.sent.slice(before).filter((x) => x.to === who)) lines.push(...fmtOutgoing(o.msg).split("\n").map((l, i) => (i === 0 ? `**ROBÔ:** ${l}` : l.startsWith(">") ? l : `${l}`)), "");
