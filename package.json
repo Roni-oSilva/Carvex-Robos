@@ -16,7 +16,8 @@
     "docs": "node scripts/gerar-docs.ts && node scripts/gerar-catalogo.ts && node market-research/gerar.ts && node scripts/gerar-site.ts",
     "demo": "node scripts/gerar-demos.ts",
     "site": "node scripts/servir-site.ts",
-    "site:gerar": "node scripts/gerar-site.ts"
+    "site:gerar": "node scripts/gerar-site.ts",
+    "video": "node scripts/gerar-video.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
