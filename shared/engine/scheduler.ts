@@ -18,6 +18,8 @@ export function createTickRunner<S>(env: BotEnv, robot: Robot<S>): () => Promise
         ultimaLimpeza = now.getTime();
         const n = env.repo.purgeMessagesOlderThan(env.config.retentionDays, now);
         if (n > 0) env.log.info("mensagens_antigas_removidas", { total: n });
+        try { const m = robot.limpar?.(env, now, env.config.retentionDays) ?? 0; if (m > 0) env.log.info("dados_antigos_removidos", { total: m }); }
+        catch (e) { env.log.error("limpeza_falhou", { erro: e instanceof Error ? e.message : String(e) }); }
       }
       return "ok";
     } finally {

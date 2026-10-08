@@ -52,6 +52,8 @@ const SECURITY_HEADERS = {
 export interface Reply {
   status: number;
   body?: string;
+  /** Corpo binário (imagens). Tem prioridade sobre `body`. */
+  bytes?: Buffer;
   type?: string;
   headers?: Record<string, string | string[]>;
 }
@@ -63,7 +65,7 @@ export const redirect = (to: string, headers: Reply["headers"] = {}): Reply => (
 
 export function send(res: ServerResponse, r: Reply): void {
   res.writeHead(r.status, { ...SECURITY_HEADERS, ...(r.type ? { "Content-Type": r.type } : {}), ...(r.headers ?? {}) });
-  res.end(r.body ?? "");
+  res.end(r.bytes ?? r.body ?? "");
 }
 
 export function clientIp(req: IncomingMessage, trustProxy: boolean): string {

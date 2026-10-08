@@ -39,6 +39,7 @@ export function buildEnv(): BotEnv {
     handoffResumeHours: envInt("HANDOFF_RESUME_HOURS", 12),
     sessionSecret: getEnv("SESSION_SECRET") ?? (production ? requireEnv("SESSION_SECRET") : randomBytes(32).toString("hex")),
     cookieSecure: getEnv("COOKIE_SECURE", production ? "true" : "false") === "true",
+    mediaDir: getEnv("MEDIA_DIR", "./data/media")!,
   };
   if (!dryRun && (!config.appSecret || !config.verifyToken)) {
     throw new Error("Defina WHATSAPP_APP_SECRET e WHATSAPP_VERIFY_TOKEN (ou use DRY_RUN=true para testar sem WhatsApp).");

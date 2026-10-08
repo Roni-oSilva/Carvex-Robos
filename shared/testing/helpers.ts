@@ -1,3 +1,6 @@
+import { mkdtempSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { signBody } from "../whatsapp/webhook.ts";
 import { FakeWhatsApp } from "../whatsapp/cloud-api.ts";
 import { Db } from "../database/db.ts";
@@ -39,7 +42,7 @@ export function makeWorld<S>(robot: Robot<S>, opts: { settings?: S; now?: Date; 
   const wa = new FakeWhatsApp();
   const config: AppConfig = {
     appSecret: TEST_SECRET, verifyToken: TEST_VERIFY, insecureSkipSignature: false, retentionDays: 180,
-    trustProxy: false, handoffResumeHours: 12, sessionSecret: "sessao-de-teste", cookieSecure: false, ...opts.config,
+    trustProxy: false, handoffResumeHours: 12, sessionSecret: "sessao-de-teste", cookieSecure: false, mediaDir: mkdtempSync(join(tmpdir(), "midia-teste-")), ...opts.config,
   };
   const env: BotEnv = { repo: new Repo(db), db, wa, ai: opts.ai ?? null, log: silentLogger, clock: () => now, config, contactLimiter: new RateLimiter(1000, 60_000) };
   const settings = opts.settings ?? robot.defaultSettings();

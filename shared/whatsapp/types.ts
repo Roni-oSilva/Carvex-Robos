@@ -32,6 +32,8 @@ export type Outgoing =
 export interface WhatsAppClient {
   send(to: string, msg: Outgoing, opts?: { phoneNumberId?: string }): Promise<{ id: string }>;
   markRead?(messageId: string, opts?: { phoneNumberId?: string }): Promise<void>;
+  /** Baixa uma mídia recebida (foto) pelo id. Opcional: só a Cloud API real e o Fake implementam. */
+  downloadMedia?(mediaId: string): Promise<{ data: Buffer; mime: string }>;
 }
 
 export class WhatsAppError extends Error {

@@ -89,6 +89,24 @@ export class CloudApiClient implements WhatsAppClient {
     return this.post(opts?.phoneNumberId ?? this.o.phoneNumberId, buildPayload(to, msg));
   }
 
+  /**
+   * Baixa mídia em 2 passos (documentação da Cloud API): GET /{media-id} devolve uma URL temporária;
+   * GET nessa URL, com o mesmo token, devolve o arquivo. Limite de 5 MB conferido antes e depois.
+   */
+  async downloadMedia(mediaId: string): Promise<{ data: Buffer; mime: string }> {
+    if (!/^[A-Za-z0-9_-]{1,100}$/.test(mediaId)) throw new WhatsAppError("id de mídia inválido", 400);
+    const auth = { Authorization: `Bearer ${this.o.token}` };
+    const meta = await this.o.fetchImpl(`${this.o.baseUrl}/${this.o.apiVersion}/${mediaId}`, { headers: auth });
+    const info = (await meta.json().catch(() => ({}))) as { url?: string; mime_type?: string; file_size?: number; error?: { message?: string; code?: number } };
+    if (!meta.ok || !info.url) throw new WhatsAppError(info.error?.message ?? `HTTP ${meta.status}`, meta.status, info.error?.code);
+    if ((info.file_size ?? 0) > 5 * 1024 * 1024) throw new WhatsAppError("mídia maior que 5 MB", 413);
+    const file = await this.o.fetchImpl(info.url, { headers: auth });
+    if (!file.ok) throw new WhatsAppError(`HTTP ${file.status} ao baixar a mídia`, file.status);
+    const data = Buffer.from(await file.arrayBuffer());
+    if (data.length > 5 * 1024 * 1024) throw new WhatsAppError("mídia maior que 5 MB", 413);
+    return { data, mime: info.mime_type ?? file.headers.get("content-type") ?? "application/octet-stream" };
+  }
+
   async markRead(messageId: string, opts?: { phoneNumberId?: string }): Promise<void> {
     await this.post(opts?.phoneNumberId ?? this.o.phoneNumberId, { messaging_product: "whatsapp", status: "read", message_id: messageId });
   }
@@ -96,6 +114,8 @@ export class CloudApiClient implements WhatsAppClient {
 
 /** Cliente em memória para testes e demonstrações — não envia nada à rede. */
 export class FakeWhatsApp implements WhatsAppClient {
+  /** Mídias "recebidas" nos testes: id -> arquivo. */
+  media = new Map<string, { data: Buffer; mime: string }>();
   sent: { to: string; msg: Outgoing; id: string }[] = [];
   failNext = 0;
   private n = 0;
@@ -108,6 +128,12 @@ export class FakeWhatsApp implements WhatsAppClient {
     const id = `wamid.FAKE${++this.n}`;
     this.sent.push({ to, msg, id });
     return { id };
+  }
+
+  async downloadMedia(mediaId: string): Promise<{ data: Buffer; mime: string }> {
+    const m = this.media.get(mediaId);
+    if (!m) throw new WhatsAppError("mídia não encontrada", 404);
+    return m;
   }
 
   /** Textos enviados a um número (útil nas asserções). */

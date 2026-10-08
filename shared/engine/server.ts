@@ -126,6 +126,7 @@ ${resumo ? h`<div class="card"><b>Resumo:</b> ${resumo}</div>` : ""}
       if (req.form.confirmo !== "1") return redirect("/admin/clientes");
       const motivo = robot.beforeDeleteContact?.(env, ctx.tenant.id, id);
       if (motivo) return redirect(`/admin/clientes?msg=${encodeURIComponent("Não foi possível excluir: " + motivo)}`);
+      robot.onDeleteContact?.(env, ctx.tenant.id, id);
       env.repo.deleteContact(ctx.tenant.id, id);
       env.repo.event(ctx.tenant.id, "lgpd_exclusao", {}, ctx.now);
       return redirect(`/admin/clientes?msg=${encodeURIComponent("Dados do cliente excluídos.")}`);

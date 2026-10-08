@@ -1,4 +1,6 @@
 import { randomBytes } from "node:crypto";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { Db } from "../database/db.ts";
 import { sharedMigrations } from "../database/migrations.ts";
 import { Repo, type Tenant } from "../database/repo.ts";
@@ -20,7 +22,7 @@ export async function startDemo<S>(robot: Robot<S>, settings: S, seed: (env: Bot
   db.migrate(robot.migrations);
   const env: BotEnv = {
     repo: new Repo(db), db, wa: new FakeWhatsApp(), ai: null, log: createLogger(), clock: () => new Date(),
-    config: { appSecret: "demo", verifyToken: "demo", insecureSkipSignature: true, retentionDays: 180, trustProxy: false, handoffResumeHours: 12, sessionSecret: randomBytes(16).toString("hex"), cookieSecure: false },
+    config: { appSecret: "demo", verifyToken: "demo", insecureSkipSignature: true, retentionDays: 180, trustProxy: false, handoffResumeHours: 12, sessionSecret: randomBytes(16).toString("hex"), cookieSecure: false, mediaDir: join(tmpdir(), `demo-midia-${randomBytes(4).toString("hex")}`) },
     contactLimiter: new RateLimiter(1000, 60_000),
   };
   const tenant = env.repo.createTenant({ slug: "demo", nome: robot.knowledge(settings).empresa.nome, phone_number_id: "DEMO", admin_token: DEMO_ADMIN_TOKEN, settings: settings as object }, env.clock());

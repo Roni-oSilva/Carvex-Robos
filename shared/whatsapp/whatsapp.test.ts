@@ -114,3 +114,21 @@ test("parâmetros de template não carregam quebra de linha (a Meta rejeita)", (
   assert.equal(templateParam("linha 1\nlinha 2\t\ttab      fim"), "linha 1 | linha 2 | tab   fim");
   assert.equal(templateParam("   "), "-");
 });
+
+test("downloadMedia: 2 passos com token, respeita limite de tamanho e valida o id", async () => {
+  const calls: string[] = [];
+  const arquivo = Buffer.from([0xff, 0xd8, 0xff, 0xe0, 1, 2, 3]);
+  const f = (async (url: string, init?: RequestInit) => {
+    calls.push(`${url} ${(init?.headers as Record<string, string>)?.Authorization}`);
+    if (url.includes("/MEDIA1")) return new Response(JSON.stringify({ url: "https://cdn.exemplo/x", mime_type: "image/jpeg", file_size: 7 }), { status: 200 });
+    if (url.includes("/GRANDE")) return new Response(JSON.stringify({ url: "https://cdn.exemplo/y", file_size: 9_000_000 }), { status: 200 });
+    return new Response(arquivo, { status: 200 });
+  }) as unknown as typeof fetch;
+  const c = new CloudApiClient({ token: "TKN", phoneNumberId: "P", fetchImpl: f });
+  const r = await c.downloadMedia("MEDIA1");
+  assert.deepEqual([r.mime, r.data.equals(arquivo)], ["image/jpeg", true]);
+  assert.match(calls[0], /\/v21\.0\/MEDIA1 Bearer TKN/);
+  assert.match(calls[1], /cdn\.exemplo\/x Bearer TKN/);
+  await assert.rejects(c.downloadMedia("GRANDE"), /5 MB/);
+  await assert.rejects(c.downloadMedia("../../etc/passwd"), /inválido/);
+});

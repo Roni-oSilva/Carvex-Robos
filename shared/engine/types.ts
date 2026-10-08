@@ -18,6 +18,8 @@ export interface AppConfig {
   handoffResumeHours: number;
   sessionSecret: string;
   cookieSecure: boolean;
+  /** Pasta das fotos recebidas (robôs que usam mídia). */
+  mediaDir: string;
 }
 
 export interface BotEnv {
@@ -86,6 +88,10 @@ export interface Robot<S> {
     home(ctx: AdminContext<S>): SafeHtml;
     routes: AdminRoute<S>[];
   };
+  /** Chamado ANTES de apagar um contato (LGPD): apague arquivos/dados externos ligados a ele. */
+  onDeleteContact?(env: BotEnv, tenantId: number, contactId: number): void;
+  /** Chamado uma vez por dia: apague dados/arquivos mais antigos que a retenção. Devolve quantos itens removeu. */
+  limpar?(env: BotEnv, now: Date, retentionDays: number): number;
   /** Retorna um motivo (string) para BLOQUEAR a exclusão LGPD do contato, ou null para permitir. */
   beforeDeleteContact?(env: BotEnv, tenantId: number, contactId: number): string | null;
 }
