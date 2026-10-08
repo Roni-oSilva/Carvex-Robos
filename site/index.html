@@ -6,7 +6,7 @@
 <title>Carvex Tecnologia — Robôs de WhatsApp que vendem, agendam e cobram por você</title>
 <meta name="description" content="Robôs de WhatsApp prontos para barbearias, clínicas, academias e deliveries: agenda 24h, cobrança educada e pedidos sem comissão. API oficial, LGPD e painel simples.">
 <meta name="theme-color" content="#1456f0">
-<link rel="icon" href="assets/logo-carvex.svg" type="image/svg+xml">
+<link rel="icon" href="assets/carvex-simbolo-azul.png" type="image/png">
 <style>
 :root{
   --az-950:#050f45; --az-900:#071a6b; --az-800:#0a2a9c; --az-700:#0b3fd1; --az-600:#1456f0; --az-500:#1a6bff; --az-400:#2f8bff; --ciano:#22d3ee;
@@ -28,9 +28,10 @@ button{font:inherit;cursor:pointer;border:0;color:inherit}
 
 /* ---------- cabeçalho ---------- */
 .topo{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(234,242,255,.82);border-bottom:1px solid rgba(26,107,255,.15)}
-.topo .wrap{display:flex;align-items:center;gap:18px;height:68px}
+.topo .wrap{display:flex;align-items:center;gap:18px;height:76px}
 .marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;letter-spacing:-.02em;font-size:20px}
-.marca img{width:38px;height:38px;filter:drop-shadow(0 6px 10px rgba(26,107,255,.35))}
+.marca .logo{height:58px;width:auto}
+.rodape .marca .logo{height:56px}
 .marca small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--az-600);margin-top:-3px}
 .nav{margin-left:auto;display:flex;gap:6px;align-items:center}
 .nav a.l{padding:8px 12px;border-radius:99px;text-decoration:none;font-weight:600;color:var(--mut)}
@@ -67,6 +68,9 @@ h1 .dest{display:inline-block;background:linear-gradient(90deg,#fff,#a8e8ff,#fff
 .bolha-logo{width:92px;height:92px;margin-top:30px;animation:pulo 3.4s ease-in-out infinite;filter:drop-shadow(0 18px 24px rgba(5,15,69,.5))}
 @keyframes pulo{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
 .palco{position:relative;display:grid;place-items:center;min-height:540px;padding:0 24px}
+.chip .ic{margin-right:6px;color:var(--az-500)}
+.selo .ic{margin-right:2px}
+.tags .ic{margin-right:2px}
 .chip{position:absolute;z-index:3;background:#fff;color:var(--az-800);font-weight:800;font-size:15px;padding:9px 16px;border-radius:99px;box-shadow:0 12px 26px -10px rgba(5,15,69,.6);white-space:nowrap;animation:boia 5s ease-in-out infinite}
 .chip:nth-of-type(2){animation-delay:-1.2s}.chip:nth-of-type(3){animation-delay:-2.4s}.chip:nth-of-type(4){animation-delay:-3.6s}
 @keyframes boia{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
@@ -77,7 +81,7 @@ h1 .dest{display:inline-block;background:linear-gradient(90deg,#fff,#a8e8ff,#fff
 .fone .tela{background:linear-gradient(180deg,#0b1533,#0a1230);border-radius:32px;overflow:hidden;display:flex;flex-direction:column;height:480px;position:relative}
 .fone .tela::before{content:"";position:absolute;top:8px;left:50%;translate:-50% 0;width:88px;height:22px;background:#060d24;border-radius:99px;z-index:5}
 .fone header{padding:40px 14px 10px;display:flex;align-items:center;gap:10px;background:rgba(26,107,255,.12);border-bottom:1px solid rgba(255,255,255,.07);color:#fff}
-.fone header img{width:30px;height:30px}
+.fone header img{height:24px;width:auto}
 .fone header b{font-size:15px;display:block;line-height:1.1}
 .fone header span{font-size:12px;color:#8fe6ff;display:flex;align-items:center;gap:5px}
 .fone header span::before{content:"";width:7px;height:7px;border-radius:50%;background:#35f0a0;box-shadow:0 0 0 0 rgba(53,240,160,.7);animation:ping 1.8s infinite}
@@ -112,7 +116,7 @@ h1 .dest{display:inline-block;background:linear-gradient(90deg,#fff,#a8e8ff,#fff
 @keyframes rola{to{transform:translateX(-50%)}}
 
 /* ---------- seções ---------- */
-section{padding:56px 0;scroll-margin-top:76px}
+section{padding:56px 0;scroll-margin-top:84px}
 .cab{text-align:center;max-width:760px;margin:0 auto 34px}
 .cab h2{font-size:clamp(30px,4.4vw,54px);letter-spacing:-.035em;line-height:1.04;font-weight:900;margin-bottom:12px;text-wrap:balance}
 .cab p{color:var(--mut);font-size:19px}
@@ -143,7 +147,9 @@ section{padding:56px 0;scroll-margin-top:76px}
 @media(max-width:900px){.passos{grid-template-columns:1fr 1fr}}@media(max-width:540px){.passos{grid-template-columns:1fr}}
 .passo{background:#fff;border-radius:var(--raio);padding:26px 22px;box-shadow:0 14px 36px -24px rgba(11,63,209,.55);position:relative;transition:.25s;border:2px solid transparent}
 .passo:hover{transform:translateY(-6px);border-color:var(--az-400)}
-.passo .em{font-size:44px;display:inline-block;animation:balanca 3.5s ease-in-out infinite}
+.ic{display:inline-block;width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.18em;flex:none}
+.passo .em{width:62px;height:62px;border-radius:20px;background:var(--grad-2);color:#fff;display:grid;place-items:center;box-shadow:0 14px 26px -12px rgba(26,107,255,.8);animation:balanca 3.5s ease-in-out infinite}
+.passo .em .ic{width:30px;height:30px}
 .passo:nth-child(2) .em{animation-delay:-.8s}.passo:nth-child(3) .em{animation-delay:-1.6s}.passo:nth-child(4) .em{animation-delay:-2.4s}
 @keyframes balanca{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(8deg) scale(1.12)}}
 .passo h3{font-size:21px;margin:10px 0 6px;letter-spacing:-.02em}
@@ -155,7 +161,9 @@ section{padding:56px 0;scroll-margin-top:76px}
 .ben{background:#fff;border-radius:24px;padding:22px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 10px 30px -22px rgba(11,63,209,.6);transition:.25s}
 .ben:hover{background:var(--grad);color:#fff;transform:translateY(-4px)}
 .ben:hover p{color:#e4f0ff}
-.ben .e{font-size:30px;flex:none}
+.ben .e{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#dbe8ff,#c9f3ff);color:var(--az-700);display:grid;place-items:center;flex:none;transition:.25s}
+.ben .e .ic{width:24px;height:24px}
+.ben:hover .e{background:rgba(255,255,255,.2);color:#fff}
 .ben b{display:block;font-size:18px;margin-bottom:3px}
 .ben p{color:var(--mut);font-size:15.5px}
 
@@ -179,6 +187,7 @@ details p{padding:0 0 18px;color:var(--mut)}
 
 /* cta final */
 .final{background:var(--grad);background-size:160% 160%;animation:fluxo 14s ease-in-out infinite;border-radius:44px;padding:clamp(34px,6vw,76px);text-align:center;color:#fff;position:relative;overflow:hidden;box-shadow:var(--sombra)}
+.logo-final{width:170px;height:auto;margin:0 auto 22px;position:relative}
 .final h2{font-size:clamp(34px,5.4vw,68px);letter-spacing:-.04em;line-height:1;font-weight:900;margin-bottom:14px;text-wrap:balance}
 .final p{font-size:20px;opacity:.95;margin-bottom:26px}
 .rodape{padding:34px 0 120px;color:var(--mut);font-size:14.5px;text-align:center}
@@ -202,7 +211,8 @@ details p{padding:0 0 18px;color:var(--mut)}
 .opcao{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:20px;border:2px solid var(--linha);background:#fff;text-align:left;width:100%;transition:.18s}
 .opcao:hover{border-color:var(--az-400);transform:translateX(4px)}
 .opcao[aria-pressed=true]{border-color:var(--az-500);background:linear-gradient(135deg,#eaf2ff,#dff6ff);box-shadow:0 10px 24px -14px var(--az-500)}
-.opcao .e{font-size:30px}
+.opcao .e{width:46px;height:46px;border-radius:15px;background:var(--grad-2);color:#fff;display:grid;place-items:center;flex:none}
+.opcao .e .ic{width:24px;height:24px}
 .opcao b{display:block}.opcao small{color:var(--mut)}
 .opcao .v{margin-left:auto;font-weight:900;color:var(--az-700);text-align:right;font-size:15px}
 .campo{display:grid;gap:6px;margin-bottom:12px}
@@ -213,8 +223,9 @@ details p{padding:0 0 18px;color:var(--mut)}
 .resumo{background:#f1f6ff;border-radius:18px;padding:14px 16px;margin:6px 0 14px;font-size:15.5px}
 .caixa .btn[disabled]{filter:grayscale(.7);opacity:.6;pointer-events:none}
 
-/* confete de emojis */
-.confete{position:fixed;pointer-events:none;z-index:200;font-size:26px;animation:cai 1.6s ease-out forwards}
+/* confete */
+.confete{position:fixed;pointer-events:none;z-index:200;animation:cai 1.6s ease-out forwards}
+.confete{width:var(--t);height:var(--t);background:var(--c);border-radius:var(--b);font-size:0}
 @keyframes cai{0%{transform:translate(0,0) scale(.4);opacity:1}100%{transform:translate(var(--x),var(--y)) rotate(var(--g)) scale(1.2);opacity:0}}
 
 @media (prefers-reduced-motion:reduce){
@@ -224,19 +235,35 @@ details p{padding:0 0 18px;color:var(--mut)}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><path d="M5 7V6a2 2 0 0 1 2-2h11v3"/><rect x="3" y="7" width="18" height="13" rx="3"/><circle cx="16.500" cy="13.500" r="1.200"/></symbol>
+<symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 1 1 12 0v5l1.500 2h-15L6 16z"/><path d="M10 21h4"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6l8-3z"/><path d="M8.500 12l2.500 2.500 4.500-5"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.800 5.200L18 10l-5.200 1.800L11 17l-1.800-5.200L4 10l5.200-1.800L11 3z"/><path d="M19 15l.8 2.200L22 18l-2.200.8L19 21l-.8-2.200L16 18l2.200-.8L19 15z"/></symbol>
+<symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="8" cy="8" r="1.300"/></symbol>
+<symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.500 9.500A2 2 0 0 0 6.200 21h11.600a2 2 0 0 0 1.700-2.500L14 9V3"/><path d="M7.500 15h9"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.500"/><circle cx="18" cy="20" r="1.500"/><path d="M3 4h2.500l2.200 11h11l2-8H6.500"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-7"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+</defs></svg>
 
 <header class="topo">
   <div class="wrap">
     <a class="marca" href="#topo" aria-label="Carvex Tecnologia — início">
-      <img src="assets/logo-carvex.svg" alt="" width="38" height="38">
-      <span>Carvex<small>Tecnologia</small></span>
+      <img class="logo" src="assets/carvex-logo-azul.png" alt="Carvex Technology" width="111" height="58">
     </a>
     <nav class="nav" aria-label="Principal">
       <a class="l" href="#robos">Robôs</a>
       <a class="l" href="#como">Como funciona</a>
       <a class="l" href="#precos">Preços</a>
       <a class="l" href="#faq">Dúvidas</a>
-      <button class="btn pequeno" data-comprar>🤖 Comprar um robô</button>
+      <button class="btn pequeno" data-comprar>Comprar um robô</button>
     </nav>
   </div>
 </header>
@@ -246,12 +273,12 @@ details p{padding:0 0 18px;color:var(--mut)}
 <div class="wrap heroi">
   <div class="cartao-heroi">
     <div>
-      <span class="selo">⚡ Robôs de WhatsApp prontos para vender</span>
+      <span class="selo"><svg class="ic" aria-hidden="true"><use href="#i-bolt"/></svg>Robôs de WhatsApp prontos para vender</span>
       <h1>Seu robô de WhatsApp <span class="dest">trabalhando por você</span> 24h</h1>
-      <p class="sub">Marca horário, cobra com educação e fecha pedidos — enquanto você cuida do seu negócio. 💙</p>
+      <p class="sub">Marca horário, cobra com educação e fecha pedidos — enquanto você cuida do seu negócio.</p>
       <div class="acoes">
-        <button class="btn claro" data-comprar>🤖 Comprar um robô</button>
-        <a class="btn fantasma" href="#robos">▶ Ver ao vivo</a>
+        <button class="btn claro" data-comprar>Comprar um robô</button>
+        <a class="btn fantasma" href="#robos">Ver ao vivo</a>
       </div>
       <svg class="bolha-logo" viewBox="0 0 100 100" aria-hidden="true">
         <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#cfe6ff"/></linearGradient></defs>
@@ -260,13 +287,13 @@ details p{padding:0 0 18px;color:var(--mut)}
       </svg>
     </div>
     <div class="palco">
-      <span class="chip" style="left:-34px;top:6%;--r:-6deg">📅 Agenda 24h</span>
-      <span class="chip" style="right:-34px;top:20%;--r:5deg">💸 Cobrança educada</span>
-      <span class="chip" style="left:-46px;bottom:20%;--r:4deg">🍕 Pedidos sem comissão</span>
-      <span class="chip" style="right:-30px;bottom:7%;--r:-5deg">🔔 Lembretes</span>
+      <span class="chip" style="left:-34px;top:6%;--r:-6deg"><svg class="ic" aria-hidden="true"><use href="#i-calendar"/></svg>Agenda 24h</span>
+      <span class="chip" style="right:-34px;top:20%;--r:5deg"><svg class="ic" aria-hidden="true"><use href="#i-wallet"/></svg>Cobrança educada</span>
+      <span class="chip" style="left:-46px;bottom:20%;--r:4deg"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg>Pedidos sem comissão</span>
+      <span class="chip" style="right:-30px;bottom:7%;--r:-5deg"><svg class="ic" aria-hidden="true"><use href="#i-bell"/></svg>Lembretes</span>
       <div class="fone" aria-label="Demonstração de conversa no WhatsApp">
         <div class="tela">
-          <header><img src="assets/logo-carvex.svg" alt=""><div><b>Carvex Bot</b><span>online agora</span></div></header>
+          <header><img src="assets/carvex-simbolo-branco.png" alt=""><div><b>Carvex Bot</b><span>online agora</span></div></header>
           <div class="chat" id="chat-heroi" aria-live="polite"></div>
           <footer><div>Digite uma mensagem…</div><button type="button" aria-label="Reiniciar conversa" id="reiniciar-heroi">↻</button></footer>
         </div>
@@ -276,15 +303,15 @@ details p{padding:0 0 18px;color:var(--mut)}
 </div>
 
 <div class="faixa" aria-hidden="true"><div>
-  <span>💈 Barbearias</span><span>💅 Salões</span><span>🏥 Clínicas</span><span>🐶 Pet shops</span><span>🏋️ Academias</span><span>🍕 Pizzarias</span><span>🍔 Lanchonetes</span><span>📚 Escolas</span>
-  <span>💈 Barbearias</span><span>💅 Salões</span><span>🏥 Clínicas</span><span>🐶 Pet shops</span><span>🏋️ Academias</span><span>🍕 Pizzarias</span><span>🍔 Lanchonetes</span><span>📚 Escolas</span>
+  <span>Barbearias</span><span>Salões</span><span>Clínicas</span><span>Pet shops</span><span>Academias</span><span>Pizzarias</span><span>Lanchonetes</span><span>Escolas</span>
+  <span>Barbearias</span><span>Salões</span><span>Clínicas</span><span>Pet shops</span><span>Academias</span><span>Pizzarias</span><span>Lanchonetes</span><span>Escolas</span>
 </div></div>
 
 <!-- ===================== ROBÔS ===================== -->
 <section id="robos">
   <div class="wrap">
     <div class="cab rev">
-      <h2>Escolha seu <span class="grad">robô</span> 🤖</h2>
+      <h2>Escolha seu <span class="grad">robô</span></h2>
       <p>Toque nos botões dentro do celular e converse com cada um. É uma simulação com dados fictícios — igual ao que o seu cliente vai ver.</p>
     </div>
     <div class="trilho" id="trilho"></div>
@@ -295,14 +322,14 @@ details p{padding:0 0 18px;color:var(--mut)}
 <section id="como">
   <div class="wrap">
     <div class="cab rev">
-      <h2>Do pedido ao robô <span class="grad">no ar</span> 🚀</h2>
+      <h2>Do pedido ao robô <span class="grad">no ar</span></h2>
       <p>A gente cuida da parte técnica. Você só conta como o seu negócio funciona.</p>
     </div>
     <div class="passos">
-      <div class="passo rev"><span class="em">🛒</span><h3>Você escolhe</h3><p>Seleciona o robô e manda um oi pelo WhatsApp. Sem burocracia.</p></div>
-      <div class="passo rev"><span class="em">⚙️</span><h3>Nós configuramos</h3><p>Conectamos ao número oficial, cadastramos serviços, preços, horários e mensagens.</p></div>
-      <div class="passo rev"><span class="em">💬</span><h3>Seus clientes conversam</h3><p>O robô atende 24h. Se não souber, <b>não inventa</b>: chama você.</p></div>
-      <div class="passo rev"><span class="em">📊</span><h3>Você acompanha</h3><p>Painel simples com agenda, cobranças ou pedidos — e assume a conversa quando quiser.</p></div>
+      <div class="passo rev"><span class="em"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><h3>Você escolhe</h3><p>Seleciona o robô e manda um oi pelo WhatsApp. Sem burocracia.</p></div>
+      <div class="passo rev"><span class="em"><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg></span><h3>Nós configuramos</h3><p>Conectamos ao número oficial, cadastramos serviços, preços, horários e mensagens.</p></div>
+      <div class="passo rev"><span class="em"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg></span><h3>Seus clientes conversam</h3><p>O robô atende 24h. Se não souber, <b>não inventa</b>: chama você.</p></div>
+      <div class="passo rev"><span class="em"><svg class="ic" aria-hidden="true"><use href="#i-chart"/></svg></span><h3>Você acompanha</h3><p>Painel simples com agenda, cobranças ou pedidos — e assume a conversa quando quiser.</p></div>
     </div>
   </div>
 </section>
@@ -310,14 +337,14 @@ details p{padding:0 0 18px;color:var(--mut)}
 <!-- ===================== BENEFÍCIOS ===================== -->
 <section>
   <div class="wrap">
-    <div class="cab rev"><h2>Feito do <span class="grad">jeito certo</span> ✅</h2><p>Tecnologia séria para negócio pequeno.</p></div>
+    <div class="cab rev"><h2>Feito do <span class="grad">jeito certo</span></h2><p>Tecnologia séria para negócio pequeno.</p></div>
     <div class="bens">
-      <div class="ben rev"><span class="e">🛡️</span><div><b>API oficial do WhatsApp</b><p>Nada de robô "pirata" que bloqueia seu número.</p></div></div>
-      <div class="ben rev"><span class="e">🔒</span><div><b>LGPD no pacote</b><p>Cliente pode parar (PARAR), excluir dados e o histórico se apaga sozinho.</p></div></div>
-      <div class="ben rev"><span class="e">🙋</span><div><b>Humano a um toque</b><p>O cliente escreve "atendente" e uma pessoa assume.</p></div></div>
-      <div class="ben rev"><span class="e">🧠</span><div><b>IA que não inventa</b><p>Só responde com o que a sua empresa cadastrou.</p></div></div>
-      <div class="ben rev"><span class="e">💰</span><div><b>Sem comissão por venda</b><p>Preço fixo. Os clientes e os dados são seus.</p></div></div>
-      <div class="ben rev"><span class="e">🧪</span><div><b>Testado de ponta a ponta</b><p>Mais de 140 testes automáticos nos fluxos dos robôs.</p></div></div>
+      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><div><b>API oficial do WhatsApp</b><p>Nada de robô "pirata" que bloqueia seu número.</p></div></div>
+      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><div><b>LGPD no pacote</b><p>Cliente pode parar (PARAR), excluir dados e o histórico se apaga sozinho.</p></div></div>
+      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></span><div><b>Humano a um toque</b><p>O cliente escreve "atendente" e uma pessoa assume.</p></div></div>
+      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg></span><div><b>IA que não inventa</b><p>Só responde com o que a sua empresa cadastrou.</p></div></div>
+      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span><div><b>Sem comissão por venda</b><p>Preço fixo. Os clientes e os dados são seus.</p></div></div>
+      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-flask"/></svg></span><div><b>Testado de ponta a ponta</b><p>Mais de 140 testes automáticos nos fluxos dos robôs.</p></div></div>
     </div>
   </div>
 </section>
@@ -326,7 +353,7 @@ details p{padding:0 0 18px;color:var(--mut)}
 <section id="precos">
   <div class="wrap">
     <div class="cab rev">
-      <h2>Quanto <span class="grad">custa</span>? 💙</h2>
+      <h2>Quanto <span class="grad">custa</span>?</h2>
       <p>Valores de lançamento. Implantação (uma vez) + mensalidade com hospedagem e suporte — ou compra única, se você prefere hospedar.</p>
     </div>
     <div class="trilho" id="trilho-precos"></div>
@@ -339,15 +366,15 @@ details p{padding:0 0 18px;color:var(--mut)}
   <div class="wrap">
     <div class="honesto rev">
       <div style="position:relative">
-        <h2>Sem enrolação. 🤝<br>A gente diz o que <span class="grad" style="background:linear-gradient(90deg,#8fe6ff,#fff);-webkit-background-clip:text;background-clip:text">não faz</span>.</h2>
+        <h2>Sem enrolação.<br>A gente diz o que <span class="grad" style="background:linear-gradient(90deg,#8fe6ff,#fff);-webkit-background-clip:text;background-clip:text">não faz</span>.</h2>
         <p style="margin-top:14px;opacity:.9">Preferimos você decidindo com clareza a se frustrando depois.</p>
       </div>
       <ul>
-        <li>💸 Não recebe pagamento sozinho: o Pix cai direto na sua conta e você dá baixa no painel.</li>
-        <li>📅 Não sincroniza com Google Agenda nesta versão.</li>
-        <li>🍕 Sem adicionais com múltipla escolha nos pedidos (ainda).</li>
-        <li>🚫 Nunca ameaça, expõe ou cobra fora do horário.</li>
-        <li>🎬 As demonstrações desta página são simulações com dados fictícios.</li>
+        <li>Não recebe pagamento sozinho: o Pix cai direto na sua conta e você dá baixa no painel.</li>
+        <li>Não sincroniza com Google Agenda nesta versão.</li>
+        <li>Sem adicionais com múltipla escolha nos pedidos (ainda).</li>
+        <li>Nunca ameaça, expõe ou cobra fora do horário.</li>
+        <li>As demonstrações desta página são simulações com dados fictícios.</li>
       </ul>
     </div>
   </div>
@@ -356,15 +383,15 @@ details p{padding:0 0 18px;color:var(--mut)}
 <!-- ===================== FAQ ===================== -->
 <section id="faq">
   <div class="wrap">
-    <div class="cab rev"><h2>Dúvidas <span class="grad">frequentes</span> 🤔</h2></div>
+    <div class="cab rev"><h2>Dúvidas <span class="grad">frequentes</span></h2></div>
     <div class="faq">
-      <details class="rev"><summary>📱 Preciso trocar meu número?</summary><p>Você precisa de um número registrado na WhatsApp Business Platform (API oficial). Na implantação mostramos o melhor caminho para o seu caso, inclusive para quem já usa o aplicativo.</p></details>
-      <details class="rev"><summary>⏱️ Em quanto tempo fica pronto?</summary><p>A configuração é rápida; o que pode levar dias é a aprovação da Meta (verificação da empresa e modelos de mensagem). Combinamos o prazo na proposta.</p></details>
-      <details class="rev"><summary>🤖 O cliente percebe que é robô?</summary><p>O robô se apresenta como assistente virtual e sempre oferece falar com uma pessoa. A maioria prefere resposta na hora a esperar.</p></details>
-      <details class="rev"><summary>🧾 E a LGPD?</summary><p>Coletamos o mínimo, os dados ficam no seu servidor, o cliente pode pedir para parar e para excluir. Entregamos a documentação técnica; para validar a base legal, consulte seu advogado.</p></details>
-      <details class="rev"><summary>💬 Quanto a Meta cobra?</summary><p>Respostas dentro de 24h após a mensagem do cliente costumam ser gratuitas. Mensagens de modelo enviadas por iniciativa da empresa são cobradas por mensagem — confira a tabela atual da Meta.</p></details>
-      <details class="rev"><summary>🧩 Dá para personalizar?</summary><p>Sim! Textos, horários, preços, regras e fluxos. Mudanças maiores podem ser contratadas por hora.</p></details>
-      <details class="rev"><summary>🏢 Atendo várias lojas?</summary><p>Sim. O sistema é multiempresa: cada loja com número, dados e painel separados.</p></details>
+      <details class="rev"><summary>Preciso trocar meu número?</summary><p>Você precisa de um número registrado na WhatsApp Business Platform (API oficial). Na implantação mostramos o melhor caminho para o seu caso, inclusive para quem já usa o aplicativo.</p></details>
+      <details class="rev"><summary>Em quanto tempo fica pronto?</summary><p>A configuração é rápida; o que pode levar dias é a aprovação da Meta (verificação da empresa e modelos de mensagem). Combinamos o prazo na proposta.</p></details>
+      <details class="rev"><summary>O cliente percebe que é robô?</summary><p>O robô se apresenta como assistente virtual e sempre oferece falar com uma pessoa. A maioria prefere resposta na hora a esperar.</p></details>
+      <details class="rev"><summary>E a LGPD?</summary><p>Coletamos o mínimo, os dados ficam no seu servidor, o cliente pode pedir para parar e para excluir. Entregamos a documentação técnica; para validar a base legal, consulte seu advogado.</p></details>
+      <details class="rev"><summary>Quanto a Meta cobra?</summary><p>Respostas dentro de 24h após a mensagem do cliente costumam ser gratuitas. Mensagens de modelo enviadas por iniciativa da empresa são cobradas por mensagem — confira a tabela atual da Meta.</p></details>
+      <details class="rev"><summary>Dá para personalizar?</summary><p>Sim! Textos, horários, preços, regras e fluxos. Mudanças maiores podem ser contratadas por hora.</p></details>
+      <details class="rev"><summary>Atendo várias lojas?</summary><p>Sim. O sistema é multiempresa: cada loja com número, dados e painel separados.</p></details>
     </div>
   </div>
 </section>
@@ -373,9 +400,10 @@ details p{padding:0 0 18px;color:var(--mut)}
 <section>
   <div class="wrap">
     <div class="final rev">
-      <h2>Bora colocar um robô para trabalhar? 🚀</h2>
+      <img class="logo-final" src="assets/carvex-logo-branco.png" alt="Carvex Technology" width="170" height="89">
+      <h2>Bora colocar um robô para trabalhar?</h2>
       <p>Escolha o seu e fale com a gente em um toque.</p>
-      <button class="btn claro" data-comprar>🤖 Comprar um robô</button>
+      <button class="btn claro" data-comprar>Comprar um robô</button>
     </div>
   </div>
 </section>
@@ -383,27 +411,27 @@ details p{padding:0 0 18px;color:var(--mut)}
 
 <footer class="rodape">
   <div class="wrap">
-    <div class="marca"><img src="assets/logo-carvex.svg" alt="" width="38" height="38"><span>Carvex<small>Tecnologia</small></span></div>
+    <div class="marca"><img class="logo" src="assets/carvex-logo-azul.png" alt="Carvex Technology" width="110" height="57"></div>
     <p>© <span id="ano">2026</span> Carvex Tecnologia · Robôs de WhatsApp</p>
     <p style="margin-top:6px">Os robôs usam a API oficial do WhatsApp Business Platform. WhatsApp é marca da Meta Platforms, Inc.; a Carvex Tecnologia não é afiliada à Meta.</p>
   </div>
 </footer>
 
-<div class="fixa"><button class="btn" data-comprar>🤖 Comprar um robô</button></div>
+<div class="fixa"><button class="btn" data-comprar>Comprar um robô</button></div>
 
 <!-- ===================== MODAL DE COMPRA ===================== -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" hidden>
   <div class="caixa">
-    <button class="fechar" id="fechar" aria-label="Fechar">✕</button>
-    <h2 id="modal-titulo">Qual robô você quer? 🤖</h2>
+    <button class="fechar" id="fechar" aria-label="Fechar">×</button>
+    <h2 id="modal-titulo">Qual robô você quer?</h2>
     <p style="color:var(--mut)">Escolha e envie o pedido pelo WhatsApp. Sem compromisso até a proposta.</p>
     <div class="opcoes" id="opcoes" role="group" aria-label="Robôs disponíveis"></div>
     <div class="campo"><label for="nome">Seu nome</label><input id="nome" autocomplete="name" placeholder="Ex.: Maria"></div>
     <div class="campo"><label for="negocio">Nome do seu negócio</label><input id="negocio" autocomplete="organization" placeholder="Ex.: Barbearia do Zé"></div>
     <div class="resumo" id="resumo"></div>
-    <div class="aviso" id="aviso" hidden>⚠️ O número de WhatsApp de vendas ainda não foi configurado nesta página (veja <code>CONFIG.whatsapp</code> no <code>index.html</code>). Por enquanto você pode copiar a mensagem abaixo.</div>
-    <a class="btn" id="enviar" href="#" target="_blank" rel="noopener" style="width:100%">💬 Enviar pedido pelo WhatsApp</a>
-    <button class="btn claro" id="copiar" style="width:100%;margin-top:10px;box-shadow:inset 0 0 0 2px var(--linha)" hidden>📋 Copiar mensagem</button>
+    <div class="aviso" id="aviso" hidden>O número de WhatsApp de vendas ainda não foi configurado nesta página (veja <code>CONFIG.whatsapp</code> no <code>index.html</code>). Por enquanto você pode copiar a mensagem abaixo.</div>
+    <a class="btn" id="enviar" href="#" target="_blank" rel="noopener" style="width:100%">Enviar pedido pelo WhatsApp</a>
+    <button class="btn claro" id="copiar" style="width:100%;margin-top:10px;box-shadow:inset 0 0 0 2px var(--linha)" hidden>Copiar mensagem</button>
   </div>
 </div>
 
@@ -414,54 +442,54 @@ details p{padding:0 0 18px;color:var(--mut)}
 const CONFIG = {
   marca: "Carvex Tecnologia",
   // Número que recebe os pedidos, só dígitos com DDI+DDD. Ex.: "5511987654321". Vazio = botão mostra aviso.
-  whatsapp: "",
+  whatsapp: "5591981902529",
   robos: [
-    { id: "agenda", emoji: "💈", nome: "AgendaZap", titulo: "Marca horário sozinho", resumo: "Agenda 24h, lembretes com confirmação e lista de espera.",
-      tags: ["📅 Agenda", "🔔 Lembretes", "⏳ Lista de espera"], implantacao: 490, mensalidade: 129, unica: 1490, para: "Barbearias, salões, clínicas, pet shops" },
-    { id: "cobra", emoji: "💸", nome: "CobraZap", titulo: "Cobra com educação", resumo: "Régua de cobrança, Pix copia-e-cola e negociação — dentro da lei.",
-      tags: ["💸 Pix", "🤝 Negociação", "🛡️ Travas legais"], implantacao: 590, mensalidade: 149, unica: 1990, para: "Academias, escolas, prestadores com mensalidade" },
-    { id: "pedido", emoji: "🍕", nome: "PedidoZap", titulo: "Fecha pedido no zap", resumo: "Cardápio, carrinho, taxa por bairro, Pix e quadro de pedidos.",
-      tags: ["🍕 Cardápio", "🛵 Entrega", "📋 Quadro de pedidos"], implantacao: 790, mensalidade: 179, unica: 2490, para: "Pizzarias, lanchonetes, deliveries" },
+    { id: "agenda", icone: "calendar", nome: "AgendaZap", titulo: "Marca horário sozinho", resumo: "Agenda 24h, lembretes com confirmação e lista de espera.",
+      tags: ["Agenda", "Lembretes", "Lista de espera"], implantacao: 490, mensalidade: 129, unica: 1490, para: "Barbearias, salões, clínicas, pet shops" },
+    { id: "cobra", icone: "wallet", nome: "CobraZap", titulo: "Cobra com educação", resumo: "Régua de cobrança, Pix copia-e-cola e negociação — dentro da lei.",
+      tags: ["Pix", "Negociação", "Travas legais"], implantacao: 590, mensalidade: 149, unica: 1990, para: "Academias, escolas, prestadores com mensalidade" },
+    { id: "pedido", icone: "bag", nome: "PedidoZap", titulo: "Fecha pedido no zap", resumo: "Cardápio, carrinho, taxa por bairro, Pix e quadro de pedidos.",
+      tags: ["Cardápio", "Entrega", "Quadro de pedidos"], implantacao: 790, mensalidade: 179, unica: 2490, para: "Pizzarias, lanchonetes, deliveries" },
   ],
 };
 
 /* Conversas de demonstração (simulação com dados fictícios). {x} = variável escolhida pelo visitante. */
 const ROTEIROS = {
   heroi: [
-    { bot: "Oi! 👋 Eu sou o robô da Carvex. Posso te mostrar o que faço?", ops: [{ t: "Mostra aí! ✨" }] },
-    { bot: "Eu agendo horários 📅, cobro com educação 💸 e fecho pedidos 🍕 — tudo no WhatsApp, 24h por dia.", ops: [{ t: "E se você não souber algo?" }] },
-    { bot: "Aí eu não invento nada! 🙅 Eu aviso e chamo uma pessoa da sua equipe.\n\n“Não tenho essa informação no momento. Vou encaminhar você para um atendente.”", ops: [{ t: "Quero um robô desses! 🤩" }] },
-    { bot: "Bora! 🚀 Toque em “Comprar um robô” e fale com a gente.", fim: true },
+    { bot: "Oi! Eu sou o robô da Carvex. Posso te mostrar o que faço?", ops: [{ t: "Mostra aí!" }] },
+    { bot: "Eu agendo horários, cobro com educação e fecho pedidos — tudo no WhatsApp, 24h por dia.", ops: [{ t: "E se você não souber algo?" }] },
+    { bot: "Aí eu não invento nada! Eu aviso e chamo uma pessoa da sua equipe.\n\n“Não tenho essa informação no momento. Vou encaminhar você para um atendente.”", ops: [{ t: "Quero um robô desses!" }] },
+    { bot: "Bora! Toque em “Comprar um robô” e fale com a gente.", fim: true },
   ],
   agenda: [
-    { bot: "Olá! 💈 Aqui é o assistente da Barbearia do Zé. Posso marcar seu horário?", ops: [{ t: "Agendar horário" }] },
+    { bot: "Olá! Aqui é o assistente da Barbearia do Zé. Posso marcar seu horário?", ops: [{ t: "Agendar horário" }] },
     { bot: "Qual serviço?", ops: [{ t: "Corte masculino", set: { s: "Corte masculino", p: "R$ 45,00" } }, { t: "Barba", set: { s: "Barba", p: "R$ 30,00" } }] },
     { bot: "Qual dia?", ops: [{ t: "Amanhã (qui 08/10)" }, { t: "Sex 09/10" }] },
-    { bot: "Horários livres ⏰", ops: [{ t: "10:00" }, { t: "10:30" }, { t: "11:00" }] },
-    { bot: "Posso confirmar?\n\n✂️ {s} com João\n📅 {d} às {h}\n💰 {p}", ops: [{ t: "Confirmar ✅" }] },
-    { bot: "Agendado! ✅ Te mando um lembrete antes. 🔔" },
-    { nota: "⏰ no dia anterior…" },
-    { bot: "Lembrete: {s} amanhã às {h}. Você confirma?", ops: [{ t: "Confirmo ✅" }, { t: "Remarcar" }] },
-    { bot: "Presença confirmada! Te esperamos 💈", fim: true },
+    { bot: "Horários livres", ops: [{ t: "10:00" }, { t: "10:30" }, { t: "11:00" }] },
+    { bot: "Posso confirmar?\n\n {s} com João\n {d} às {h}\n {p}", ops: [{ t: "Confirmar" }] },
+    { bot: "Agendado! Te mando um lembrete antes." },
+    { nota: "no dia anterior…" },
+    { bot: "Lembrete: {s} amanhã às {h}. Você confirma?", ops: [{ t: "Confirmo" }, { t: "Remarcar" }] },
+    { bot: "Presença confirmada! Te esperamos", fim: true },
   ],
   cobra: [
-    { nota: "🏋️ Academia Corpo em Movimento" },
-    { bot: "Olá, Maria! 👋 Antes de continuar: você é a Maria?\n🔒 Só falo de pagamento depois de confirmar.", ops: [{ t: "Sim, sou eu" }, { t: "Número errado" }] },
-    { bot: "Obrigado! 😊 Sua mensalidade de R$ 150,00 vence em 3 dias.", ops: [{ t: "Pagar com Pix" }, { t: "Negociar" }] },
-    { bot: "Aqui está o Pix copia e cola 👇\n<code>00020126…5406150.00…6304</code>\nÉ só colar no app do banco.", ops: [{ t: "Já paguei" }] },
-    { bot: "Obrigado por avisar! 🙏 Vamos conferir (até 1 dia útil). Pode mandar o comprovante aqui.", ops: [{ t: "📎 Enviar comprovante" }] },
-    { bot: "Comprovante recebido! ✅ A equipe confere e avisa por aqui.", fim: true },
+    { nota: "Academia Corpo em Movimento" },
+    { bot: "Olá, Maria! Antes de continuar: você é a Maria?\n Só falo de pagamento depois de confirmar.", ops: [{ t: "Sim, sou eu" }, { t: "Número errado" }] },
+    { bot: "Obrigado! Sua mensalidade de R$ 150,00 vence em 3 dias.", ops: [{ t: "Pagar com Pix" }, { t: "Negociar" }] },
+    { bot: "Aqui está o Pix copia e cola \n<code>00020126…5406150.00…6304</code>\nÉ só colar no app do banco.", ops: [{ t: "Já paguei" }] },
+    { bot: "Obrigado por avisar! Vamos conferir (até 1 dia útil). Pode mandar o comprovante aqui.", ops: [{ t: "Enviar comprovante" }] },
+    { bot: "Comprovante recebido! A equipe confere e avisa por aqui.", fim: true },
   ],
   pedido: [
-    { bot: "Bem-vindo à Pizzaria Bella Massa! 🍕", ops: [{ t: "Fazer pedido" }] },
-    { bot: "O que você quer pedir?", ops: [{ t: "🍕 Pizzas" }, { t: "🥤 Bebidas" }] },
+    { bot: "Bem-vindo à Pizzaria Bella Massa!", ops: [{ t: "Fazer pedido" }] },
+    { bot: "O que você quer pedir?", ops: [{ t: "Pizzas" }, { t: "Bebidas" }] },
     { bot: "Pizza Calabresa — qual tamanho?", ops: [{ t: "Grande · R$ 52" }, { t: "Média · R$ 42" }] },
     { bot: "Quantas?", ops: [{ t: "1" }, { t: "2" }] },
-    { bot: "🧺 Seu pedido\n2x Pizza Calabresa ... R$ 104,00\n🛵 Entrega (Centro) ... R$ 5,00\n\n<b>Total: R$ 109,00</b>\nComo prefere pagar?", ops: [{ t: "Pix" }, { t: "Dinheiro" }] },
-    { bot: "Pedido #1 recebido! 🎉 Aqui o Pix copia e cola 👇", },
-    { nota: "👩‍🍳 a cozinha aceita o pedido…" },
-    { bot: "Seu pedido #1 está sendo preparado 👨‍🍳", },
-    { bot: "Seu pedido #1 saiu para entrega 🛵 Bom apetite! 😋", fim: true },
+    { bot: "Seu pedido\n2x Pizza Calabresa ... R$ 104,00\n Entrega (Centro) ... R$ 5,00\n\n<b>Total: R$ 109,00</b>\nComo prefere pagar?", ops: [{ t: "Pix" }, { t: "Dinheiro" }] },
+    { bot: "Pedido #1 recebido! Aqui o Pix copia e cola", },
+    { nota: "a cozinha aceita o pedido…" },
+    { bot: "Seu pedido #1 está sendo preparado", },
+    { bot: "Seu pedido #1 saiu para entrega Bom apetite!", fim: true },
   ],
 };
 
@@ -469,6 +497,7 @@ const ROTEIROS = {
    Utilidades
    ========================================================================== */
 const $ = (s, r = document) => r.querySelector(s);
+const ico = (n) => `<svg class="ic" aria-hidden="true"><use href="#i-${n}"/></svg>`;
 const brl = (n) => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", minimumFractionDigits: 0 });
 const reduz = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
@@ -527,7 +556,7 @@ function criarChat(chatEl, roteiro, { autoplay = true, aoFim } = {}) {
   function terminar() {
     const meu = rodada;
     const caixa = document.createElement("div"); caixa.className = "ops";
-    const b = document.createElement("button"); b.type = "button"; b.textContent = "🔁 Ver de novo"; b.addEventListener("click", () => { tocou = true; reiniciar(); });
+    const b = document.createElement("button"); b.type = "button"; b.textContent = "Ver de novo"; b.addEventListener("click", () => { tocou = true; reiniciar(); });
     caixa.append(b); chatEl.append(caixa); rola();
     aoFim && aoFim();
     if (autoplay && !reduz) esperar(() => { if (!tocou && meu === rodada) reiniciar(); }, 5200);
@@ -552,28 +581,28 @@ const chats = [];
 CONFIG.robos.forEach((r) => {
   const s = document.createElement("article"); s.className = "slide rev";
   s.innerHTML = `
-    <div class="tags"><span>${r.emoji} ${r.nome}</span></div>
+    <div class="tags"><span>${ico(r.icone)} ${r.nome}</span></div>
     <h3>${r.titulo}</h3>
     <p>${r.resumo}</p>
     <div class="tags">${r.tags.map((t) => `<span>${t}</span>`).join("")}</div>
     <div class="fone"><div class="tela">
-      <header><img src="assets/logo-carvex.svg" alt=""><div><b>${r.nome}</b><span>online agora</span></div></header>
+      <header><img src="assets/carvex-simbolo-branco.png" alt=""><div><b>${r.nome}</b><span>online agora</span></div></header>
       <div class="chat" id="chat-${r.id}" aria-live="polite"></div>
       <footer><div>Toque nos botões…</div><button type="button" aria-label="Reiniciar ${r.nome}" data-rein="${r.id}">↻</button></footer>
     </div></div>
-    <button class="btn claro" data-comprar="${r.id}">${r.emoji} Quero o ${r.nome}</button>`;
+    <button class="btn claro" data-comprar="${r.id}">Quero o ${r.nome}</button>`;
   trilho.append(s);
 
   const p = document.createElement("article"); p.className = "slide rev";
   p.innerHTML = `
-    <div class="tags"><span>${r.emoji} Para quem?</span></div>
-    <h3>${r.emoji} ${r.nome}</h3>
+    <div class="tags"><span>${ico(r.icone)} Para quem?</span></div>
+    <h3>${r.nome}</h3>
     <p>${r.para}</p>
     <div class="preco"><b>${brl(r.mensalidade)}</b><small>/mês · hospedagem + suporte</small></div>
     <div class="preco"><b style="font-size:24px">${brl(r.implantacao)}</b><small>implantação (única)</small></div>
     <div class="preco"><b style="font-size:24px">${brl(r.unica)}</b><small>ou compra única (você hospeda)</small></div>
     <p class="sug">Valores sugeridos de lançamento. Personalizações: ${brl(150)}/hora.</p>
-    <button class="btn claro" data-comprar="${r.id}">${r.emoji} Comprar o ${r.nome}</button>`;
+    <button class="btn claro" data-comprar="${r.id}">Comprar o ${r.nome}</button>`;
   trilhoPrecos.append(p);
 });
 
@@ -607,8 +636,8 @@ function renderOpcoes() {
   opcoes.innerHTML = "";
   CONFIG.robos.forEach((r) => {
     const b = document.createElement("button"); b.type = "button"; b.className = "opcao"; b.setAttribute("aria-pressed", String(r.id === escolhido));
-    b.innerHTML = `<span class="e">${r.emoji}</span><span><b>${r.nome}</b><small>${r.para}</small></span><span class="v">${brl(r.mensalidade)}/mês</span>`;
-    b.addEventListener("click", () => { escolhido = r.id; renderOpcoes(); atualizar(); explodir(b, r.emoji); });
+    b.innerHTML = `<span class="e">${ico(r.icone)}</span><span><b>${r.nome}</b><small>${r.para}</small></span><span class="v">${brl(r.mensalidade)}/mês</span>`;
+    b.addEventListener("click", () => { escolhido = r.id; renderOpcoes(); atualizar(); explodir(b); });
     opcoes.append(b);
   });
 }
@@ -616,14 +645,14 @@ function renderOpcoes() {
 function mensagem() {
   const r = CONFIG.robos.find((x) => x.id === escolhido);
   const nome = $("#nome").value.trim(), neg = $("#negocio").value.trim();
-  return `Olá, ${CONFIG.marca}! 👋 Quero comprar o robô ${r.nome} ${r.emoji}.` +
+  return `Olá, ${CONFIG.marca}! Quero comprar o robô ${r.nome}.` +
     (neg ? `\nNegócio: ${neg}` : "") + (nome ? `\nMeu nome: ${nome}` : "") +
     `\nVi na página: implantação ${brl(r.implantacao)} + ${brl(r.mensalidade)}/mês (ou compra única ${brl(r.unica)}). Podemos conversar?`;
 }
 
 function atualizar() {
   const r = CONFIG.robos.find((x) => x.id === escolhido);
-  $("#resumo").innerHTML = `<b>${r.emoji} ${r.nome}</b> — implantação <b>${brl(r.implantacao)}</b> + <b>${brl(r.mensalidade)}/mês</b><br><small>ou compra única de ${brl(r.unica)} (você hospeda)</small>`;
+  $("#resumo").innerHTML = `<b>${r.nome}</b> — implantação <b>${brl(r.implantacao)}</b> + <b>${brl(r.mensalidade)}/mês</b><br><small>ou compra única de ${brl(r.unica)} (você hospeda)</small>`;
   const tem = /^\d{10,15}$/.test(CONFIG.whatsapp);
   $("#aviso").hidden = tem; $("#copiar").hidden = tem;
   const a = $("#enviar");
@@ -637,7 +666,7 @@ function abrir(id, origem) {
   renderOpcoes(); atualizar();
   modal.hidden = false; modal.classList.add("aberto"); document.body.style.overflow = "hidden";
   $("#nome").focus();
-  if (origem) explodir(origem, "🎉");
+  if (origem) explodir(origem);
 }
 function fechar() { modal.classList.remove("aberto"); modal.hidden = true; document.body.style.overflow = ""; abriuDe && abriuDe.focus && abriuDe.focus(); }
 
@@ -647,19 +676,21 @@ modal.addEventListener("click", (e) => { if (e.target === modal) fechar(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hidden) fechar(); });
 ["#nome", "#negocio"].forEach((s) => $(s).addEventListener("input", atualizar));
 $("#copiar").addEventListener("click", async () => {
-  try { await navigator.clipboard.writeText(mensagem()); $("#copiar").textContent = "✅ Mensagem copiada!"; } catch { $("#copiar").textContent = "Selecione e copie manualmente"; }
+  try { await navigator.clipboard.writeText(mensagem()); $("#copiar").textContent = "Mensagem copiada!"; } catch { $("#copiar").textContent = "Selecione e copie manualmente"; }
 });
-$("#enviar").addEventListener("click", (e) => { if ($("#enviar").getAttribute("aria-disabled")) e.preventDefault(); else explodir($("#enviar"), "💙"); });
+$("#enviar").addEventListener("click", (e) => { if ($("#enviar").getAttribute("aria-disabled")) e.preventDefault(); else explodir($("#enviar")); });
 
-// confete de emojis
-function explodir(origem, emoji) {
+// confete (formas coloridas, sem emoji)
+function explodir(origem) {
   if (reduz) return;
   const r = origem.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-  const lista = [emoji, "✨", "💙", "🚀", "🤖"];
-  for (let k = 0; k < 12; k++) {
-    const s = document.createElement("span"); s.className = "confete"; s.textContent = lista[k % lista.length];
+  const cores = ["#1a6bff", "#22d3ee", "#ffffff", "#2f8bff", "#0b3fd1", "#8fe6ff"];
+  for (let k = 0; k < 16; k++) {
+    const s = document.createElement("span"); s.className = "confete";
     s.style.left = cx + "px"; s.style.top = cy + "px";
-    s.style.setProperty("--x", (Math.random() * 260 - 130) + "px"); s.style.setProperty("--y", (Math.random() * -220 - 30) + "px"); s.style.setProperty("--g", (Math.random() * 360 - 180) + "deg");
+    s.style.setProperty("--t", (8 + Math.random() * 9) + "px"); s.style.setProperty("--c", cores[k % cores.length]); s.style.setProperty("--b", k % 3 ? "50%" : "3px");
+    s.style.setProperty("--x", (Math.random() * 280 - 140) + "px"); s.style.setProperty("--y", (Math.random() * -240 - 30) + "px"); s.style.setProperty("--g", (Math.random() * 360 - 180) + "deg");
+    s.style.boxShadow = "0 0 0 1px rgba(10,42,156,.25)";
     document.body.append(s); setTimeout(() => s.remove(), 1700);
   }
 }

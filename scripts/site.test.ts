@@ -18,7 +18,8 @@ test("página usa o nome Carvex Tecnologia, tem botão de compra e a logo existe
   assert.match(html, /<title>Carvex Tecnologia/);
   assert.ok((html.match(/data-comprar/g) ?? []).length >= 4);
   assert.match(html, /Comprar um robô/);
-  assert.ok(existsSync(join(raiz, "site/assets/logo-carvex.svg")));
+  for (const f of ["carvex-logo-azul.png", "carvex-logo-branco.png", "carvex-simbolo-azul.png", "carvex-simbolo-branco.png"]) assert.ok(existsSync(join(raiz, "site/assets", f)), f);
+  assert.ok(!html.includes("logo-carvex.svg"), "ainda referencia a logo provisória");
   assert.equal(config().marca, "Carvex Tecnologia");
 });
 
@@ -37,8 +38,27 @@ test("página é autocontida: sem scripts/estilos/imagens de terceiros e sem dad
   assert.ok(!/<script[^>]+src=/.test(html));
 });
 
-test("número de WhatsApp é vazio ou só dígitos (DDI+DDD+número)", () => {
-  assert.match(config().whatsapp, /^(\d{10,15})?$/);
+test("botão Comprar leva ao WhatsApp 55 91 98190-2529", () => {
+  assert.equal(config().whatsapp, "5591981902529");
+  assert.match(html, /https:\/\/wa\.me\/\$\{CONFIG\.whatsapp\}\?text=/);
+});
+
+test("sem emojis em nenhum texto da página (nem nas conversas de demonstração)", () => {
+  const achados = [...html.matchAll(/\p{Extended_Pictographic}/gu)].map((m) => m[0]).filter((c) => !"©®™".includes(c));
+  assert.deepEqual(achados, []);
+  assert.ok(!/\bemoji\b/.test(html.replace(/sem emoji/g, "")), "sobrou campo emoji no código");
+});
+
+test("Vercel: vercel.json serve a pasta site/ e os dois arquivos têm os mesmos cabeçalhos", () => {
+  const raizCfg = JSON.parse(readFileSync(join(raiz, "vercel.json"), "utf8")) as { outputDirectory: string; framework: null; headers: unknown };
+  const siteCfg = JSON.parse(readFileSync(join(raiz, "site/vercel.json"), "utf8")) as { headers: unknown };
+  assert.equal(raizCfg.outputDirectory, "site");
+  assert.equal(raizCfg.framework, null);
+  assert.ok(existsSync(join(raiz, raizCfg.outputDirectory, "index.html")));
+  assert.deepEqual(siteCfg.headers, raizCfg.headers);
+  const csp = JSON.stringify(raizCfg.headers);
+  assert.match(csp, /frame-ancestors 'none'/);
+  assert.ok(existsSync(join(raiz, ".vercelignore")));
 });
 
 test("não promete resultados: sem percentuais de ganho", () => {

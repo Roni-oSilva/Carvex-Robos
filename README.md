@@ -16,7 +16,7 @@ Painel interno: [ROBOTS.md](ROBOTS.md) · Catálogo comercial: [CATALOG.md](CATA
 
 ## Página de vendas
 `site/index.html` — página única da **Carvex Tecnologia** (autocontida, sem dependências): demonstrações de conversa interativas, preços, FAQ e botão **Comprar um robô** que abre o WhatsApp com a mensagem pronta.
-`npm run site` abre em http://localhost:4000. Antes de publicar, edite `CONFIG.whatsapp` (número que recebe os pedidos) e troque `site/assets/logo-carvex.svg` pela logo oficial.
+`npm run site` abre em http://localhost:4000. O WhatsApp de vendas já está configurado (`CONFIG.whatsapp`); a logo oficial da Carvex já está em `site/assets/`. Publicação na Vercel: veja `site/LEIA-ME.md` (o `vercel.json` da raiz serve a pasta `site/`).
 
 ## Como funciona (a fábrica)
 

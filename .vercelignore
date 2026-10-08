@@ -1,0 +1,11 @@
+node_modules
+robots
+shared
+scripts
+market-research
+docs
+dist
+data
+.github
+*.md
+!site/**/*.md
