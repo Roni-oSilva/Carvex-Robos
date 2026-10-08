@@ -31,7 +31,7 @@ writeFileSync(join(out, "Dockerfile"), `FROM node:22-alpine
 WORKDIR /app
 COPY . .
 RUN mkdir -p /data && chown node:node /data
-ENV NODE_ENV=production PORT=3000 DATABASE_PATH=/data/robot.db
+ENV NODE_ENV=production PORT=3000 DATABASE_PATH=/data/robot.db MEDIA_DIR=/data/media
 VOLUME /data
 EXPOSE 3000
 USER node

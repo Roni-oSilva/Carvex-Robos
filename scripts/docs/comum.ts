@@ -11,7 +11,7 @@ PORT=3000
 NODE_ENV=production
 # Onde o banco de dados (um único arquivo) fica salvo. Faça backup deste arquivo.
 DATABASE_PATH=./data/robot.db
-# Identificador curto da sua empresa (letras minúsculas, números e hífen)
+${r.tabelas.some((t) => t.nome === "quote_photos") ? "# Pasta das fotos recebidas dos clientes. Faça backup junto com o banco (no Docker: /data/media).\nMEDIA_DIR=./data/media\n" : ""}# Identificador curto da sua empresa (letras minúsculas, números e hífen)
 TENANT_SLUG=minha-empresa
 TIMEZONE=America/Sao_Paulo
 
