@@ -1,0 +1,29 @@
+{
+  "empresa": {
+    "nome": "Reforma Fácil Serviços",
+    "endereco": "Av. das Palmeiras, 500 - Centro",
+    "telefone": "(11) 4000-3333",
+    "horario_texto": "Segunda a sexta, das 8h às 18h; sábado, das 8h às 12h",
+    "pagamento": "Combinado na proposta (Pix, cartão ou entrada + saldo)"
+  },
+  "servicos": [
+    { "id": "pintura", "nome": "Pintura", "exige_visita": true },
+    { "id": "eletrica", "nome": "Elétrica", "exige_visita": false },
+    { "id": "hidraulica", "nome": "Hidráulica", "exige_visita": false },
+    { "id": "gesso", "nome": "Gesso e forro", "exige_visita": true },
+    { "id": "ar-cond", "nome": "Ar-condicionado", "exige_visita": false }
+  ],
+  "atendimento": {
+    "bairros": ["Centro", "Jardim América", "Vila Nova", "Bela Vista"],
+    "max_fotos": 4,
+    "validade_dias": 7,
+    "followup_horas": 24,
+    "pedir_endereco": true
+  },
+  "template": { "nome": "orcamento_proposta", "idioma": "pt_BR" },
+  "faq": [
+    { "pergunta": "Vocês dão garantia no serviço?", "resposta": "Sim, os serviços têm garantia que consta na proposta enviada pela equipe.", "palavras_chave": ["garantia"] },
+    { "pergunta": "A visita técnica é cobrada?", "resposta": "A equipe informa na proposta se haverá cobrança de visita, conforme o serviço.", "palavras_chave": ["visita", "tecnica"] }
+  ],
+  "mensagens": {}
+}

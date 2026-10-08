@@ -1,0 +1,48 @@
+{
+  "id": "robot-004-orcazap",
+  "nome": "OrcaZap",
+  "versao": "1.0.0",
+  "status": "PRONTO",
+  "slogan": "O cliente manda o problema com fotos e você responde com o orçamento — tudo organizado no WhatsApp.",
+  "segmentos": [
+    "Pintores e reformas",
+    "Eletricistas e encanadores",
+    "Gesso, forro e marcenaria",
+    "Instalação de ar-condicionado",
+    "Dedetização e limpeza pós-obra"
+  ],
+  "publico": "Prestadores de serviço e pequenas empresas que **orçam pelo WhatsApp**: hoje trocam dezenas de mensagens para entender o serviço, pedem foto, esquecem de responder e perdem o cliente para quem respondeu primeiro.",
+  "problema": "Para orçar, o prestador precisa de serviço, local, fotos e urgência. Colher isso por conversa solta é lento, o orçamento atrasa e o acompanhamento (\"e aí, fechamos?\") é esquecido. A evidência vem de conteúdo de fornecedores de software e de um caso oficial de qualificação por formulário em uma construtora de médio porte; **não é pesquisa de campo** — valide com 5 prestadores antes de investir.",
+  "oportunidades": [
+    21
+  ],
+  "potencial": "Médio",
+  "funcionalidades": [
+    "Pedido guiado por serviço",
+    "Recebimento de fotos",
+    "Regiões atendidas",
+    "Quadro de orçamentos",
+    "Proposta pelo WhatsApp",
+    "Preço só humano",
+    "Acompanhamento automático",
+    "Motivo da recusa",
+    "Meu orçamento",
+    "Indicadores",
+    "LGPD para fotos",
+    "Dúvidas e atendente"
+  ],
+  "precos": {
+    "venda_unica": 1790,
+    "mensalidade": 139,
+    "implantacao": 490,
+    "personalizacao_hora": 150,
+    "racional": []
+  },
+  "pendencias": [
+    "Piloto com número real da WhatsApp Business Platform em pelo menos 1 prestador (hoje validado por simulação e pelo formato documentado da API, incluindo o download de mídia).",
+    "Modelo `orcamento_proposta` aprovado pela Meta e testado.",
+    "Perguntas por tipo de serviço (metragem, material, andar) — o que mais ajuda a orçar sem visita.",
+    "Validar com 5 prestadores se a taxa de resposta/fechamento melhora (a evidência atual vem de conteúdo de fornecedores).",
+    "Revisão/pentest de segurança independente (upload de arquivos); contrato de suporte/hospedagem."
+  ]
+}

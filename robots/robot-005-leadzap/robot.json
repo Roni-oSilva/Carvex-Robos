@@ -1,0 +1,48 @@
+{
+  "id": "robot-005-leadzap",
+  "nome": "LeadZap",
+  "versao": "1.0.0",
+  "status": "PRONTO",
+  "slogan": "Responde na hora, mostra os imóveis certos, agenda a visita e entrega o lead pronto ao corretor.",
+  "segmentos": [
+    "Imobiliárias pequenas e médias",
+    "Corretores autônomos e equipes",
+    "Loteadoras e construtoras pequenas",
+    "Administradoras de aluguel"
+  ],
+  "publico": "Imobiliárias e corretores que recebem **interessados pelo WhatsApp** (anúncios, portais, placas) e perdem negócio porque o primeiro contato demora, a qualificação é feita de forma desigual e as visitas marcadas não acontecem.",
+  "problema": "O lead esfria se ninguém responde logo; as informações básicas (comprar ou alugar, bairro, faixa de valor, prazo) são perguntadas de novo por cada corretor; o histórico fica no celular pessoal; e as visitas marcadas sem confirmação viram falta. Há queixas de consumidores sobre visitas que não aconteceram e conteúdo de fornecedores sobre qualificar por orçamento, localização e prazo. As estatísticas que circulam divergem entre si, então **este material não usa percentuais**; valide com 3 imobiliárias antes de investir.",
+  "oportunidades": [
+    5
+  ],
+  "potencial": "Alto",
+  "funcionalidades": [
+    "Qualificação em poucos toques",
+    "Imóveis só do seu cadastro",
+    "Temperatura transparente",
+    "Roteamento ao corretor",
+    "Agendamento de visita",
+    "Lembrete e confirmação",
+    "Acompanhamento do lead",
+    "Painel de leads",
+    "Agenda de visitas",
+    "Disponibilidade dos imóveis",
+    "Dúvidas e corretor",
+    "LGPD"
+  ],
+  "precos": {
+    "venda_unica": 2290,
+    "mensalidade": 189,
+    "implantacao": 690,
+    "personalizacao_hora": 150,
+    "racional": []
+  },
+  "pendencias": [
+    "Piloto com número real da WhatsApp Business Platform em pelo menos 1 imobiliária (hoje validado por simulação e pelo formato documentado da API).",
+    "Modelo `lead_visita` aprovado pela Meta e testado.",
+    "Aviso ao corretor por WhatsApp (modelo `lead_novo`) e agenda por corretor — o que mais pedem imobiliárias com equipe.",
+    "Importação do catálogo (planilha/feed de portal) e editor por formulário.",
+    "Validar com 3 imobiliárias se a regra de temperatura reflete a prioridade real da equipe.",
+    "Revisão/pentest de segurança independente; contrato de suporte/hospedagem."
+  ]
+}

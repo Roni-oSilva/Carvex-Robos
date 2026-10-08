@@ -399,4 +399,83 @@ Se o servidor ficar fora, o WhatsApp reenvia mensagens por um tempo, mas pedidos
 - [ ] Medir seu tempo de implantação do 1º cliente e ajustar o preço.
 `,
   },
+  site: {
+    "chave": "pedido",
+    "icone": "bag",
+    "titulo": "Robô para pedidos",
+    "resumo": "Cardápio, carrinho, taxa por bairro, Pix e quadro de pedidos.",
+    "tags": [
+      "Cardápio",
+      "Entrega",
+      "Quadro de pedidos"
+    ],
+    "para": "Pizzarias, lanchonetes, deliveries",
+    "roteiro": [
+      {
+        "bot": "Bem-vindo à Pizzaria Bella Massa!",
+        "ops": [
+          {
+            "t": "Fazer pedido"
+          }
+        ]
+      },
+      {
+        "bot": "O que você quer pedir?",
+        "ops": [
+          {
+            "t": "Pizzas"
+          },
+          {
+            "t": "Bebidas"
+          }
+        ]
+      },
+      {
+        "bot": "Pizza Calabresa — qual tamanho?",
+        "ops": [
+          {
+            "t": "Grande · R$ 52"
+          },
+          {
+            "t": "Média · R$ 42"
+          }
+        ]
+      },
+      {
+        "bot": "Quantas?",
+        "ops": [
+          {
+            "t": "1"
+          },
+          {
+            "t": "2"
+          }
+        ]
+      },
+      {
+        "bot": "Seu pedido\n2x Pizza Calabresa ... R$ 104,00\n Entrega (Centro) ... R$ 5,00\n\n<b>Total: R$ 109,00</b>\nComo prefere pagar?",
+        "ops": [
+          {
+            "t": "Pix"
+          },
+          {
+            "t": "Dinheiro"
+          }
+        ]
+      },
+      {
+        "bot": "Pedido #1 recebido! Aqui o Pix copia e cola"
+      },
+      {
+        "nota": "a cozinha aceita o pedido…"
+      },
+      {
+        "bot": "Seu pedido #1 está sendo preparado"
+      },
+      {
+        "bot": "Seu pedido #1 saiu para entrega Bom apetite!",
+        "fim": true
+      }
+    ]
+  },
 };

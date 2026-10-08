@@ -407,4 +407,99 @@ Sim: demonstração com dados fictícios na hora e, se combinado, um piloto curt
 - [ ] Calcular seu custo real por cliente (hospedagem + suporte).
 `,
   },
+  site: {
+    "chave": "agenda",
+    "icone": "calendar",
+    "titulo": "Robô para marcação",
+    "resumo": "Agenda 24h, lembretes com confirmação e lista de espera.",
+    "tags": [
+      "Agenda",
+      "Lembretes",
+      "Lista de espera"
+    ],
+    "para": "Barbearias, salões, clínicas, pet shops",
+    "roteiro": [
+      {
+        "bot": "Olá! Aqui é o assistente da Barbearia do Zé. Posso marcar seu horário?",
+        "ops": [
+          {
+            "t": "Agendar horário"
+          }
+        ]
+      },
+      {
+        "bot": "Qual serviço?",
+        "ops": [
+          {
+            "t": "Corte masculino",
+            "set": {
+              "s": "Corte masculino",
+              "p": "R$ 45,00"
+            }
+          },
+          {
+            "t": "Barba",
+            "set": {
+              "s": "Barba",
+              "p": "R$ 30,00"
+            }
+          }
+        ]
+      },
+      {
+        "bot": "Qual dia?",
+        "ops": [
+          {
+            "t": "Amanhã (qui 08/10)"
+          },
+          {
+            "t": "Sex 09/10"
+          }
+        ]
+      },
+      {
+        "bot": "Horários livres",
+        "ops": [
+          {
+            "t": "10:00"
+          },
+          {
+            "t": "10:30"
+          },
+          {
+            "t": "11:00"
+          }
+        ]
+      },
+      {
+        "bot": "Posso confirmar?\n\n {s} com João\n {d} às {h}\n {p}",
+        "ops": [
+          {
+            "t": "Confirmar"
+          }
+        ]
+      },
+      {
+        "bot": "Agendado! Te mando um lembrete antes."
+      },
+      {
+        "nota": "no dia anterior…"
+      },
+      {
+        "bot": "Lembrete: {s} amanhã às {h}. Você confirma?",
+        "ops": [
+          {
+            "t": "Confirmo"
+          },
+          {
+            "t": "Remarcar"
+          }
+        ]
+      },
+      {
+        "bot": "Presença confirmada! Te esperamos",
+        "fim": true
+      }
+    ]
+  },
 };

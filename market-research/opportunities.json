@@ -237,9 +237,9 @@
       "custo": 7,
       "escala": 6
     },
-    "status": "selecionada",
-    "robo": null,
-    "observacao": "Selecionada como robô #5 (próxima fila de desenvolvimento)."
+    "status": "concluída",
+    "robo": "robot-005-leadzap",
+    "observacao": "Construído como robô #5 (LeadZap): qualificação, classificação e roteamento de leads, visitas e follow-up."
   },
   {
     "id": 6,
@@ -961,9 +961,9 @@
       "custo": 8,
       "escala": 7
     },
-    "status": "selecionada",
-    "robo": null,
-    "observacao": "Selecionada como robô #4 (próxima fila de desenvolvimento)."
+    "status": "concluída",
+    "robo": "robot-004-orcazap",
+    "observacao": "Construído como robô #4 (OrcaZap): pedido de orçamento com fotos, proposta e acompanhamento."
   },
   {
     "id": 22,

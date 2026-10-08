@@ -31,8 +31,8 @@ Pontuação = soma(peso × nota de 0 a 10) / 10 → escala 0–100. As notas sã
 | 4 | **73.2** | Recepcionista virtual de FAQ 24h para negócios locais | Qualquer negócio local | média | concluída | — |
 | 5 | **73.0** | Pedidos próprios por WhatsApp para restaurantes | Lanchonetes, pizzarias, restaurantes, marmitarias | fraca | concluída | robot-003-pedidozap |
 | 6 | **69.4** | Pesquisa NPS e pedido de avaliação no Google | Qualquer negócio local | fraca | descoberta | — |
-| 7 | **69.2** | Pré-orçamento para prestadores de serviço | Eletricistas, pedreiros, dedetizadoras, serviços residenciais | média | selecionada | — |
-| 8 | **68.4** | Qualificação de leads para imobiliárias e corretores | Imobiliárias e corretores autônomos | média | selecionada | — |
+| 7 | **69.2** | Pré-orçamento para prestadores de serviço | Eletricistas, pedreiros, dedetizadoras, serviços residenciais | média | concluída | robot-004-orcazap |
+| 8 | **68.4** | Qualificação de leads para imobiliárias e corretores | Imobiliárias e corretores autônomos | média | concluída | robot-005-leadzap |
 | 9 | **66.2** | Matrícula e aula experimental para escolas e cursos livres | Escolas de idiomas, cursos livres, reforço escolar | média | analisada | — |
 | 10 | **64.6** | Status de serviço e aprovação de orçamento para oficinas | Oficinas mecânicas, funilarias, lava-jatos | média | analisada | — |
 | 11 | **64.6** | 'Onde está meu pedido?' para lojas virtuais | E-commerce pequeno (Shopify, Nuvemshop, Tray, WooCommerce) | média | analisada | — |
@@ -200,8 +200,8 @@ Pontuação = soma(peso × nota de 0 a 10) / 10 → escala 0–100. As notas sã
 **Pontuação:** 69.2 / 100  
 **Concorrentes:** Apps de serviços (GetNinjas), CRMs genéricos.  
 **Diferencial:** Perguntas específicas por tipo de serviço; resumo estruturado.  
-**Status:** selecionada  
-**Observação:** Selecionada como robô #4 (próxima fila de desenvolvimento).  
+**Status:** concluída → `robots/robot-004-orcazap`  
+**Observação:** Construído como robô #4 (OrcaZap): pedido de orçamento com fotos, proposta e acompanhamento.  
 
 ### Oportunidade #5 — Qualificação de leads para imobiliárias e corretores
 
@@ -222,8 +222,8 @@ Pontuação = soma(peso × nota de 0 a 10) / 10 → escala 0–100. As notas sã
 **Pontuação:** 68.4 / 100  
 **Concorrentes:** Wati, Jetimob, Kenlo, CRMs imobiliários.  
 **Diferencial:** Entrega resumo estruturado ao corretor; funciona sem CRM.  
-**Status:** selecionada  
-**Observação:** Selecionada como robô #5 (próxima fila de desenvolvimento).  
+**Status:** concluída → `robots/robot-005-leadzap`  
+**Observação:** Construído como robô #5 (LeadZap): qualificação, classificação e roteamento de leads, visitas e follow-up.  
 
 ### Oportunidade #8 — Matrícula e aula experimental para escolas e cursos livres
 

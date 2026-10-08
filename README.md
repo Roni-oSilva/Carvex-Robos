@@ -2,7 +2,7 @@
 
 Uma **fábrica de produtos de automação**: pesquisa problemas reais de pequenos negócios, escolhe os que valem a pena e entrega **robôs de WhatsApp prontos para instalar, demonstrar e vender** — cada um na sua pasta, com manual, material comercial, demonstração e testes.
 
-> **Estado honesto:** os 3 primeiros robôs estão **PRONTOS** (código, testes, documentação e material de venda completos), mas **ainda não COMERCIAIS**: nenhum foi testado em produção com credenciais reais da Meta nem com cliente pagante. Veja as pendências de cada um em [ROBOTS.md](ROBOTS.md).
+> **Estado honesto:** os 5 primeiros robôs estão **PRONTOS** (código, testes, documentação e material de venda completos), mas **ainda não COMERCIAIS**: nenhum foi testado em produção com credenciais reais da Meta nem com cliente pagante. Veja as pendências de cada um em [ROBOTS.md](ROBOTS.md).
 
 ## Robôs disponíveis
 
@@ -11,6 +11,8 @@ Uma **fábrica de produtos de automação**: pesquisa problemas reais de pequeno
 | [**AgendaZap**](robots/robot-001-agendazap) | Barbearias, salões, clínicas, pet shops | Agenda 24 h, lembretes com confirmação, remarcar/cancelar, lista de espera, painel | PRONTO |
 | [**CobraZap**](robots/robot-002-cobrazap) | Academias, escolas, prestadores com mensalidade | Régua de cobrança educada com travas legais, Pix copia-e-cola, negociação, conferência | PRONTO |
 | [**PedidoZap**](robots/robot-003-pedidozap) | Pizzarias, lanchonetes, deliveries | Cardápio, carrinho, taxa por bairro, Pix, quadro de pedidos, avisos de status | PRONTO |
+| [**OrcaZap**](robots/robot-004-orcazap) | Pintores, eletricistas, reformas, ar-condicionado | Pedido de orçamento com fotos, proposta com botões, lembrete e vencimento | PRONTO |
+| [**LeadZap**](robots/robot-005-leadzap) | Imobiliárias, corretores | Qualificação, imóveis do cadastro, visita com lembrete, leads quentes/mornos/frios | PRONTO |
 
 Painel interno: [ROBOTS.md](ROBOTS.md) · Catálogo comercial: [CATALOG.md](CATALOG.md) · Como foram escolhidos: [market-research/opportunities.md](market-research/opportunities.md) (22 oportunidades, com fontes, notas e ranking).
 
@@ -23,7 +25,7 @@ Painel interno: [ROBOTS.md](ROBOTS.md) · Catálogo comercial: [CATALOG.md](CATA
 ```
  pesquisa de mercado ──► ranking (0-100) ──► seleção ──► robô (código + testes) ──► documentação + vendas ──► catálogo
  market-research/        opportunities.md    5 escolhidas   robots/robot-00N-*          scripts/docs → sales/      ROBOTS.md / CATALOG.md
-                                             3 construídas       ▲
+                                             5 construídas       ▲
                                                                  └── usa a camada compartilhada shared/
 ```
 
@@ -52,7 +54,7 @@ docs/              NOVO-ROBO.md
 
 ```bash
 npm install                      # só ferramentas de desenvolvimento (tsc)
-npm test                         # ~140 testes: camada compartilhada, 3 robôs, pesquisa, docs, segredos, empacotamento
+npm test                         # ~200 testes: camada compartilhada, 5 robôs, pesquisa, docs, segredos, empacotamento
 npm run typecheck
 
 # ver um robô funcionando (dados fictícios, sem WhatsApp):

@@ -6,10 +6,12 @@ import { changelog, clientManual, configuracao, envExample, instalacao, lgpd, ma
 import { agendazap } from "./docs/conteudo/agendazap.ts";
 import { cobrazap } from "./docs/conteudo/cobrazap.ts";
 import { pedidozap } from "./docs/conteudo/pedidozap.ts";
+import { orcazap } from "./docs/conteudo/orcazap.ts";
+import { leadzap } from "./docs/conteudo/leadzap.ts";
 import type { RobotDoc } from "./docs/tipos.ts";
 
 export const raiz = join(dirname(fileURLToPath(import.meta.url)), "..");
-export const robos: RobotDoc[] = [agendazap, cobrazap, pedidozap];
+export const robos: RobotDoc[] = [agendazap, cobrazap, pedidozap, orcazap, leadzap];
 
 /** Todos os arquivos de documentação de todos os robôs: caminho relativo → conteúdo. */
 export function gerarTudo(): Map<string, string> {

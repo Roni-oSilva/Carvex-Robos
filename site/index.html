@@ -125,7 +125,7 @@ section{padding:56px 0;scroll-margin-top:84px}
 .rev.vis{opacity:1;transform:none}
 
 /* carrossel de robôs (como os slides do layout de referência) */
-.trilho{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.trilho{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
 @media(max-width:1000px){.trilho{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 16px 22px;margin-inline:-16px;gap:16px;scrollbar-width:none}.trilho::-webkit-scrollbar{display:none}.slide{min-width:min(86vw,360px);scroll-snap-align:center}}
 .slide{background:var(--grad);border-radius:36px;padding:26px 22px 24px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column;gap:12px;transition:transform .3s ease}
 .slide:hover{transform:translateY(-8px) rotate(-.4deg)}
@@ -264,6 +264,8 @@ details p{padding:0 0 18px;color:var(--mut)}
 <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></symbol>
 <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></symbol>
 <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-7"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="3"/><path d="M9 4V3h6v1M9 11h6M9 15h4"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
 <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
 </defs></svg>
 
@@ -358,7 +360,7 @@ details p{padding:0 0 18px;color:var(--mut)}
       <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></span><div><b>Humano a um toque</b><p>O cliente escreve "atendente" e uma pessoa assume.</p></div></div>
       <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-spark"/></svg></span><div><b>IA que não inventa</b><p>Só responde com o que a sua empresa cadastrou.</p></div></div>
       <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span><div><b>Sem comissão por venda</b><p>Preço fixo. Os clientes e os dados são seus.</p></div></div>
-      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-flask"/></svg></span><div><b>Testado de ponta a ponta</b><p>Mais de 140 testes automáticos nos fluxos dos robôs.</p></div></div>
+      <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-flask"/></svg></span><div><b>Testado de ponta a ponta</b><p>Centenas de testes automáticos nos fluxos dos robôs.</p></div></div>
     </div>
   </div>
 </section>
@@ -488,12 +490,18 @@ const CONFIG = {
   // Número que recebe os pedidos, só dígitos com DDI+DDD. Ex.: "5511987654321". Vazio = botão mostra aviso.
   whatsapp: "5591981902529",
   robos: [
-    { id: "agenda", icone: "calendar", nome: "AgendaZap", titulo: "Marca horário sozinho", resumo: "Agenda 24h, lembretes com confirmação e lista de espera.",
-      tags: ["Agenda", "Lembretes", "Lista de espera"], implantacao: 490, mensalidade: 129, unica: 1490, para: "Barbearias, salões, clínicas, pet shops" },
-    { id: "cobra", icone: "wallet", nome: "CobraZap", titulo: "Cobra com educação", resumo: "Régua de cobrança, Pix copia-e-cola e negociação — dentro da lei.",
-      tags: ["Pix", "Negociação", "Travas legais"], implantacao: 590, mensalidade: 149, unica: 1990, para: "Academias, escolas, prestadores com mensalidade" },
-    { id: "pedido", icone: "bag", nome: "PedidoZap", titulo: "Fecha pedido no zap", resumo: "Cardápio, carrinho, taxa por bairro, Pix e quadro de pedidos.",
-      tags: ["Cardápio", "Entrega", "Quadro de pedidos"], implantacao: 790, mensalidade: 179, unica: 2490, para: "Pizzarias, lanchonetes, deliveries" },
+    /* @robos-inicio */
+    { id: "agenda", icone: "calendar", nome: "AgendaZap", titulo: "Robô para marcação", resumo: "Agenda 24h, lembretes com confirmação e lista de espera.",
+      tags: ["Agenda","Lembretes","Lista de espera"], implantacao: 490, mensalidade: 129, unica: 1490, para: "Barbearias, salões, clínicas, pet shops" },
+    { id: "cobra", icone: "wallet", nome: "CobraZap", titulo: "Robô para cobrança", resumo: "Régua de cobrança, Pix copia-e-cola e negociação — dentro da lei.",
+      tags: ["Pix","Negociação","Travas legais"], implantacao: 590, mensalidade: 149, unica: 1990, para: "Academias, escolas, prestadores com mensalidade" },
+    { id: "pedido", icone: "bag", nome: "PedidoZap", titulo: "Robô para pedidos", resumo: "Cardápio, carrinho, taxa por bairro, Pix e quadro de pedidos.",
+      tags: ["Cardápio","Entrega","Quadro de pedidos"], implantacao: 790, mensalidade: 179, unica: 2490, para: "Pizzarias, lanchonetes, deliveries" },
+    { id: "orca", icone: "clipboard", nome: "OrcaZap", titulo: "Robô para orçamento", resumo: "Pedido de orçamento com fotos, proposta com botões e lembrete único.",
+      tags: ["Fotos","Proposta","Acompanhamento"], implantacao: 490, mensalidade: 139, unica: 1790, para: "Pintores, eletricistas, reformas, ar-condicionado" },
+    { id: "lead", icone: "home", nome: "LeadZap", titulo: "Robô para imobiliárias", resumo: "Qualifica o interessado, mostra imóveis reais e agenda a visita com lembrete.",
+      tags: ["Leads","Imóveis","Visitas"], implantacao: 690, mensalidade: 189, unica: 2290, para: "Imobiliárias, corretores, loteadoras" },
+    /* @robos-fim */
   ],
 };
 
@@ -505,36 +513,63 @@ const ROTEIROS = {
     { bot: "Aí eu não invento nada! Eu aviso e chamo uma pessoa da sua equipe.\n\n“Não tenho essa informação no momento. Vou encaminhar você para um atendente.”", ops: [{ t: "Quero um robô desses!" }] },
     { bot: "Bora! Toque em “Comprar um robô” e fale com a gente.", fim: true },
   ],
+  /* @roteiros-inicio */
   agenda: [
-    { bot: "Olá! Aqui é o assistente da Barbearia do Zé. Posso marcar seu horário?", ops: [{ t: "Agendar horário" }] },
-    { bot: "Qual serviço?", ops: [{ t: "Corte masculino", set: { s: "Corte masculino", p: "R$ 45,00" } }, { t: "Barba", set: { s: "Barba", p: "R$ 30,00" } }] },
-    { bot: "Qual dia?", ops: [{ t: "Amanhã (qui 08/10)" }, { t: "Sex 09/10" }] },
-    { bot: "Horários livres", ops: [{ t: "10:00" }, { t: "10:30" }, { t: "11:00" }] },
-    { bot: "Posso confirmar?\n\n {s} com João\n {d} às {h}\n {p}", ops: [{ t: "Confirmar" }] },
-    { bot: "Agendado! Te mando um lembrete antes." },
-    { nota: "no dia anterior…" },
-    { bot: "Lembrete: {s} amanhã às {h}. Você confirma?", ops: [{ t: "Confirmo" }, { t: "Remarcar" }] },
-    { bot: "Presença confirmada! Te esperamos", fim: true },
+    {"bot":"Olá! Aqui é o assistente da Barbearia do Zé. Posso marcar seu horário?","ops":[{"t":"Agendar horário"}]},
+    {"bot":"Qual serviço?","ops":[{"t":"Corte masculino","set":{"s":"Corte masculino","p":"R$ 45,00"}},{"t":"Barba","set":{"s":"Barba","p":"R$ 30,00"}}]},
+    {"bot":"Qual dia?","ops":[{"t":"Amanhã (qui 08/10)"},{"t":"Sex 09/10"}]},
+    {"bot":"Horários livres","ops":[{"t":"10:00"},{"t":"10:30"},{"t":"11:00"}]},
+    {"bot":"Posso confirmar?\n\n {s} com João\n {d} às {h}\n {p}","ops":[{"t":"Confirmar"}]},
+    {"bot":"Agendado! Te mando um lembrete antes."},
+    {"nota":"no dia anterior…"},
+    {"bot":"Lembrete: {s} amanhã às {h}. Você confirma?","ops":[{"t":"Confirmo"},{"t":"Remarcar"}]},
+    {"bot":"Presença confirmada! Te esperamos","fim":true},
   ],
   cobra: [
-    { nota: "Academia Corpo em Movimento" },
-    { bot: "Olá, Maria! Antes de continuar: você é a Maria?\n Só falo de pagamento depois de confirmar.", ops: [{ t: "Sim, sou eu" }, { t: "Número errado" }] },
-    { bot: "Obrigado! Sua mensalidade de R$ 150,00 vence em 3 dias.", ops: [{ t: "Pagar com Pix" }, { t: "Negociar" }] },
-    { bot: "Aqui está o Pix copia e cola \n<code>00020126…5406150.00…6304</code>\nÉ só colar no app do banco.", ops: [{ t: "Já paguei" }] },
-    { bot: "Obrigado por avisar! Vamos conferir (até 1 dia útil). Pode mandar o comprovante aqui.", ops: [{ t: "Enviar comprovante" }] },
-    { bot: "Comprovante recebido! A equipe confere e avisa por aqui.", fim: true },
+    {"nota":"Academia Corpo em Movimento"},
+    {"bot":"Olá, Maria! Antes de continuar: você é a Maria?\n Só falo de pagamento depois de confirmar.","ops":[{"t":"Sim, sou eu"},{"t":"Número errado"}]},
+    {"bot":"Obrigado! Sua mensalidade de R$ 150,00 vence em 3 dias.","ops":[{"t":"Pagar com Pix"},{"t":"Negociar"}]},
+    {"bot":"Aqui está o Pix copia e cola \n<code>00020126…5406150.00…6304</code>\nÉ só colar no app do banco.","ops":[{"t":"Já paguei"}]},
+    {"bot":"Obrigado por avisar! Vamos conferir (até 1 dia útil). Pode mandar o comprovante aqui.","ops":[{"t":"Enviar comprovante"}]},
+    {"bot":"Comprovante recebido! A equipe confere e avisa por aqui.","fim":true},
   ],
   pedido: [
-    { bot: "Bem-vindo à Pizzaria Bella Massa!", ops: [{ t: "Fazer pedido" }] },
-    { bot: "O que você quer pedir?", ops: [{ t: "Pizzas" }, { t: "Bebidas" }] },
-    { bot: "Pizza Calabresa — qual tamanho?", ops: [{ t: "Grande · R$ 52" }, { t: "Média · R$ 42" }] },
-    { bot: "Quantas?", ops: [{ t: "1" }, { t: "2" }] },
-    { bot: "Seu pedido\n2x Pizza Calabresa ... R$ 104,00\n Entrega (Centro) ... R$ 5,00\n\n<b>Total: R$ 109,00</b>\nComo prefere pagar?", ops: [{ t: "Pix" }, { t: "Dinheiro" }] },
-    { bot: "Pedido #1 recebido! Aqui o Pix copia e cola", },
-    { nota: "a cozinha aceita o pedido…" },
-    { bot: "Seu pedido #1 está sendo preparado", },
-    { bot: "Seu pedido #1 saiu para entrega Bom apetite!", fim: true },
+    {"bot":"Bem-vindo à Pizzaria Bella Massa!","ops":[{"t":"Fazer pedido"}]},
+    {"bot":"O que você quer pedir?","ops":[{"t":"Pizzas"},{"t":"Bebidas"}]},
+    {"bot":"Pizza Calabresa — qual tamanho?","ops":[{"t":"Grande · R$ 52"},{"t":"Média · R$ 42"}]},
+    {"bot":"Quantas?","ops":[{"t":"1"},{"t":"2"}]},
+    {"bot":"Seu pedido\n2x Pizza Calabresa ... R$ 104,00\n Entrega (Centro) ... R$ 5,00\n\n<b>Total: R$ 109,00</b>\nComo prefere pagar?","ops":[{"t":"Pix"},{"t":"Dinheiro"}]},
+    {"bot":"Pedido #1 recebido! Aqui o Pix copia e cola"},
+    {"nota":"a cozinha aceita o pedido…"},
+    {"bot":"Seu pedido #1 está sendo preparado"},
+    {"bot":"Seu pedido #1 saiu para entrega Bom apetite!","fim":true},
   ],
+  orca: [
+    {"bot":"Olá! Aqui é a Reforma Fácil. Posso receber o seu pedido de orçamento com fotos.","ops":[{"t":"Pedir orçamento"}]},
+    {"bot":"Qual serviço você precisa?","ops":[{"t":"Pintura","set":{"s":"Pintura"}},{"t":"Elétrica","set":{"s":"Elétrica"}}]},
+    {"bot":"Descreva o que precisa ser feito. Quanto mais detalhes, mais preciso o orçamento.","ops":[{"t":"Pintar sala e 2 quartos"}]},
+    {"bot":"Agora envie fotos do local (até 4).","ops":[{"t":"Enviar 2 fotos"}]},
+    {"bot":"Foto 2 de 4 recebida. Em qual bairro fica o serviço?","ops":[{"t":"Centro","set":{"b":"Centro"}},{"t":"Vila Nova","set":{"b":"Vila Nova"}}]},
+    {"bot":"Confira: {s}, 2 fotos, bairro {b}. Posso enviar o pedido para a equipe?","ops":[{"t":"Enviar pedido"}]},
+    {"bot":"Pedido de orçamento #1 recebido! A equipe vai analisar as fotos e responder por aqui."},
+    {"nota":"a equipe analisa e informa o valor…"},
+    {"bot":"Orçamento #1 — {s}\nValor: R$ 2.850,00\nPrazo: 5 dias úteis\nVálido até 14/10.","ops":[{"t":"Aceitar"},{"t":"Recusar"}]},
+    {"bot":"Combinado! A equipe vai falar com você para marcar a data.","fim":true},
+  ],
+  lead: [
+    {"bot":"Olá! Bem-vindo à Casa Certa Imóveis. O que você procura?","ops":[{"t":"Quero alugar"},{"t":"Quero comprar"}]},
+    {"bot":"Que tipo de imóvel?","ops":[{"t":"Apartamento","set":{"i":"apartamento"}},{"t":"Casa","set":{"i":"casa"}}]},
+    {"bot":"Em qual bairro você quer morar?","ops":[{"t":"Centro","set":{"b":"Centro"}},{"t":"Bela Vista","set":{"b":"Bela Vista"}}]},
+    {"bot":"Qual faixa de valor cabe no seu bolso?","ops":[{"t":"R$ 1.500 a 3.000"}]},
+    {"bot":"Para quando você pretende fechar?","ops":[{"t":"Até 30 dias"},{"t":"Só pesquisando"}]},
+    {"bot":"Anotei! Encontrei 1 opção cadastrada para você:\n<b>Apartamento 2 quartos</b> · {b}\nR$ 2.100,00/mês","ops":[{"t":"Agendar visita"}]},
+    {"bot":"Qual dia e horário?","ops":[{"t":"Qui 08/10 · 14:00","set":{"d":"Qui 08/10 às 14:00"}},{"t":"Sex 09/10 · 11:00","set":{"d":"Sex 09/10 às 11:00"}}]},
+    {"bot":"Visita agendada: {d}. Vou te lembrar antes."},
+    {"nota":"no dia anterior…"},
+    {"bot":"Lembrete da sua visita: {d}. Você confirma presença?","ops":[{"t":"Confirmo"},{"t":"Remarcar"}]},
+    {"bot":"Presença confirmada! Até lá.","fim":true},
+  ],
+  /* @roteiros-fim */
 };
 
 /* ==========================================================================

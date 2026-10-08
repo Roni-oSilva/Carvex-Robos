@@ -395,4 +395,63 @@ Não sei, e ninguém deveria prometer. Depende da sua carteira e da sua relaçã
 - [ ] Confirmar com a Meta a categoria e o preço do modelo de cobrança.
 `,
   },
+  site: {
+    "chave": "cobra",
+    "icone": "wallet",
+    "titulo": "Robô para cobrança",
+    "resumo": "Régua de cobrança, Pix copia-e-cola e negociação — dentro da lei.",
+    "tags": [
+      "Pix",
+      "Negociação",
+      "Travas legais"
+    ],
+    "para": "Academias, escolas, prestadores com mensalidade",
+    "roteiro": [
+      {
+        "nota": "Academia Corpo em Movimento"
+      },
+      {
+        "bot": "Olá, Maria! Antes de continuar: você é a Maria?\n Só falo de pagamento depois de confirmar.",
+        "ops": [
+          {
+            "t": "Sim, sou eu"
+          },
+          {
+            "t": "Número errado"
+          }
+        ]
+      },
+      {
+        "bot": "Obrigado! Sua mensalidade de R$ 150,00 vence em 3 dias.",
+        "ops": [
+          {
+            "t": "Pagar com Pix"
+          },
+          {
+            "t": "Negociar"
+          }
+        ]
+      },
+      {
+        "bot": "Aqui está o Pix copia e cola \n<code>00020126…5406150.00…6304</code>\nÉ só colar no app do banco.",
+        "ops": [
+          {
+            "t": "Já paguei"
+          }
+        ]
+      },
+      {
+        "bot": "Obrigado por avisar! Vamos conferir (até 1 dia útil). Pode mandar o comprovante aqui.",
+        "ops": [
+          {
+            "t": "Enviar comprovante"
+          }
+        ]
+      },
+      {
+        "bot": "Comprovante recebido! A equipe confere e avisa por aqui.",
+        "fim": true
+      }
+    ]
+  },
 };

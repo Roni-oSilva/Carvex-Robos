@@ -2,6 +2,22 @@ export type Status = "IDEIA" | "PESQUISA" | "PLANEJADO" | "DESENVOLVIMENTO" | "T
 
 export interface Preco { venda_unica: number; mensalidade: number; implantacao: number; personalizacao_hora: number; racional: string[] }
 
+/** Um passo da conversa de demonstração exibida no site. `{x}` = variável escolhida pelo visitante. */
+export interface NoRoteiro { bot?: string; ops?: { t: string; set?: Record<string, string> }[]; nota?: string; fim?: boolean }
+
+/** O que aparece no site de vendas (cartão, preço e conversa de demonstração). Sem emojis. */
+export interface SiteDoc {
+  /** Identificador curto usado na página (ex.: "agenda"). */
+  chave: string;
+  /** Nome de um ícone do sprite da página (calendar, wallet, bag, clipboard, home...). */
+  icone: string;
+  titulo: string;
+  resumo: string;
+  tags: string[];
+  para: string;
+  roteiro: NoRoteiro[];
+}
+
 export interface RobotDoc {
   id: string;
   nome: string;
@@ -36,5 +52,6 @@ export interface RobotDoc {
   requisitos: { id: string; texto: string; status: "Implementado" | "Parcial" | "Não implementado" }[];
   pendencias: string[];
   precos: Preco;
+  site: SiteDoc;
   sales: { pagina: string; pitch: string; features: string; objecoes: string; faq: string; demo: string; precificacao: string };
 }

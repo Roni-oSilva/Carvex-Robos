@@ -4,7 +4,8 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import vm from "node:vm";
-import { raiz } from "./gerar-docs.ts";
+import { raiz, robos } from "./gerar-docs.ts";
+import { siteAtualizado } from "./gerar-site.ts";
 
 const html = readFileSync(join(raiz, "site/index.html"), "utf8");
 
@@ -23,12 +24,31 @@ test("página usa o nome Carvex Tecnologia, tem botão de compra e a logo existe
   assert.equal(config().marca, "Carvex Tecnologia");
 });
 
-test("preços da página = preços sugeridos de cada robô (robot.json)", () => {
-  const ids: Record<string, string> = { agenda: "robot-001-agendazap", cobra: "robot-002-cobrazap", pedido: "robot-003-pedidozap" };
-  for (const r of config().robos) {
-    const j = JSON.parse(readFileSync(join(raiz, "robots", ids[r.id], "robot.json"), "utf8")) as { nome: string; precos: { implantacao: number; mensalidade: number; venda_unica: number } };
+test("todo robô da fábrica aparece no site, com os preços sugeridos de robot.json", () => {
+  const robosSite = config().robos;
+  assert.equal(robosSite.length, robos.length, "o site deve listar exatamente os robôs da fábrica");
+  for (const doc of robos) {
+    const r = robosSite.find((x) => x.id === doc.site.chave);
+    assert.ok(r, `${doc.nome} não está no site (rode: npm run site:gerar)`);
+    const j = JSON.parse(readFileSync(join(raiz, "robots", doc.id, "robot.json"), "utf8")) as { nome: string; precos: { implantacao: number; mensalidade: number; venda_unica: number } };
     assert.equal(r.nome, j.nome);
     assert.deepEqual([r.implantacao, r.mensalidade, r.unica], [j.precos.implantacao, j.precos.mensalidade, j.precos.venda_unica], r.nome);
+  }
+});
+
+test("o site está em dia com os dados dos robôs (nada escrito à mão fora de sincronia)", () => {
+  assert.equal(siteAtualizado(html), html, "site/index.html desatualizado: rode npm run site:gerar");
+});
+
+test("todo robô tem conversa de demonstração e ícone existente no site; chaves únicas", () => {
+  const chaves = robos.map((r) => r.site.chave);
+  assert.equal(new Set(chaves).size, chaves.length);
+  for (const r of robos) {
+    assert.ok(r.site.roteiro.length >= 5, `${r.nome}: conversa de demonstração curta demais`);
+    assert.ok(r.site.roteiro.some((n) => n.fim), `${r.nome}: a conversa precisa de um passo final (fim: true)`);
+    assert.ok(html.includes(`id="i-${r.site.icone}"`), `${r.nome}: ícone ${r.site.icone} não existe no sprite`);
+    const setadas = new Set(r.site.roteiro.flatMap((n) => (n.ops ?? []).flatMap((o) => Object.keys(o.set ?? {}))));
+    for (const n of r.site.roteiro) for (const v of (n.bot ?? "").matchAll(/\{(\w+)\}/g)) assert.ok(setadas.has(v[1]) || ["d", "h"].includes(v[1]), `${r.nome}: variável {${v[1]}} nunca é definida`);
   }
 });
 

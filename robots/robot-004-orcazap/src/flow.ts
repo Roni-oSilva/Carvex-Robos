@@ -203,7 +203,7 @@ export async function handleOrca(ctx: Ctx, msg: InboundMessage): Promise<Outgoin
     if (ctx.conv.state === "fotos" || ctx.conv.state === "confirmar") descartaPendentes(ctx);
     return menu(ctx);
   }
-  if (rid === "m_novo" || (ctx.conv.state === "inicio" && /\b(pedir orcamento|fazer orcamento|quero um orcamento|orcamento)\b/.test(text))) {
+  if (rid === "m_novo" || (ctx.conv.state === "inicio" && /\b(pedir (um )?orcamento|fazer (um )?orcamento|solicitar (um )?orcamento|quero (um )?orcamento|preciso de (um )?orcamento)\b/.test(text))) {
     descartaPendentes(ctx);
     limpaFluxo(ctx);
     return askServico(ctx);

@@ -94,6 +94,68 @@ O **PedidoZap** transforma o WhatsApp do restaurante em um **canal de pedidos gu
 
 **Material:** [Página de vendas](robots/robot-003-pedidozap/sales/SALES-PAGE.md) · [Pitch](robots/robot-003-pedidozap/sales/PITCH.md) · [Funcionalidades](robots/robot-003-pedidozap/sales/FEATURES.md) · [Objeções](robots/robot-003-pedidozap/sales/OBJECTIONS.md) · [FAQ](robots/robot-003-pedidozap/sales/FAQ.md) · [Roteiro de demonstração](robots/robot-003-pedidozap/sales/DEMO-SCRIPT.md) · [Conversas de exemplo](robots/robot-003-pedidozap/demo/CONVERSAS.md)
 
+---
+
+## OrcaZap — O cliente manda o problema com fotos e você responde com o orçamento — tudo organizado no WhatsApp.
+
+**Para:** Pintores e reformas, Eletricistas e encanadores, Gesso, forro e marcenaria, Instalação de ar-condicionado, Dedetização e limpeza pós-obra
+**Status:** PRONTO · **Versão:** 1.0.0
+
+O **OrcaZap** conduz o cliente por um pedido de orçamento completo: escolhe o serviço, descreve o que precisa, **envia fotos**, informa bairro, endereço e período preferido para visita. A equipe recebe tudo num **quadro de orçamentos** (fotos, descrição, local), digita o valor e o prazo, e o cliente recebe a **proposta no WhatsApp com botões Aceitar, Recusar e Tenho dúvida**. Se ele não responde, o robô faz **um** lembrete e, passada a validade, encerra a proposta. **O robô nunca calcula nem informa preço**: o valor é sempre digitado por uma pessoa.
+
+**O que ele faz**
+- Pedido guiado por serviço: Lista de serviços da empresa, descrição obrigatória e período preferido para visita.
+- Recebimento de fotos: Até 4 fotos por pedido (1 a 6), com conferência do tipo real do arquivo e limite de 5 MB.
+- Regiões atendidas: Bairro validado contra a lista cadastrada; fora da área, o robô explica e oferece atendente.
+- Quadro de orçamentos: Colunas Novos, Em análise, Aguardando resposta e Aceitos, com fotos e dados do cliente numa página.
+- Proposta pelo WhatsApp: Valor, prazo, observação e validade enviados com botões Aceitar, Recusar e Tenho dúvida.
+- Preço só humano: O robô não calcula, estima nem cita valores: quem digita o valor é a equipe.
+
+**O que ele não faz (ainda)**
+- **Não calcula preço** (de propósito): sem tabela de preços por m², o robô só coleta e organiza.
+- Não faz análise automática das fotos: quem avalia é a equipe.
+- Não agenda a visita técnica: registra o período preferido e a equipe combina (agenda integrada é evolução).
+- Fotos ficam no disco do servidor (pasta MEDIA_DIR): é preciso incluí-la no backup; vídeos e documentos não são aceitos.
+
+**Investimento sugerido**
+
+| Implantação | Mensalidade | Venda única | Personalização |
+|---|---|---|---|
+| R$ 490 | R$ 139/mês | R$ 1.790 | R$ 150/hora |
+
+**Material:** [Página de vendas](robots/robot-004-orcazap/sales/SALES-PAGE.md) · [Pitch](robots/robot-004-orcazap/sales/PITCH.md) · [Funcionalidades](robots/robot-004-orcazap/sales/FEATURES.md) · [Objeções](robots/robot-004-orcazap/sales/OBJECTIONS.md) · [FAQ](robots/robot-004-orcazap/sales/FAQ.md) · [Roteiro de demonstração](robots/robot-004-orcazap/sales/DEMO-SCRIPT.md) · [Conversas de exemplo](robots/robot-004-orcazap/demo/CONVERSAS.md)
+
+---
+
+## LeadZap — Responde na hora, mostra os imóveis certos, agenda a visita e entrega o lead pronto ao corretor.
+
+**Para:** Imobiliárias pequenas e médias, Corretores autônomos e equipes, Loteadoras e construtoras pequenas, Administradoras de aluguel
+**Status:** PRONTO · **Versão:** 1.0.0
+
+O **LeadZap** atende o interessado na hora: pergunta se quer **comprar ou alugar**, tipo de imóvel, bairro, faixa de valor, quartos e prazo, e mostra **somente imóveis do seu cadastro** que cabem no perfil. Se o cliente gostar, **agenda a visita** em horários livres daquele imóvel, **lembra e pede confirmação** antes. O lead vai para o painel **classificado como quente, morno ou frio** (regra de pontos transparente), **já atribuído ao corretor** do bairro, com todo o resumo. Se o cliente some, o robô faz **um** acompanhamento com opções reais do cadastro, e depois o lead vira "sem resposta" para a equipe decidir.
+
+**O que ele faz**
+- Qualificação em poucos toques: Finalidade, tipo, bairro, faixa de valor, quartos e prazo — com botões e listas.
+- Imóveis só do seu cadastro: Mostra apenas imóveis disponíveis que cabem no perfil. Nada de imóvel inventado.
+- Temperatura transparente: Quente, morno ou frio por pontos fixos (prazo, imóvel compatível, interesse, visita). Você enxerga a regra.
+- Roteamento ao corretor: Atribui ao corretor que atende o bairro com menos leads em aberto; você troca no painel quando quiser.
+- Agendamento de visita: Horários livres por imóvel, antecedência mínima, sem duas visitas no mesmo horário do mesmo imóvel.
+- Lembrete e confirmação: Aviso antes da visita com botões Confirmo, Remarcar e Cancelar visita.
+
+**O que ele não faz (ainda)**
+- **Não integra com portais, CRMs nem com a base do MLS**: o catálogo é cadastrado nas Configurações (até 300 imóveis).
+- Não envia fotos nem vídeos: envia o **link** que você cadastrar (https).
+- Não avalia crédito, não simula financiamento e não negocia valores.
+- A visita é por imóvel e horário fixos da configuração; não verifica a agenda pessoal do corretor.
+
+**Investimento sugerido**
+
+| Implantação | Mensalidade | Venda única | Personalização |
+|---|---|---|---|
+| R$ 690 | R$ 189/mês | R$ 2.290 | R$ 150/hora |
+
+**Material:** [Página de vendas](robots/robot-005-leadzap/sales/SALES-PAGE.md) · [Pitch](robots/robot-005-leadzap/sales/PITCH.md) · [Funcionalidades](robots/robot-005-leadzap/sales/FEATURES.md) · [Objeções](robots/robot-005-leadzap/sales/OBJECTIONS.md) · [FAQ](robots/robot-005-leadzap/sales/FAQ.md) · [Roteiro de demonstração](robots/robot-005-leadzap/sales/DEMO-SCRIPT.md) · [Conversas de exemplo](robots/robot-005-leadzap/demo/CONVERSAS.md)
+
 
 ## Como contratar
 1. Demonstração de 15 minutos com dados fictícios (`demo/servidor-demo.ts`).

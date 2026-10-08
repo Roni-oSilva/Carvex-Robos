@@ -1,0 +1,46 @@
+{
+  "empresa": {
+    "nome": "Casa Certa Imóveis",
+    "endereco": "Av. Brasil, 1200 - Centro",
+    "telefone": "(11) 4000-4444",
+    "horario_texto": "Segunda a sexta, das 9h às 18h; sábado, das 9h às 13h",
+    "pagamento": "Financiamento, à vista ou fiança/seguro-fiança (conforme o imóvel)"
+  },
+  "tipos": [
+    { "id": "apartamento", "nome": "Apartamento" },
+    { "id": "casa", "nome": "Casa" },
+    { "id": "terreno", "nome": "Terreno" }
+  ],
+  "bairros": ["Centro", "Jardim América", "Vila Nova", "Bela Vista"],
+  "faixas": {
+    "comprar": [
+      { "nome": "Até R$ 300 mil", "min": 0, "max": 300000 },
+      { "nome": "R$ 300 a 600 mil", "min": 300000, "max": 600000 },
+      { "nome": "Acima de R$ 600 mil", "min": 600000, "max": 100000000 }
+    ],
+    "alugar": [
+      { "nome": "Até R$ 1.500", "min": 0, "max": 1500 },
+      { "nome": "R$ 1.500 a 3.000", "min": 1500, "max": 3000 },
+      { "nome": "Acima de R$ 3.000", "min": 3000, "max": 1000000 }
+    ]
+  },
+  "imoveis": [
+    { "id": "ap-centro-1q", "finalidade": "alugar", "tipo": "apartamento", "titulo": "Kitnet reformada no Centro", "bairro": "Centro", "preco": 1200, "quartos": 1, "descricao": "35 m², 1 quarto, cozinha americana, próximo ao metrô.", "link": "https://exemplo.com.br/imoveis/ap-centro-1q", "disponivel": true },
+    { "id": "ap-centro-2q", "finalidade": "alugar", "tipo": "apartamento", "titulo": "Apartamento 2 quartos no Centro", "bairro": "Centro", "preco": 2100, "quartos": 2, "descricao": "62 m², 1 vaga, portaria 24h.", "link": "https://exemplo.com.br/imoveis/ap-centro-2q", "disponivel": true },
+    { "id": "casa-jd-3q", "finalidade": "comprar", "tipo": "casa", "titulo": "Casa 3 quartos no Jardim América", "bairro": "Jardim América", "preco": 480000, "quartos": 3, "descricao": "150 m² de terreno, quintal, 2 vagas.", "link": "https://exemplo.com.br/imoveis/casa-jd-3q", "disponivel": true },
+    { "id": "ap-bv-2q", "finalidade": "comprar", "tipo": "apartamento", "titulo": "Apartamento 2 quartos na Bela Vista", "bairro": "Bela Vista", "preco": 285000, "quartos": 2, "descricao": "58 m², varanda, 1 vaga. Aceita financiamento.", "link": "https://exemplo.com.br/imoveis/ap-bv-2q", "disponivel": true }
+  ],
+  "corretores": [
+    { "id": "marcos", "nome": "Marcos", "bairros": ["Centro", "Vila Nova"] },
+    { "id": "patricia", "nome": "Patrícia", "bairros": ["Jardim América", "Bela Vista"] },
+    { "id": "geral", "nome": "Plantão", "bairros": [] }
+  ],
+  "visitas": { "ativo": true, "dias_semana": [1, 2, 3, 4, 5, 6], "horarios": ["09:00", "11:00", "14:00", "16:00"], "janela_dias": 7, "antecedencia_horas": 4, "lembrete_horas": 24 },
+  "followup": { "horas": 48, "sem_resposta_dias": 7 },
+  "template": { "nome": "lead_visita", "idioma": "pt_BR" },
+  "faq": [
+    { "pergunta": "Vocês fazem financiamento?", "resposta": "Auxiliamos na simulação com bancos parceiros. As condições dependem do banco e do seu perfil; o corretor explica na visita.", "palavras_chave": ["financiamento", "financiar", "banco"] },
+    { "pergunta": "Quais documentos preciso para alugar?", "resposta": "O corretor envia a lista de documentos conforme o imóvel e a modalidade de garantia escolhida.", "palavras_chave": ["documentos", "documento", "papelada"] }
+  ],
+  "mensagens": {}
+}
