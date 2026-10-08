@@ -200,13 +200,6 @@ details p{padding:0 0 18px;color:var(--mut)}
 
 
 
-/* vídeo */
-.video-sec{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
-@media(max-width:860px){.video-sec{grid-template-columns:1fr}.video-sec .moldura{justify-self:center}}
-.video-sec h2{font-size:clamp(30px,4.4vw,48px);letter-spacing:-.03em;line-height:1.05}
-.video-sec p{color:var(--mut);margin:14px 0 22px;max-width:46ch}
-.moldura{width:min(340px,82vw);border-radius:36px;padding:10px;background:var(--grad);box-shadow:var(--sombra)}
-.moldura video{display:block;width:100%;aspect-ratio:9/16;border-radius:28px;background:var(--az-950)}
 /* explicação dos valores */
 .valores{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
 @media(max-width:800px){.valores{grid-template-columns:1fr}}
@@ -370,18 +363,6 @@ details p{padding:0 0 18px;color:var(--mut)}
       <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span><div><b>Sem comissão por venda</b><p>Preço fixo. Os clientes e os dados são seus.</p></div></div>
       <div class="ben rev"><span class="e"><svg class="ic" aria-hidden="true"><use href="#i-flask"/></svg></span><div><b>Testado de ponta a ponta</b><p>Centenas de testes automáticos nos fluxos dos robôs.</p></div></div>
     </div>
-  </div>
-</section>
-
-<!-- ===================== VÍDEO ===================== -->
-<section id="video">
-  <div class="wrap video-sec">
-    <div class="rev">
-      <h2>Veja os robôs em <span class="grad">40 segundos</span></h2>
-      <p>Marcação, cobrança, pedidos, orçamento e imobiliárias: cada robô conversando de verdade, com a segurança da API oficial do WhatsApp.</p>
-      <button class="btn" data-comprar>Comprar um robô</button>
-    </div>
-    <div class="moldura rev"><video controls playsinline preload="metadata" poster="assets/carvex-robos-capa.jpg" aria-label="Vídeo de 40 segundos apresentando os robôs de WhatsApp da Carvex Tecnologia"><source src="assets/carvex-robos.mp4" type="video/mp4">Seu navegador não reproduz vídeo.</video></div>
   </div>
 </section>
 

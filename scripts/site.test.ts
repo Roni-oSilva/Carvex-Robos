@@ -88,8 +88,7 @@ test("não promete resultados: sem percentuais de ganho", () => {
   assert.match(visivel, /não prometemos percentuais/i);
 });
 
-test("vídeo dos robôs está na página e os arquivos existem", () => {
-  assert.match(html, /<video[^>]+poster="assets\/carvex-robos-capa\.jpg"/);
-  assert.match(html, /<source src="assets\/carvex-robos\.mp4"/);
-  for (const f of ["carvex-robos.mp4", "carvex-robos-capa.jpg"]) assert.ok(existsSync(join(raiz, "site/assets", f)), f);
+test("o vídeo dos robôs não fica no site (é só para divulgação em redes sociais)", () => {
+  assert.ok(!/<video/.test(html));
+  assert.ok(!existsSync(join(raiz, "site/assets/carvex-robos.mp4")));
 });
