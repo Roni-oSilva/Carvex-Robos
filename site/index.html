@@ -273,6 +273,9 @@ details p{padding:0 0 18px;color:var(--mut)}
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rev{opacity:1;transform:none}
 }
+/* desempenho: fundos e textos com gradiente animado repintam a tela inteira; ficam estaticos */
+.cartao-heroi,.final,.btn,h1 .dest{animation:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
